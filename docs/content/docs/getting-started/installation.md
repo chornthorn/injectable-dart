@@ -10,7 +10,7 @@ This guide explains how to add `injectable` and `injectable_codegen` to your Dar
 
 {{% alert title="Important: Git Dependency Notice" color="warning" %}}
 **Pre-Release / Git Dependency Notice**:
-This toolkit is not yet published to [pub.dev](https://pub.dev). Because the `injectable` package name is already taken on pub.dev by a legacy library, we plan to rename the package under a new namespace prior to its official pub.dev release.
+This toolkit is not yet published to [pub.dev](https://pub.dev). Because the `injectable` package name is already taken on pub.dev (actively maintained by Milad Akarie), this project builds on similar ergonomic principles while introducing advanced features such as **folder-scoped micro-packages**, modular monorepo isolation, and explicit Dart 3 class-form annotations. We plan to publish under a dedicated package name in the future.
 
 In the meantime, you can use the toolkit directly from GitHub using **Git URL dependencies** with the corresponding subdirectory paths (`path: injectable` and `path: injectable_codegen`).
 {{% /alert %}}
