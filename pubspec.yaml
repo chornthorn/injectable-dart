@@ -1,0 +1,35 @@
+name: injectable_workspace
+publish_to: none
+description: Monorepo workspace for injectable packages and examples.
+
+environment:
+  sdk: ^3.12.0
+
+workspace:
+  - packages/injectable
+  - packages/injectable_codegen
+  - examples/micro_package_example
+
+melos:
+  scripts:
+    analyze:
+      exec: dart analyze .
+      description: Run `dart analyze` across all packages.
+    test:
+      exec: dart test
+      description: Run `dart test` across all packages.
+    build:
+      exec:
+        command: dart run build_runner build
+        concurrency: 1
+        orderDependents: true
+      packageFilters:
+        dependsOn: build_runner
+      description: Run `build_runner build` ordered by dependencies.
+    format:
+      run: dart format --output=none --set-exit-if-changed .
+      description: Check code formatting.
+
+dev_dependencies:
+  lints: ^6.0.0
+  melos: ^8.3.0

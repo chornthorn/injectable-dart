@@ -1,0 +1,23 @@
+/// Qualifies a dependency with an explicit instance tag / string token for injection.
+class Inject {
+  /// The registration tag or string token.
+  final String tag;
+
+  /// Creates an [@Inject] annotation with a string tag / token.
+  const Inject(this.tag);
+}
+
+/// Marks a parameter of a factory constructor to be passed at resolution runtime.
+class FactoryParam {
+  const FactoryParam();
+}
+
+/// Marks a method to be called when disposing of an instance.
+class DisposeMethod {
+  const DisposeMethod();
+}
+
+/// Marks a method to be executed immediately after the instance is created.
+class PostLocalInit {
+  const PostLocalInit();
+}

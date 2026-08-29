@@ -1,0 +1,33 @@
+name: demo_monorepo
+description: >-
+  Workspace root demonstrating the injectable package supporting:
+  (A) a monorepo where each package has its own pubspec.yaml, and
+  (A') folder-scoped micro-packages with no pubspec.yaml, nested inside a package.
+  The runnable entry point is apps/root_app.
+publish_to: none
+version: 1.0.0
+
+environment:
+  sdk: ^3.12.0
+
+workspace:
+  - apps/root_app
+  - packages/shared
+  - packages/feature_catalog
+
+dependency_overrides:
+  # `injectable_codegen` declares `injectable` as an unversioned hosted
+  # dependency (workspace-member style). When consumed outside the
+  # injectable-dart workspace, pin it to the local path (or the git source).
+  injectable:
+    # Reference (git):
+    #   git:
+    #     url: https://github.com/chornthorn/injectable-dart.git
+    #     path: packages/injectable
+    path: ../../packages/injectable
+  injectable_codegen:
+    # Reference (git):
+    #   git:
+    #     url: https://github.com/chornthorn/injectable-dart.git
+    #     path: packages/injectable_codegen
+    path: ../../packages/injectable_codegen
