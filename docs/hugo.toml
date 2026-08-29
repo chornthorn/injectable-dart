@@ -22,13 +22,14 @@ author = "Thorn Chorn"
 copyright = "Thorn Chorn"
 github_repo = "https://github.com/chornthorn/injectable-dart"
 github_project_repo = "https://github.com/chornthorn/injectable-dart"
+offlineSearch = true
 
 # UI configuration for documentation sidebar and navigation
 [params.ui]
 sidebar_resizable = false
 sidebar_menu_compact = false
 sidebar_menu_foldable = true
-sidebar_search_disable = true
+sidebar_search_disable = false
 sidebar_cache_limit = 1
 ul_show = 3
 breadcrumb_disable = false
