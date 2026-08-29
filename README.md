@@ -9,6 +9,8 @@ A modern, code-generated dependency injection toolkit for Dart and Flutter,
 built on `get_it` with **folder-scoped micro-packages** and explicit, class-form
 annotations — no magic, no globals, no boilerplate matching.
 
+📖 **[Complete Documentation](docs/README.md)** — Comprehensive guides organized by the Diátaxis framework (Getting Started, Concepts, Tasks, Tutorials, Reference).
+
 ---
 
 ## Monorepo Packages
@@ -18,7 +20,7 @@ annotations — no magic, no globals, no boilerplate matching.
 | [`packages/injectable`](packages/injectable)                 | Runtime annotations (`@Injectable`, `@InjectableInit`, `@InjectableMicroPackage`, `@ExternalModule`, …), `Scope` enum, `MicroPackageModule` base class, and `GetItHelper` (environment-gated registration wrapper around `GetIt`). |
 | [`packages/injectable_codegen`](packages/injectable_codegen) | `build_runner` generator that scans annotated sources and emits `<file>.config.dart` with collision-free aliased imports and typed registrations.                                                                                  |
 
-> How the generator works end-to-end: see [INJECTABLE_CODEGEN.md](INJECTABLE_CODEGEN.md).
+> How the generator works end-to-end: see [INJECTABLE_CODEGEN.md](INJECTABLE_CODEGEN.md) and [Architecture Documentation](docs/concepts/architecture.md).
 
 ---
 
@@ -40,6 +42,18 @@ annotations — no magic, no globals, no boilerplate matching.
   `singletonAsync`; `@Inject('tag')` emits named GetIt lookups.
 - **Environment Gating**: `@Environment('dev')` / `@dev` registers only for
   matching environments via `EnvironmentFilter`.
+
+---
+
+## Documentation Structure
+
+Our documentation follows the standard Diátaxis framework adopted by Kubernetes:
+
+- **[Getting Started](docs/getting-started/README.md)**: [Installation](docs/getting-started/installation.md) · [Quickstart](docs/getting-started/quickstart.md) · [Monorepo Setup](docs/getting-started/monorepo-setup.md)
+- **[Concepts](docs/concepts/README.md)**: [Architecture](docs/concepts/architecture.md) · [Scopes & Lifecycles](docs/concepts/scopes-and-lifecycles.md) · [Micro-Packages](docs/concepts/micro-packages.md) · [Environments](docs/concepts/environments-and-filtering.md) · [Async & PreResolve](docs/concepts/async-and-preresolve.md)
+- **[Tasks](docs/tasks/README.md)**: [Root Container](docs/tasks/configure-root-container.md) · [Folder Micro-Packages](docs/tasks/declare-folder-micro-packages.md) · [External Micro-Packages](docs/tasks/compose-external-micro-packages.md) · [Factory Parameters](docs/tasks/work-with-factory-parameters.md) · [Third-Party Types](docs/tasks/register-third-party-types.md)
+- **[Tutorials](docs/tutorials/README.md)**: [Modular Flutter App](docs/tutorials/modular-flutter-app.md) · [Multi-Package Monorepo](docs/tutorials/multi-package-monorepo.md)
+- **[Reference](docs/reference/README.md)**: [Annotations](docs/reference/annotations.md) · [Build Configuration](docs/reference/build-configuration.md) · [Runtime API](docs/reference/runtime-api.md) · [Glossary](docs/reference/glossary.md)
 
 ---
 
@@ -137,7 +151,7 @@ A root compositor then wires everything in one call:
 
 ```dart
 @InjectableInit(
-  initializerName: 'init',
+  initializerName: 'init',\
   useMicroPackage: true, // discover and compose all folder micro-packages
   externalMicroPackages: [
     ExternalMicroPackage(SharedInjectableModule), // modules from other pubspecs
