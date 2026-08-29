@@ -17,7 +17,7 @@ Injectable provides first-class support for asynchronous dependencies through `@
 When a factory method or class constructor returns a `Future<T>`, Injectable automatically generates an asynchronous registration.
 
 ```dart
-@Injectable(scope: .singleton)
+@Injectable(scope: Scope.singleton)
 class DatabaseConnection {
   final Database db;
   DatabaseConnection._(this.db);
@@ -31,6 +31,7 @@ class DatabaseConnection {
 ```
 
 Generated registration:
+
 ```dart
 gh.singletonAsync<DatabaseConnection>(() => DatabaseConnection.create());
 ```
@@ -45,12 +46,13 @@ When an asynchronous dependency is marked with `@PreResolve`, the generated `ini
 @ExternalModule()
 abstract class StorageModule {
   @PreResolve
-  @Injectable(scope: .singleton)
+  @Injectable(scope: Scope.singleton)
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 }
 ```
 
 Generated initialization:
+
 ```dart
 extension GetItInjectableX on GetIt {
   Future<GetIt> init({...}) async {
@@ -73,12 +75,15 @@ If any dependency in your graph uses `@PreResolve`, the generated `init()` metho
 If a singleton is registered via `singletonAsync` (without `@PreResolve`), it can be resolved at runtime using either:
 
 ### 1. `getIt.isReady<T>()` & `getIt.getAsync<T>()`
+
 ```dart
 final db = await getIt.getAsync<DatabaseConnection>();
 ```
 
 ### 2. `getIt.allReady()`
+
 Wait for all asynchronous singletons across the entire container to complete:
+
 ```dart
 await getIt.allReady();
 final db = getIt<DatabaseConnection>(); // Now safe to access synchronously

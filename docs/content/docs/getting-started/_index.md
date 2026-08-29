@@ -23,5 +23,5 @@ This section walks you through setting up Injectable in your Dart or Flutter pro
 
 ## Prerequisites
 
-- **Dart SDK**: `3.10+` (compatible with Dart 3 dot-shorthands) or **Flutter SDK**: `3.10+`.
+- **Dart SDK**: `^3.0.0` or higher (or **Flutter SDK**: `3.10+`).
 - **Package Manager**: standard `pub` or workspace tools (such as `melos`).

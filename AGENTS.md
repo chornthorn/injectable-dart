@@ -10,10 +10,9 @@
 
 - **Dart Idiomatic & Minimalist**: Avoid unnecessary boilerplates and maintain clean, self-documenting code.
 - **Injectable Micro-Packages**:
-  - `@injectableMicroPackage`... (annotation usage is the class form:)
   - `@InjectableMicroPackage(moduleName: 'Feature')` defines a folder-scoped micro-package.
   - Root `@InjectableInit(useMicroPackage: true)` discovers and registers all micro-packages flatly at the root container.
   - `@InjectableMicroPackage(useMicroPackage: true)` auto-composes its nested sub micro-packages inside its generated module's `init()` (default `false`). Compose each module exactly once.
   - `@InjectableInit(externalMicroPackages: [ExternalMicroPackage(ModuleType)])` composes module types from other packages (own pubspec) in declaration order — the generated `init()` calls `gh.initMicroPackage(...)` for each. Prefer this over manual `getIt.initX()` wiring.
-  - Use unified `@Injectable(scope: Scope.singleton | Scope.lazySingleton | Scope.factory)` (Dart dot-shorthand also supported: `scope: .lazySingleton`).
+  - Use unified `@Injectable(scope: Scope.singleton | Scope.lazySingleton | Scope.factory)`.
   - Use `@ExternalModule()` for external provider modules and `@Inject('tag')` for qualifiers.

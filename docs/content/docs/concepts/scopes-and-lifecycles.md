@@ -3,7 +3,7 @@ title: "Scopes and Lifecycles"
 linkTitle: "Scopes & Lifecycles"
 weight: 3
 description: >
-  Instance lifetimes in Injectable: Factory, Singleton, Lazy Singleton, and dot-shorthand syntax.
+  Instance lifetimes in Injectable: Factory, Singleton, and Lazy Singleton.
 ---
 
 In Injectable, the lifecycle of a dependency is controlled by the `Scope` enumeration.
@@ -12,11 +12,11 @@ In Injectable, the lifecycle of a dependency is controlled by the `Scope` enumer
 
 ## 1. Supported Lifecycles
 
-| Scope | Enum Value | Behavior | GetIt Equivalent |
-| :--- | :--- | :--- | :--- |
-| **Factory** | `Scope.factory` (default) | A new instance is created on **every lookup** (`getIt<T>()`). | `registerFactory` |
-| **Lazy Singleton** | `Scope.lazySingleton` | A single shared instance created **on first lookup** and cached. | `registerLazySingleton` |
-| **Eager Singleton** | `Scope.singleton` | A single shared instance created **immediately** at `init()` time. | `registerSingleton` |
+| Scope               | Enum Value                | Behavior                                                           | GetIt Equivalent        |
+| :------------------ | :------------------------ | :----------------------------------------------------------------- | :---------------------- |
+| **Factory**         | `Scope.factory` (default) | A new instance is created on **every lookup** (`getIt<T>()`).      | `registerFactory`       |
+| **Lazy Singleton**  | `Scope.lazySingleton`     | A single shared instance created **on first lookup** and cached.   | `registerLazySingleton` |
+| **Eager Singleton** | `Scope.singleton`         | A single shared instance created **immediately** at `init()` time. | `registerSingleton`     |
 
 ---
 
@@ -36,6 +36,7 @@ class SearchBloc {
 ```
 
 Generated code:
+
 ```dart
 gh.factory<SearchBloc>(() => SearchBloc(gh<ApiClient>()));
 ```
@@ -54,6 +55,7 @@ class AnalyticsTracker {
 ```
 
 Generated code:
+
 ```dart
 gh.lazySingleton<AnalyticsTracker>(() => AnalyticsTracker());
 ```
@@ -75,35 +77,14 @@ class PushNotificationManager {
 ```
 
 Generated code:
+
 ```dart
 gh.singleton<PushNotificationManager>(PushNotificationManager());
 ```
 
 ---
 
-## 3. Dart 3 Dot-Shorthand Syntax
-
-Injectable supports Dart's enum dot-shorthand syntax for clean, concise annotations:
-
-```dart
-// Explicit enum reference
-@Injectable(scope: Scope.lazySingleton)
-class MyServiceA {}
-
-// Dot-shorthand equivalent
-@Injectable(scope: .lazySingleton)
-class MyServiceB {}
-
-@Injectable(scope: .singleton)
-class MyServiceC {}
-
-@Injectable(scope: .factory)
-class MyServiceD {}
-```
-
----
-
-## 4. Binding to an Interface / Abstract Type
+## 3. Binding to an Interface / Abstract Type
 
 To register an implementation under an interface or abstract base class type, use the `as:` parameter:
 
@@ -112,7 +93,7 @@ abstract class AuthRepository {
   Future<void> login(String username, String password);
 }
 
-@Injectable(as: AuthRepository, scope: .lazySingleton)
+@Injectable(as: AuthRepository, scope: Scope.lazySingleton)
 class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> login(String username, String password) async {}
@@ -120,11 +101,13 @@ class AuthRepositoryImpl implements AuthRepository {
 ```
 
 Generated registration:
+
 ```dart
 gh.lazySingleton<AuthRepository>(() => AuthRepositoryImpl());
 ```
 
 Clients resolve the dependency via the interface type:
+
 ```dart
 final auth = getIt<AuthRepository>(); // Resolves AuthRepositoryImpl
 ```

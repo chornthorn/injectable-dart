@@ -32,7 +32,7 @@ Create classes inside `lib/features/auth/`:
 // lib/features/auth/services/auth_service.dart
 import 'package:injectable/injectable.dart';
 
-@Injectable(scope: .lazySingleton)
+@Injectable(scope: Scope.lazySingleton)
 class AuthService {
   bool get isAuthenticated => true;
 }

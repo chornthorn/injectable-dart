@@ -18,7 +18,7 @@ If your class has a method responsible for closing streams, database handles, or
 import 'dart:async';
 import 'package:injectable/injectable.dart';
 
-@Injectable(scope: .lazySingleton)
+@Injectable(scope: Scope.lazySingleton)
 class WebSocketManager {
   final StreamController<String> _stream = StreamController.broadcast();
 
@@ -30,6 +30,7 @@ class WebSocketManager {
 ```
 
 Generated code:
+
 ```dart
 gh.lazySingleton<WebSocketManager>(
   () => WebSocketManager(),
@@ -46,7 +47,7 @@ You can also pass a top-level or static function to the `dispose:` argument of `
 ```dart
 void closeDatabase(AppDatabase db) => db.close();
 
-@Injectable(scope: .singleton, dispose: closeDatabase)
+@Injectable(scope: Scope.singleton, dispose: closeDatabase)
 class AppDatabase {
   void close() {}
 }

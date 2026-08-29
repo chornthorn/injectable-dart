@@ -64,7 +64,7 @@ flutter pub get
 ```
 
 {{% alert title="Dart SDK Version" color="info" %}}
-Ensure your Dart SDK constraint is at least `^3.10.0` (or `^3.12.0`) to take advantage of Dart 3 language features like dot-shorthand enums (`scope: .singleton`).
+Ensure your Dart SDK constraint is at least `^3.0.0` (or `^3.12.0`).
 {{% /alert %}}
 
 ---

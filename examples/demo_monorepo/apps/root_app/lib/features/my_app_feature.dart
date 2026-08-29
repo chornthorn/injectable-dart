@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:shared/app_config.dart';
 
-@Injectable(scope: .singleton) // its also support dart-dotshorthand syntax
+@Injectable(scope: Scope.singleton)
 class MyAppFeature {
   final AppConfig _config;
 

@@ -19,9 +19,6 @@ enum Scope {
 /// ```
 class Injectable {
   /// The lifecycle scope (factory, singleton, lazySingleton).
-  ///
-  /// Dart enum dot-shorthand is supported: `scope: .lazySingleton` is
-  /// equivalent to `scope: Scope.lazySingleton` (SDK 3.10+).
   final Scope scope;
 
   /// The type to bind this dependency to in the service locator.

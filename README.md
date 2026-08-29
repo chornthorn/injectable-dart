@@ -1,26 +1,16 @@
 # Injectable for Dart & Flutter
 
-[![Dart CI](https://img.shields.io/badge/Dart-3.12+-blue.svg?logo=dart)](https://dart.dev)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![style: lints](https://img.shields.io/badge/style-lints-40c463.svg)](https://pub.dev/packages/lints)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
+A powerful code-generation dependency injection toolkit for Dart & Flutter built on top of [GetIt](https://pub.dev/packages/get_it).
 
-A modern, code-generated dependency injection toolkit for Dart and Flutter,
-built on `get_it` with **folder-scoped micro-packages** and explicit, class-form
-annotations — no magic, no globals, no boilerplate matching.
-
-📖 **[Complete Documentation](docs/README.md)** — Comprehensive guides covering Getting Started, Concepts, Tasks, Tutorials, and API Reference.
+It automates service locator registration, manages asynchronous dependency resolution, isolates modular domains via **Folder-Scoped Micro-Packages**, and supports seamless multi-package monorepo architectures.
 
 ---
 
-## Monorepo Packages
+## Documentation
 
-| Package                                                      | Description                                                                                                                                                                                                                        |
-| :----------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`packages/injectable`](packages/injectable)                 | Runtime annotations (`@Injectable`, `@InjectableInit`, `@InjectableMicroPackage`, `@ExternalModule`, …), `Scope` enum, `MicroPackageModule` base class, and `GetItHelper` (environment-gated registration wrapper around `GetIt`). |
-| [`packages/injectable_codegen`](packages/injectable_codegen) | `build_runner` generator that scans annotated sources and emits `<file>.config.dart` with collision-free aliased imports and typed registrations.                                                                                  |
+Full documentation, interactive architecture diagrams, tutorials, and API reference are available at:
 
-> How the generator works end-to-end: see [INJECTABLE_CODEGEN.md](INJECTABLE_CODEGEN.md) and [Architecture Documentation](docs/content/docs/concepts/architecture.md).
+👉 **[https://chornthorn.github.io/injectable-dart/](https://chornthorn.github.io/injectable-dart/)**
 
 ---
 
@@ -30,7 +20,7 @@ annotations — no magic, no globals, no boilerplate matching.
 - **Folder-Scoped Micro-Packages**: `@InjectableMicroPackage(moduleName: 'Feature')` isolates a folder into its own module. Nested sub-modules auto-compose via `useMicroPackage: true` (each module is composed exactly once).
 - **Root Compositor**: `@InjectableInit(useMicroPackage: true)` discovers all folder micro-packages and registers them flatly at the root container.
 - **External Module Composition**: `externalMicroPackages: [ExternalMicroPackage(ModuleType)]` composes modules from other packages (other pubspecs) in declaration order — no manual `getIt.initX()` wiring.
-- **Scopes**: Unified `@Injectable(scope: Scope.singleton | Scope.lazySingleton | Scope.factory)` with Dart enum dot-shorthand support (`scope: .lazySingleton`).
+- **Scopes**: Unified `@Injectable(scope: Scope.singleton | Scope.lazySingleton | Scope.factory)`.
 - **Async & Tagged Registrations**: `@PreResolve` / `Future` factories emit `singletonAsync`; `@Inject('tag')` emits named GetIt lookups.
 - **Environment Gating**: `@Environment('dev')` / `@dev` registers only for matching environments via `EnvironmentFilter`.
 
@@ -54,12 +44,18 @@ Add `injectable` and its generator to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  injectable: ^1.0.0
+  injectable:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: injectable
   get_it: ^9.2.1
 
 dev_dependencies:
   build_runner: ^2.4.0
-  injectable_codegen: ^1.0.0
+  injectable_codegen:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: injectable_codegen
 ```
 
 ### 2. Annotate Your Classes

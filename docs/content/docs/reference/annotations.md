@@ -29,16 +29,16 @@ const Injectable({
 });
 ```
 
-| Parameter | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `scope` | `Scope` | `Scope.factory` | Lifecycle scope (`factory`, `singleton`, `lazySingleton`). Supports dot-shorthand (`scope: .singleton`). |
-| `as` | `Type?` | `null` | Bind this implementation to an interface or abstract base class. |
-| `env` | `List<String>?` | `null` | Restrict registration to specified environments (e.g. `[Environment.dev]`). |
-| `order` | `int?` | `0` | Explicit sorting priority during registration generation. |
-| `getItScope` | `String?` | `null` | Optional GetIt scope name. |
-| `signalsReady` | `bool?` | `null` | Whether this singleton signals readiness to GetIt. |
-| `dependsOn` | `List<Type>?` | `null` | Dependencies that must be initialized before this async singleton. |
-| `dispose` | `Function?` | `null` | Disposal callback invoked on container reset. |
+| Parameter      | Type            | Default         | Description                                                                  |
+| :------------- | :-------------- | :-------------- | :--------------------------------------------------------------------------- |
+| `scope`        | `Scope`         | `Scope.factory` | Lifecycle scope (`Scope.factory`, `Scope.singleton`, `Scope.lazySingleton`). |
+| `as`           | `Type?`         | `null`          | Bind this implementation to an interface or abstract base class.             |
+| `env`          | `List<String>?` | `null`          | Restrict registration to specified environments (e.g. `[Environment.dev]`).  |
+| `order`        | `int?`          | `0`             | Explicit sorting priority during registration generation.                    |
+| `getItScope`   | `String?`       | `null`          | Optional GetIt scope name.                                                   |
+| `signalsReady` | `bool?`         | `null`          | Whether this singleton signals readiness to GetIt.                           |
+| `dependsOn`    | `List<Type>?`   | `null`          | Dependencies that must be initialized before this async singleton.           |
+| `dispose`      | `Function?`     | `null`          | Disposal callback invoked on container reset.                                |
 
 ---
 

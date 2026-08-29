@@ -21,7 +21,7 @@ import 'package:injectable/injectable.dart';
 
 @ExternalModule()
 abstract class ThirdPartyModule {
-  @Injectable(scope: .lazySingleton)
+  @Injectable(scope: Scope.lazySingleton)
   http.Client get httpClient => http.Client();
 }
 ```
@@ -36,11 +36,11 @@ If you need multiple instances of the same type (such as two different `http.Cli
 @ExternalModule()
 abstract class NetworkModule {
   @Inject('authClient')
-  @Injectable(scope: .lazySingleton)
+  @Injectable(scope: Scope.lazySingleton)
   http.Client get authClient => http.Client();
 
   @Inject('publicClient')
-  @Injectable(scope: .lazySingleton)
+  @Injectable(scope: Scope.lazySingleton)
   http.Client get publicClient => http.Client();
 }
 ```

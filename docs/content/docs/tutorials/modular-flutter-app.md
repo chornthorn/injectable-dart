@@ -47,7 +47,7 @@ import 'package:injectable/injectable.dart';
 
 @ExternalModule()
 abstract class NetworkModule {
-  @Injectable(scope: .lazySingleton)
+  @Injectable(scope: Scope.lazySingleton)
   http.Client get client => http.Client();
 }
 ```
@@ -58,7 +58,7 @@ In `lib/core/network/api_client.dart`:
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
-@Injectable(scope: .lazySingleton)
+@Injectable(scope: Scope.lazySingleton)
 class ApiClient {
   final http.Client client;
   ApiClient(this.client);
@@ -84,7 +84,7 @@ In `lib/features/auth/services/auth_service.dart`:
 import 'package:injectable/injectable.dart';
 import '../../../core/network/api_client.dart';
 
-@Injectable(scope: .lazySingleton)
+@Injectable(scope: Scope.lazySingleton)
 class AuthService {
   final ApiClient client;
   AuthService(this.client);

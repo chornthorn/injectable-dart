@@ -17,7 +17,7 @@ This section covers the core concepts and architectural decisions that power Inj
 - [**Dependency Injection Principles**](dependency-injection/)
   How Injectable separates dependency declaration from registration and service locator lookup.
 - [**Scopes and Lifecycles**](scopes-and-lifecycles/)
-  Factory, Singleton, and Lazy Singleton lifetimes, including dot-shorthand syntax.
+  Factory, Singleton, and Lazy Singleton lifetimes and registration mechanics.
 - [**Micro-Packages and Boundaries**](micro-packages/)
   Folder-scoped isolation, nested sub-modules, boundary exclusion, and cross-package composition.
 - [**Modules & External Classes**](modules-and-external-classes/)

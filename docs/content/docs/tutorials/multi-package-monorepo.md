@@ -41,16 +41,18 @@ my_app_workspace/
 ## 2. Package A: `core`
 
 In `packages/core/lib/services/logger_service.dart`:
+
 ```dart
 import 'package:injectable/injectable.dart';
 
-@Injectable(scope: .lazySingleton)
+@Injectable(scope: Scope.lazySingleton)
 class LoggerService {
   void log(String message) => print('[LOG] $message');
 }
 ```
 
 In `packages/core/lib/core_module.dart`:
+
 ```dart
 import 'package:injectable/injectable.dart';
 
@@ -59,6 +61,7 @@ void configureCoreModule() {}
 ```
 
 Generate `core_module.config.dart`:
+
 ```bash
 cd packages/core && dart run build_runner build
 ```
@@ -70,20 +73,25 @@ cd packages/core && dart run build_runner build
 `feature_billing` depends on `core` for its logger.
 
 In `packages/feature_billing/pubspec.yaml`:
+
 ```yaml
 dependencies:
   core:
     path: ../core
-  injectable: ^1.0.0
+  injectable:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: injectable
   get_it: ^9.2.1
 ```
 
 In `packages/feature_billing/lib/services/billing_service.dart`:
+
 ```dart
 import 'package:core/services/logger_service.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(scope: .lazySingleton)
+@Injectable(scope: Scope.lazySingleton)
 class BillingService {
   final LoggerService logger;
   BillingService(this.logger);
@@ -93,6 +101,7 @@ class BillingService {
 ```
 
 In `packages/feature_billing/lib/billing_module.dart`:
+
 ```dart
 import 'package:injectable/injectable.dart';
 
@@ -101,6 +110,7 @@ void configureBillingModule() {}
 ```
 
 Generate `billing_module.config.dart`:
+
 ```bash
 cd packages/feature_billing && dart run build_runner build
 ```
@@ -110,17 +120,22 @@ cd packages/feature_billing && dart run build_runner build
 ## 4. Composing in `mobile_app`
 
 In `apps/mobile_app/pubspec.yaml`:
+
 ```yaml
 dependencies:
   core:
     path: ../../packages/core
   feature_billing:
     path: ../../packages/feature_billing
-  injectable: ^1.0.0
+  injectable:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: injectable
   get_it: ^9.2.1
 ```
 
 In `apps/mobile_app/lib/injection.dart`:
+
 ```dart
 import 'package:core/core_module.config.dart';
 import 'package:feature_billing/billing_module.config.dart';
@@ -141,6 +156,7 @@ void configureDependencies() => getIt.init();
 ```
 
 Generate `apps/mobile_app/lib/injection.config.dart`:
+
 ```bash
 cd apps/mobile_app && dart run build_runner build
 ```
@@ -150,6 +166,7 @@ cd apps/mobile_app && dart run build_runner build
 ## 5. Running the Application
 
 In `apps/mobile_app/lib/main.dart`:
+
 ```dart
 import 'package:feature_billing/services/billing_service.dart';
 import 'injection.dart';

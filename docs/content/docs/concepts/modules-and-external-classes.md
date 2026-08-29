@@ -25,16 +25,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 @ExternalModule()
 abstract class RegisterModule {
   // Synchronous factory or singleton
-  @Injectable(scope: .lazySingleton)
+  @Injectable(scope: Scope.lazySingleton)
   http.Client get httpClient => http.Client();
 
   // Asynchronous pre-resolved singleton
   @PreResolve
-  @Injectable(scope: .singleton)
+  @Injectable(scope: Scope.singleton)
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
   // Parameterized factory method
-  @Injectable(scope: .factory)
+  @Injectable(scope: Scope.factory)
   Uri apiUrl(@Inject('baseUrl') String host, @FactoryParam() String endpoint) {
     return Uri.parse('$host/$endpoint');
   }
@@ -46,6 +46,7 @@ abstract class RegisterModule {
 ## 2. How the Generator Handles External Modules
 
 During code generation:
+
 1. The generator creates a private helper implementation class `_$RegisterModule`.
 2. It instantiates `_$RegisterModule` inside `init()`.
 3. Every public getter or method annotated with `@Injectable` is registered into `GetIt` via `gh`:
@@ -61,7 +62,7 @@ await gh.singletonAsync<_i2.SharedPreferences>(() => registerModule.prefs);
 
 ## 3. Method vs Getter Rules
 
-| Element Type | When to Use |
-| :--- | :--- |
-| **Getters** (`Type get myDep => ...`) | For zero-argument dependencies or dependencies that resolve their parameters from `GetIt`. |
-| **Methods** (`Type createDep(DepA a, @FactoryParam() String p) => ...`) | When passing parameters at resolution time, or requiring custom initialization logic. |
+| Element Type                                                            | When to Use                                                                                |
+| :---------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |
+| **Getters** (`Type get myDep => ...`)                                   | For zero-argument dependencies or dependencies that resolve their parameters from `GetIt`. |
+| **Methods** (`Type createDep(DepA a, @FactoryParam() String p) => ...`) | When passing parameters at resolution time, or requiring custom initialization logic.      |

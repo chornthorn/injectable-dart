@@ -17,7 +17,7 @@ If your class needs asynchronous setup, define a static factory method annotated
 ```dart
 import 'package:injectable/injectable.dart';
 
-@Injectable(scope: .singleton)
+@Injectable(scope: Scope.singleton)
 class LocalDatabase {
   final String dbPath;
   LocalDatabase._(this.dbPath);
@@ -40,7 +40,7 @@ When you want the root `configureDependencies()` function to await the completio
 @ExternalModule()
 abstract class CoreModule {
   @PreResolve
-  @Injectable(scope: .singleton)
+  @Injectable(scope: Scope.singleton)
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 }
 ```
