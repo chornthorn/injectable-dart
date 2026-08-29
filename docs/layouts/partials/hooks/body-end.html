@@ -1,0 +1,23 @@
+<script>
+  (function() {
+    const navbar = document.querySelector('.td-navbar');
+    if (!navbar) return;
+
+    function updateNavbar() {
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled) {
+        navbar.classList.add('td-navbar--scrolled');
+        navbar.classList.remove('td-navbar-transparent');
+      } else {
+        navbar.classList.remove('td-navbar--scrolled');
+        if (document.querySelector('.js-td-cover, .td-doc-hero, .td-cover-block')) {
+          navbar.classList.add('td-navbar-transparent');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    window.addEventListener('DOMContentLoaded', updateNavbar);
+    updateNavbar();
+  })();
+</script>

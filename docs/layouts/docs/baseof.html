@@ -44,23 +44,5 @@
       {{ partial "footer.html" . }}
     </div>
     {{ partial "scripts.html" . }}
-
-    <script>
-      (function() {
-        const navbar = document.querySelector('.td-navbar');
-        if (!navbar) return;
-
-        function updateNavbar() {
-          if (window.scrollY > 30) {
-            navbar.classList.add('td-navbar--scrolled');
-          } else {
-            navbar.classList.remove('td-navbar--scrolled');
-          }
-        }
-
-        window.addEventListener('scroll', updateNavbar, { passive: true });
-        updateNavbar();
-      })();
-    </script>
   </body>
 </html>
