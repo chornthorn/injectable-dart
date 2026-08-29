@@ -186,7 +186,7 @@
   }
 }
 
-// 3. Compact Documentation Top Hero Header Banner (Neutral Dark Grey)
+// 3. Documentation Top Hero Header Banner (Neutral Dark Grey)
 .td-doc-hero {
   background-color: #24292e !important;
   background-image: url('/images/hero-network.svg'), linear-gradient(135deg, #1f2328 0%, #2b3036 50%, #1a1e22 100%) !important;
@@ -199,17 +199,17 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: 0 !important;
 
-  // Desktop layout with transparent navbar clearance
+  // Desktop layout with transparent navbar clearance and comfortable bottom padding
   @include media-breakpoint-up(md) {
     padding-top: calc(1.75rem + #{$td-navbar-min-height}) !important;
-    padding-bottom: 1.75rem !important;
+    padding-bottom: 2.25rem !important;
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
   }
 
   // Mobile layout
   @include media-breakpoint-down(md) {
-    padding: 2rem 1rem !important;
+    padding: 2rem 1rem 2.25rem 1rem !important;
   }
 
   &__title {
