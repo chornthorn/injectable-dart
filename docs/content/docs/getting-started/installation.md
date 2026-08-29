@@ -3,26 +3,23 @@ title: "Installation"
 linkTitle: "Installation"
 weight: 1
 description: >
-  Add injectable and injectable_codegen to your Dart or Flutter project dependencies.
+  Add injectable and injectable_codegen to your Dart or Flutter project dependencies via Git URL.
 ---
 
 This guide explains how to add `injectable` and `injectable_codegen` to your Dart or Flutter application.
 
+{{% alert title="Important: Git Dependency Notice" color="warning" %}}
+**Pre-Release / Git Dependency Notice**:
+This toolkit is not yet published to [pub.dev](https://pub.dev). Because the `injectable` package name is already taken on pub.dev by a legacy library, we plan to rename the package under a new namespace prior to its official pub.dev release.
+
+In the meantime, you can use the toolkit directly from GitHub using **Git URL dependencies** with the corresponding subdirectory paths (`path: injectable` and `path: injectable_codegen`).
+{{% /alert %}}
+
 ---
 
-## 1. Add Dependencies
+## 1. Add Dependencies via Git
 
-Add the runtime `injectable` package and `get_it` to your `dependencies`, and add `injectable_codegen` alongside `build_runner` to your `dev_dependencies`.
-
-```bash
-# In a Dart project:
-dart pub add injectable get_it
-dart pub add dev:injectable_codegen dev:build_runner
-
-# In a Flutter project:
-flutter pub add injectable get_it
-flutter pub add dev:injectable_codegen dev:build_runner
-```
+Add `get_it` and the runtime `injectable` package to your `dependencies`, and add `build_runner` and `injectable_codegen` to your `dev_dependencies` in your `pubspec.yaml`.
 
 ### Example `pubspec.yaml`
 
@@ -36,17 +33,38 @@ environment:
 
 dependencies:
   get_it: ^9.2.1
-  injectable: ^1.0.0
+  injectable:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: injectable
+      # Optionally pin to a specific branch or commit hash:
+      # ref: main
 
 dev_dependencies:
   build_runner: ^2.4.0
-  injectable_codegen: ^1.0.0
+  injectable_codegen:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: injectable_codegen
+      # ref: main
   lints: ^5.0.0
   test: ^1.25.0
 ```
 
-{{% alert title="Note" color="info" %}}
-Ensure your Dart SDK constraint is at least `^3.10.0` if you plan to use Dart's dot-shorthand syntax for enums (e.g. `scope: .singleton`).
+### Fetch Dependencies
+
+Run `pub get` to resolve and download the git dependencies:
+
+```bash
+# In a Dart project:
+dart pub get
+
+# In a Flutter project:
+flutter pub get
+```
+
+{{% alert title="Dart SDK Version" color="info" %}}
+Ensure your Dart SDK constraint is at least `^3.10.0` (or `^3.12.0`) to take advantage of Dart 3 language features like dot-shorthand enums (`scope: .singleton`).
 {{% /alert %}}
 
 ---

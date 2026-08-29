@@ -55,6 +55,7 @@ void configureSharedModule() {}
 ```
 
 Run `build_runner` inside `packages/shared`:
+
 ```bash
 dart run build_runner build
 ```
@@ -73,12 +74,18 @@ dependencies:
     path: ../../packages/shared
   feature_auth:
     path: ../../packages/feature_auth
-  injectable: ^1.0.0
+  injectable:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: injectable
   get_it: ^9.2.1
 
 dev_dependencies:
   build_runner: ^2.4.0
-  injectable_codegen: ^1.0.0
+  injectable_codegen:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: injectable_codegen
 ```
 
 In your application's `injection.dart`, declare the external micro-packages:
@@ -126,6 +133,7 @@ scripts:
 ```
 
 Run:
+
 ```bash
 melos run build:runner
 ```
