@@ -1,18 +1,21 @@
-// Kubernetes Docs-style Layout & Sidebar Width Overrides
+// Documentation Layout & Styling Implementation
 
-// 1. Desktop & Wide Screen Sidebar Dimensions
+// 1. Desktop & Wide Screen Dimensions
 @include media-breakpoint-up(md) {
   // Left Navigation Sidebar
   .td-sidebar {
     flex: 0 0 280px !important;
     max-width: 280px !important;
     width: 280px !important;
+    border-right: 1px solid var(--bs-border-color);
   }
 
   // Right Table of Contents (TOC)
   .td-toc {
     flex: 0 0 220px !important;
     max-width: 240px !important;
+    font-size: 0.8125rem !important;
+    line-height: 1.4 !important;
   }
 
   // Main Documentation Body
@@ -25,12 +28,12 @@
   }
 }
 
-// 2. Extra Large & Ultra-wide Displays (XL & XXL)
+// 2. Extra Large Displays (XL & XXL)
 @include media-breakpoint-up(xl) {
   .td-sidebar {
-    flex: 0 0 320px !important;
-    max-width: 340px !important;
-    width: 320px !important;
+    flex: 0 0 300px !important;
+    max-width: 320px !important;
+    width: 300px !important;
   }
 
   .td-toc {
@@ -39,99 +42,173 @@
   }
 }
 
-// 3. Polished Sidebar Typography & Tree Spacing
+// 3. Sidebar Tree Navigation (Text-Only Highlights, No Background Box)
 .td-sidebar-nav {
-  font-size: 0.9375rem;
-  line-height: 1.45;
-  padding-right: 1rem;
+  font-family: var(--bs-font-sans-serif);
+  font-size: 0.875rem; // 14px
+  line-height: 1.4;
+  padding-right: 0.5rem;
 
   &__section-title {
-    font-size: 0.95rem;
+    font-size: 0.9375rem; // 15px
     font-weight: 600;
     margin-top: 0.75rem;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
 
     a {
-      color: var(--bs-heading-color, #1a202c);
+      color: var(--bs-heading-color);
       text-decoration: none;
 
       &:hover {
-        color: var(--bs-primary, #326ce5);
+        color: var(--bs-primary);
+        background: transparent;
       }
     }
   }
 
   .td-sidebar-link {
     display: block;
-    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem; // 14px
+    font-weight: 400;
+    padding: 0.2rem 0;
     margin: 0.1rem 0;
-    border-radius: 4px;
+    border: none;
+    background: transparent !important;
+    background-color: transparent !important;
     text-decoration: none;
-    color: var(--bs-body-color, #4a5568);
-    transition: background-color 0.15s ease, color 0.15s ease;
+    color: var(--bs-body-color);
+    transition: color 0.12s ease;
 
     &:hover {
-      color: var(--bs-primary, #326ce5);
-      background-color: var(--bs-tertiary-bg, rgba(50, 108, 229, 0.06));
+      color: var(--bs-primary) !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      text-decoration: underline;
     }
 
     &.active {
-      font-weight: 600;
-      color: var(--bs-primary, #326ce5);
-      background-color: var(--bs-secondary-bg, rgba(50, 108, 229, 0.1));
-      border-left: 3px solid var(--bs-primary, #326ce5);
+      font-weight: 700 !important;
+      color: var(--bs-primary) !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      border: none !important;
     }
   }
 
   &__section .ul-1 ul {
-    padding-left: 1.1rem;
+    padding-left: 1.15rem;
   }
 
   .td-sidebar-link.tree-root {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
     padding-bottom: 0.5rem;
     margin-bottom: 0.75rem;
-    border-bottom: 2px solid var(--bs-border-color, #e2e8f0);
+    border-bottom: 1px solid var(--bs-border-color);
+    background: transparent !important;
   }
 }
 
-// 4. Content Area Readability & Line Length
+// 4. Main Content Typography (Open Sans Hierarchy)
 .td-content {
-  line-height: 1.7;
-  font-size: 1rem;
+  font-family: var(--bs-font-sans-serif);
+  line-height: 1.65;
+  font-size: 1rem; // 16px base
+  color: var(--bs-body-color);
+  padding-top: 0.5rem;
 
   p, li {
     max-width: 85ch;
   }
 
   h1 {
+    font-size: 2.25rem; // 36px
     font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 0.5rem;
     margin-bottom: 1.25rem;
+    color: var(--bs-heading-color);
   }
 
   h2 {
+    font-size: 1.625rem; // 26px
     font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--bs-border-color, #e2e8f0);
+    letter-spacing: -0.01em;
+    margin-top: 2.25rem;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    color: var(--bs-heading-color);
   }
 
   h3 {
+    font-size: 1.25rem; // 20px
     font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-top: 1.65rem;
+    margin-bottom: 0.65rem;
+    color: var(--bs-heading-color);
+  }
+
+  h4 {
+    font-size: 1.05rem; // ~17px
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--bs-heading-color);
+  }
+
+  code:not(pre code) {
+    font-family: var(--bs-font-monospace);
+    font-size: 0.875em;
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+    background-color: var(--td-pre-bg);
   }
 
   pre {
+    font-family: var(--bs-font-monospace);
+    font-size: 0.875rem;
     border-radius: 6px;
     padding: 1rem;
   }
 
   table {
+    font-size: 0.9375rem;
     margin: 1.5rem 0;
     width: 100%;
     max-width: 100%;
+  }
+}
+
+// 5. Dark Mode Adjustments for Landing Page & Cards
+[data-bs-theme="dark"] {
+  .td-box--light {
+    background-color: var(--bs-tertiary-bg) !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  .td-box--white {
+    background-color: var(--bs-body-bg) !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  .td-box {
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--bs-heading-color) !important;
+    }
+
+    p {
+      color: var(--bs-body-color);
+    }
+  }
+
+  .btn-outline-primary {
+    color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
+
+    &:hover {
+      background-color: var(--bs-primary) !important;
+      color: #ffffff !important;
+    }
   }
 }

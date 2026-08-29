@@ -48,3 +48,20 @@ Easily gate mock, dev, staging, and production dependencies via `@Environment` a
 Native support for asynchronous singletons (`singletonAsync`) and synchronous bootstrap guarantees with `@PreResolve`.
 {{% /blocks/feature %}}
 {{< /blocks/section >}}
+
+{{< blocks/section color="light" >}}
+<div class="col-12 text-center py-4">
+  <h2 class="h3 font-weight-bold mb-3">Community & Acknowledgements</h2>
+  <p class="opacity-75 max-w-700 mx-auto mb-4">
+    Injectable is created and maintained by <strong>Thorn Chorn</strong>. Special thanks to the Dart and Flutter open-source community:
+  </p>
+  <div class="d-flex justify-content-center flex-wrap gap-3">
+    <a class="btn btn-outline-primary px-4 py-2" href="https://pub.dev/packages/get_it" target="_blank" rel="noopener">
+      <i class="fas fa-cube me-2"></i> <strong>get_it</strong> by Thomas Burkhart
+    </a>
+    <a class="btn btn-outline-primary px-4 py-2" href="https://pub.dev/packages/injectable" target="_blank" rel="noopener">
+      <i class="fas fa-cubes me-2"></i> <strong>injectable</strong> by Milad Akarie
+    </a>
+  </div>
+</div>
+{{< /blocks/section >}}

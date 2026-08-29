@@ -18,18 +18,24 @@ locale = "en"
     style = "monokai"
 
 [params]
-copyright = "Injectable Authors"
+author = "Thorn Chorn"
+copyright = "Thorn Chorn"
 github_repo = "https://github.com/chornthorn/injectable-dart"
 github_project_repo = "https://github.com/chornthorn/injectable-dart"
 
-# UI configuration matching Docsy / k8s docs style
+# UI configuration for documentation sidebar and navigation
 [params.ui]
+sidebar_resizable = false
 sidebar_menu_compact = false
 sidebar_menu_foldable = true
-sidebar_search_disable = false
+sidebar_search_disable = true
+sidebar_cache_limit = 1
+ul_show = 3
 breadcrumb_disable = false
 navbar_logo = true
 footer_about_enable = true
+showLightDarkModeMenu = true
+showlightdarkmodemenu = true
 
 [params.links]
 [[params.links.developer]]
@@ -37,6 +43,18 @@ footer_about_enable = true
   url = "https://github.com/chornthorn/injectable-dart"
   icon = "fab fa-github"
   desc = "Source code and issue tracking"
+
+[[params.links.community]]
+  name = "get_it (pub.dev)"
+  url = "https://pub.dev/packages/get_it"
+  icon = "fas fa-cube"
+  desc = "Special thanks to Thomas Burkhart for GetIt"
+
+[[params.links.community]]
+  name = "injectable (pub.dev)"
+  url = "https://pub.dev/packages/injectable"
+  icon = "fas fa-cubes"
+  desc = "Special thanks to Milad Akarie for original Injectable"
 
 [menu]
   [[menu.main]]
