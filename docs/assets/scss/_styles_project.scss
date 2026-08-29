@@ -231,7 +231,7 @@
   }
 }
 
-// 4. Desktop & Wide Screen Grid Alignment (1rem Top Padding)
+// 4. Desktop & Wide Screen Grid Alignment (1.5rem Top Padding & Sticky Offsets)
 @include media-breakpoint-up(md) {
   // Left Navigation Sidebar
   .td-sidebar {
@@ -239,11 +239,12 @@
     max-width: 280px !important;
     width: 280px !important;
     margin-top: 0 !important;
-    padding-top: 1rem !important;
+    padding-top: 1.5rem !important;
     border-right: 1px solid var(--bs-border-color);
 
     &__inner {
-      top: 4.5rem !important;
+      top: calc(#{$td-navbar-min-height} + 1.5rem) !important;
+      height: calc(100vh - (#{$td-navbar-min-height} + 2rem)) !important;
     }
   }
 
@@ -252,8 +253,9 @@
     flex: 0 0 220px !important;
     max-width: 240px !important;
     margin-top: 0 !important;
-    padding-top: 1rem !important;
-    top: 4.5rem !important;
+    padding-top: 1.5rem !important;
+    top: calc(#{$td-navbar-min-height} + 1.5rem) !important;
+    height: calc(100vh - (#{$td-navbar-min-height} + 2rem)) !important;
 
     .td-toc {
       font-size: 0.8125rem !important;
@@ -270,11 +272,20 @@
     margin-top: 0 !important;
     padding-left: 2.5rem !important;
     padding-right: 2rem !important;
-    padding-top: 1rem !important;
+    padding-top: 1.5rem !important;
   }
 }
 
-// 5. Extra Large Displays (XL & XXL)
+// 5. Scroll Clearance & Margins
+h1, h2, h3, h4, h5, h6,
+.td-content h1,
+.td-content h2,
+.td-content h3,
+.td-content h4 {
+  scroll-margin-top: calc(#{$td-navbar-min-height} + 1.5rem) !important;
+}
+
+// 6. Extra Large Displays (XL & XXL)
 @include media-breakpoint-up(xl) {
   .td-sidebar {
     flex: 0 0 300px !important;
@@ -288,11 +299,11 @@
   }
 }
 
-// 6. Sidebar Search Box & Mobile Hamburger Toggle
+// 7. Sidebar Search Box & Mobile Hamburger Toggle
 .td-sidebar {
   @include media-breakpoint-down(md) {
     border-right: none !important;
-    padding: 1rem 1rem 0 1rem !important;
+    padding: 1.5rem 1rem 0 1rem !important;
     margin: 0 !important;
   }
 }
@@ -364,7 +375,7 @@
   }
 }
 
-// 7. Sidebar Tree Navigation
+// 8. Sidebar Tree Navigation
 .td-sidebar-nav {
   font-family: var(--bs-font-sans-serif);
   font-size: 0.875rem; // 14px
@@ -437,7 +448,7 @@
   }
 }
 
-// 8. Breadcrumb Styling
+// 9. Breadcrumb Styling
 .breadcrumb {
   font-size: 0.875rem;
   margin-bottom: 0.85rem;
@@ -467,8 +478,10 @@
   }
 }
 
-// 9. Right TOC & Page Meta Action Links
+// 10. Right TOC & Page Meta Action Links
 .td-page-meta {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
   margin-bottom: 1rem;
 
   a {
@@ -487,7 +500,7 @@
   }
 }
 
-// 10. Main Content Typography
+// 11. Main Content Typography
 .td-content {
   font-family: var(--bs-font-sans-serif);
   line-height: 1.65;
@@ -572,7 +585,7 @@
   }
 }
 
-// 11. Dark Mode Adjustments for Landing Page & Cards
+// 12. Dark Mode Adjustments for Landing Page & Cards
 [data-bs-theme="dark"] {
   .td-box--light {
     background-color: var(--bs-tertiary-bg) !important;
