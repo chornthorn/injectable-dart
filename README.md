@@ -10,7 +10,7 @@ It automates service locator registration, manages asynchronous dependency resol
 
 Full documentation, interactive architecture diagrams, tutorials, and API reference are available at:
 
-**[https://chornthorn.github.io/injectable-dart/](https://chornthorn.github.io/injectable-dart/)**
+**[https://chornthorn.github.io/injectify-dart/](https://chornthorn.github.io/injectify-dart/)**
 
 ---
 
@@ -35,7 +35,7 @@ Developers using AI assistants (Claude Code, Cursor, Antigravity, GitHub Copilot
 ```bash
 # In your Dart/Flutter project directory:
 mkdir -p .agents/skills/injectify
-cp -r /path/to/injectable-dart/skills/injectify/* .agents/skills/injectify/
+cp -r /path/to/injectify-dart/skills/injectify/* .agents/skills/injectify/
 ```
 
 The skill includes complete guidance for:
@@ -51,10 +51,10 @@ The skill includes complete guidance for:
 
 The documentation is organized into four core pillars:
 
-1. **[Getting Started](https://chornthorn.github.io/injectable-dart/docs/getting-started/)**: Installation, initial configuration, `build_runner` workflows, and quickstart tutorials.
-2. **[Core Concepts](https://chornthorn.github.io/injectable-dart/docs/concepts/)**: Deep dives into dependency injection mechanics, lifetimes, micro-package isolation, asynchronous startup (`@PreResolve`), and environment gating.
-3. **[How-To Tasks](https://chornthorn.github.io/injectable-dart/docs/tasks/)**: Step-by-step recipes for custom disposal hooks, parameterized factories, third-party module registration, and cross-package linking.
-4. **[API Reference](https://chornthorn.github.io/injectable-dart/docs/reference/)**: Exhaustive specifications for all annotations, CLI builder options, diagnostic error codes, and glossary definitions.
+1. **[Getting Started](https://chornthorn.github.io/injectify-dart/docs/getting-started/)**: Installation, initial configuration, `build_runner` workflows, and quickstart tutorials.
+2. **[Core Concepts](https://chornthorn.github.io/injectify-dart/docs/concepts/)**: Deep dives into dependency injection mechanics, lifetimes, micro-package isolation, asynchronous startup (`@PreResolve`), and environment gating.
+3. **[How-To Tasks](https://chornthorn.github.io/injectify-dart/docs/tasks/)**: Step-by-step recipes for custom disposal hooks, parameterized factories, third-party module registration, and cross-package linking.
+4. **[API Reference](https://chornthorn.github.io/injectify-dart/docs/reference/)**: Exhaustive specifications for all annotations, CLI builder options, diagnostic error codes, and glossary definitions.
 
 ---
 
@@ -122,10 +122,10 @@ void main() async {
 
 ```bash
 # Dart
-dart run build_runner build
+dart run build_runner build --delete-conflicting-outputs
 
 # Flutter
-flutter pub run build_runner build
+flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ---

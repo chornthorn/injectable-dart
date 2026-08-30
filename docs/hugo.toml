@@ -1,5 +1,5 @@
 baseURL = "/"
-title = "Injectable"
+title = "Injectify"
 enableGitInfo = true
 
 defaultContentLanguage = "en"
@@ -65,7 +65,7 @@ no = 'Sorry to hear that. Please <a href="https://github.com/chornthorn/injectif
 
 [[params.links.community]]
   name = "injectable (pub.dev)"
-  url = "https://pub.dev/packages/injectify"
+  url = "https://pub.dev/packages/injectable"
   icon = "fas fa-cubes"
   desc = "Special thanks to Milad Akarie for original Injectable"
 

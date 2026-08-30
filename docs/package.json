@@ -1,7 +1,7 @@
 {
-  "name": "injectable-docs",
+  "name": "injectify-docs",
   "version": "1.0.0",
-  "description": "Documentation for Injectable - Dart & Flutter DI toolkit (Hugo + Docsy)",
+  "description": "Documentation for Injectify - Dart & Flutter DI toolkit (Hugo + Docsy)",
   "scripts": {
     "serve": "hugo server --disableFastRender",
     "build": "hugo --minify"

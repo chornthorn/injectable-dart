@@ -81,7 +81,7 @@ analyzer:
 To verify that the code generator builder is correctly recognized, execute:
 
 ```bash
-dart run build_runner build
+dart run build_runner build --delete-conflicting-outputs
 ```
 
 If no annotated files exist yet, `build_runner` will report success with 0 outputs. Proceed to the [Quickstart](../quickstart/) to annotate your first services.

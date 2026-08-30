@@ -99,9 +99,9 @@ Clean the build cache and regenerate:
 ```bash
 # Dart
 dart run build_runner clean
-dart run build_runner build
+dart run build_runner build --delete-conflicting-outputs
 
 # Flutter
 flutter pub run build_runner clean
-flutter pub run build_runner build
+flutter pub run build_runner build --delete-conflicting-outputs
 ```

@@ -50,7 +50,7 @@ dart pub get
 
 # regenerate configs after annotation changes (in shared/, feature_catalog/,
 # apps/root_app/):
-dart run build_runner build
+dart run build_runner build --delete-conflicting-outputs
 
 # run the app
 dart run apps/root_app/bin/main.dart
@@ -208,7 +208,6 @@ auto-composes it with `useMicroPackage: true`:
   moduleName: 'Catalog',
   initializerName: 'initCatalog',
   useMicroPackage: true, // auto-compose nested sub micro-packages in init()
-InternalMicroPackage  useMicroPackage: true,
 )
 void configureCatalogModule() {}
 ```
@@ -239,7 +238,7 @@ shared container at runtime.
 
 ## Note
 
-- Newly annotated sources need `dart run build_runner build` in the affected
+- Newly annotated sources need `dart run build_runner build --delete-conflicting-outputs` in the affected
   package (`shared/`, `feature_catalog/`, `apps/root_app/`).
 - The demo is intentionally **not** a member of the root workspace — it
   has its own nested workspace so it behaves like a standalone repo, consuming

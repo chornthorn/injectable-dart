@@ -1,6 +1,6 @@
 ---
 name: add-docs
-description: Create, extend, or fix documentation pages in the Injectable docs site (Hugo + Docsy, content under docs/content/docs/). Use when adding a new page or section, updating an existing docs page, or verifying docs match the current Injectable API.
+description: Create, extend, or fix documentation pages in the Injectify docs site (Hugo + Docsy, content under docs/content/docs/). Use when adding a new page or section, updating an existing docs page, or verifying docs match the current Injectify API.
 ---
 
 # Adding & Updating Docs
@@ -12,7 +12,7 @@ Use this skill whenever the task involves the documentation site at `docs/`:
 - Adding a new page (concept, task, guide, or reference entry).
 - Creating a new top-level section folder.
 - Editing or fixing an existing page under `docs/content/docs/`.
-- Checking that docs examples match the current Injectable API.
+- Checking that docs examples match the current Injectify API.
 
 ## Where docs live
 
@@ -23,7 +23,9 @@ Use this skill whenever the task involves the documentation site at `docs/`:
 | :---------------- | :----- | :----------------------------------------- |
 | `getting-started` | 10     | Installation, quickstart, monorepo setup   |
 | `concepts`        | 20     | Architecture, scopes, micro-packages, envs |
+| `tutorials`       | 25     | Step-by-step end-to-end tutorials          |
 | `tasks`           | 30     | Step-by-step how-to recipes                |
+| `skills`          | 40     | AI agent skills integration                |
 | `reference`       | 50     | Annotations, build config, runtime API     |
 
 - Every section folder has `docs/content/docs/<section>/_index.md` (section landing page).
@@ -66,7 +68,6 @@ Example (from `tasks/_index.md`):
 - After annotation examples, show what the generated code looks like under a "Generated code:" heading.
 - Use **ordered lists** for sequential steps (tasks pages) and **unordered lists** for explanatory content.
 - Emphasis hierarchy: one bold level per line for the key concept; use _italic_ for secondary emphasis — never two competing bold words in one line.
-- Do **not** use tables. Convert any tabular data into explanation blocks — unordered lists with a bold term per bullet (e.g. `- **`scope`** (`Scope`, default ...) — description`), or ordered lists for sequential steps.
 - Link to other pages with relative paths: `[Text](configure-root-container/)`. Verify the target exists.
 
 ## API accuracy (non-negotiable)

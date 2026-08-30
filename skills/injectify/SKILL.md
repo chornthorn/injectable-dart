@@ -3,7 +3,7 @@ name: injectify
 description: Complete dependency injection toolkit for Dart & Flutter using Injectify and GetIt with code generation, folder-scoped micro-packages, third-party modules, and asynchronous startup. Use when setting up or modifying dependency injection, annotating classes with @Injectable, configuring @InjectableInit or @InjectableMicroPackage, wiring third-party providers with @ExternalModule, managing lifetimes (factory, lazySingleton, singleton), or generating DI code with build_runner in Dart/Flutter projects.
 license: Apache-2.0
 metadata:
-  author: injectable-dart
+  author: injectify-dart
   version: "1.0.0"
 ---
 
@@ -121,10 +121,10 @@ Execute the build runner command to produce `.config.dart`:
 
 ```bash
 # Dart projects
-dart run build_runner build
+dart run build_runner build --delete-conflicting-outputs
 
 # Flutter projects
-flutter pub run build_runner build
+flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ### 5. Initialize Container at App Entry (`main.dart`)
