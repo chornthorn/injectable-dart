@@ -686,3 +686,72 @@ h1, h2, h3, h4, h5, h6,
     }
   }
 }
+
+// 14. Documentation Feedback & Last Modified Footer
+.feedback--title {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-top: 3rem !important;
+  margin-bottom: 0.5rem !important;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  color: var(--bs-heading-color) !important;
+}
+
+.feedback--question {
+  font-size: 0.9375rem !important;
+  margin-bottom: 1rem !important;
+  color: var(--bs-body-color);
+}
+
+.feedback--answer {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 4rem;
+  padding: 0.375rem 1.15rem !important;
+  font-size: 0.9375rem !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+  border: none !important;
+  background-color: #3b71ca !important;
+  color: #ffffff !important;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+
+  &:hover,
+  &:focus {
+    background-color: #285192 !important;
+    color: #ffffff !important;
+  }
+
+  &-no {
+    margin-left: 0.75rem !important;
+  }
+}
+
+.feedback--response {
+  display: none;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--bs-tertiary-bg);
+  border-left: 3px solid var(--bs-primary);
+  border-radius: 4px;
+}
+
+.td-page-meta__lastmod {
+  font-size: 0.875rem;
+  color: var(--bs-secondary-color);
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--bs-border-color);
+
+  a {
+    color: var(--bs-primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
