@@ -10,7 +10,7 @@ class CatalogService {
   CatalogService(this._greeting);
 
   List<Product> listAll() => const [
-        Product(id: 'p1', title: 'Injectable for Dart', price: 29.99),
+        Product(id: 'p1', title: 'Injectify for Dart', price: 29.99),
         Product(id: 'p2', title: 'Monorepo Patterns', price: 39.99),
       ];
 

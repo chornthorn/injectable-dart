@@ -1,7 +1,7 @@
 targets:
   $default:
     builders:
-      injectify_generator:injectable_builder:
+      injectify_generator:injectify_generator:
         options:
           # Automatically uses relative imports when possible
           prefer_relative_imports: true

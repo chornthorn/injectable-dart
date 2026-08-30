@@ -3,7 +3,7 @@ title: "Why Dependency Injection is Critical for Large-Scale Enterprise Flutter 
 linkTitle: "Enterprise Dependency Injection"
 weight: 2
 description: >
-  Explore Dependency Injection from pure Dart fundamentals to enterprise scale, and discover how Injectable automates robust, multi-package architecture.
+  Explore Dependency Injection from pure Dart fundamentals to enterprise scale, and discover how Injectify automates robust, multi-package architecture.
 author: "Thorn Chorn"
 date: 2026-08-30
 ---
@@ -131,11 +131,11 @@ Manual Dependency Injection works cleanly for smaller apps. However, as an enter
 
 ---
 
-## 4. Introducing Injectable: Automating Dependency Injection
+## 4. Introducing Injectify: Automating Dependency Injection
 
-This is where **Injectable** enters the picture. Injectable combines the speed and simplicity of the `get_it` service locator with the safety of **compile-time code generation**.
+This is where **Injectify** enters the picture. Injectify combines the speed and simplicity of the `get_it` service locator with the safety of **compile-time code generation**.
 
-Instead of writing and maintaining hundreds of lines of imperative wiring code, you annotate your pure Dart classes. Injectable reads these annotations and generates a type-safe, ordered dependency registry.
+Instead of writing and maintaining hundreds of lines of imperative wiring code, you annotate your pure Dart classes. Injectify reads these annotations and generates a type-safe, ordered dependency registry.
 
 ### Basic registration with annotations
 
@@ -169,16 +169,17 @@ import 'injection.config.dart';
 final getIt = GetIt.instance;
 
 @InjectableInit()
-void configureDependencies() => getIt.init();
+void configureDependencies({String? environment}) =>
+    getIt.init(environment: environment);
 ```
 
-When you run `dart run build_runner build`, Injectable inspects the constructor parameters of all annotated classes, resolves the dependency tree in the correct topological order, and writes the generated registration code:
+When you run `dart run build_runner build`, Injectify inspects the constructor parameters of all annotated classes, orders registrations by `@Order` priority, and writes the generated registration code:
 
 ```dart
 // Generated code (injection.config.dart)
 extension GetItInjectableX on _i1.GetIt {
   _i1.GetIt init({String? environment, _i2.EnvironmentFilter? environmentFilter}) {
-    final gh = _i2.GetItHelper(this, environment, environmentFilter);
+    final gh = _i2.GetItHelper(this, environment: environment, environmentFilter: environmentFilter);
     gh.lazySingleton<_i3.HttpClientConfig>(() => _i3.HttpClientConfig());
     gh.lazySingleton<_i4.ApiClient>(() => _i4.HttpApiClient(gh<_i3.HttpClientConfig>()));
     gh.factory<_i5.OrderService>(() => _i5.OrderService(
@@ -198,7 +199,7 @@ Injectify provides purpose-built tools designed to address the specific architec
 
 ### Multi-environment gating
 
-Enterprise apps routinely operate across Development, Staging, and Production environments. Injectable allows you to bind different implementations to the same contract based on the active environment tag:
+Enterprise apps routinely operate across Development, Staging, and Production environments. Injectify allows you to bind different implementations to the same contract based on the active environment tag:
 
 ```dart
 @Environment('dev')
@@ -244,18 +245,18 @@ abstract class CoreModule {
   Dio get dio => Dio(BaseOptions(baseUrl: 'https://api.enterprise.com'));
 
   @Injectable(scope: Scope.singleton)
-  @preResolve
+  @PreResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 }
 ```
 
-The `@preResolve` annotation signals that `SharedPreferences` is an asynchronous singleton, ensuring it completes initialization before any dependent services are constructed.
+The `@PreResolve` annotation flags `SharedPreferences` as an asynchronous singleton. The generator emits `await gh.singletonAsync<SharedPreferences>(() => coreModule.prefs)`, registering the dependency as pending inside the container. The future itself completes when the app calls `await getIt.allReady()` (or `getIt.getAsync<T>()`) — before that, synchronous `getIt<SharedPreferences>()` throws.
 
 ### Micro-packages for modular monorepos
 
 Large enterprise applications scale horizontally by separating features into independent Dart packages (`core_network`, `feature_auth`, `feature_billing`).
 
-Injectable supports **Micro-Packages**, allowing each feature package to maintain its own independent dependency graph:
+Injectify supports **Micro-Packages**, allowing each feature package to maintain its own independent dependency graph:
 
 ```dart
 // Inside packages/feature_billing/lib/billing_module.dart
@@ -291,7 +292,7 @@ final getIt = GetIt.instance;
 void configureDependencies(String environment) => getIt.init(environment: environment);
 ```
 
-During application generation, Injectable writes:
+During application generation, Injectify writes:
 
 ```dart
 // Generated code (injection.config.dart)
@@ -305,7 +306,7 @@ This architecture ensures feature teams work independently in their own packages
 
 ## 6. Architectural Best Practices
 
-To get the most out of Dependency Injection with Injectable in enterprise Flutter projects:
+To get the most out of Dependency Injection with Injectify in enterprise Flutter projects:
 
 - **Keep classes pure with constructor injection** — write standard Dart classes that receive dependencies through constructors; do not invoke `getIt<T>()` inside business logic methods.
 - **Let the framework wire the composition root** — let code generation handle the assembly of the graph, avoiding runtime errors and reflection overhead.
@@ -318,6 +319,6 @@ To get the most out of Dependency Injection with Injectable in enterprise Flutte
 
 Dependency Injection begins as a foundational Dart design pattern: programming to abstractions and passing dependencies explicitly through constructors. As applications scale to enterprise proportions, manual Dependency Injection becomes cumbersome to maintain.
 
-**Injectable** bridges the gap between clean object-oriented architecture and enterprise development velocity, delivering automated registration, compile-time safety, environment switching, and modular micro-package support.
+**Injectify** bridges the gap between clean object-oriented architecture and enterprise development velocity, delivering automated registration, compile-time safety, environment switching, and modular micro-package support.
 
-To start integrating Injectable into your project, check out our [Getting Started Guide](/docs/getting-started/) and explore the [Micro-Packages Guide](/docs/concepts/micro-packages/).
+To start integrating Injectify into your project, check out our [Getting Started Guide](/docs/getting-started/) and explore the [Micro-Packages Guide](/docs/concepts/micro-packages/).

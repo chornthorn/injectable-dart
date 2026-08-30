@@ -3,12 +3,12 @@ title: "Architecture & Pipeline"
 linkTitle: "Architecture & Pipeline"
 weight: 1
 description: >
-  The build-time generation pipeline and runtime adapter architecture of Injectable.
+  The build-time generation pipeline and runtime adapter architecture of Injectify.
 ---
 
 Injectify is composed of two primary layers:
 
-1. **Runtime Framework (`package:injectable`)**: Lightweight annotations, interfaces, and the `GetItHelper` adapter.
+1. **Runtime Framework (`package:injectify`)**: Lightweight annotations, interfaces, and the `GetItHelper` adapter.
 2. **Build-Time Generator (`package:injectify_generator`)**: An analyzer-driven `build_runner` builder that parses Dart code and generates type-safe configuration files.
 
 ---
@@ -65,7 +65,7 @@ For every class within the computed scan boundary, `DependencyParser` extracts:
 - Target lifecycle (`Scope.factory`, `Scope.singleton`, `Scope.lazySingleton`).
 - Bound interfaces (`@Injectable(as: ServiceInterface)`).
 - Constructor parameters and their injection qualifiers (`@Inject('tag')`, `@FactoryParam`).
-- Environment restrictions (`@Environment('dev')`, `@dev`).
+- Environment restrictions (`@Environment('dev')`, `env: [...]`).
 - Async initialization status (`@PreResolve` or `Future` return types).
 - Explicit sort order (`@Order(int)`).
 

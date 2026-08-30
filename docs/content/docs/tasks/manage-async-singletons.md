@@ -10,31 +10,40 @@ This guide covers registering and waiting for asynchronous dependencies.
 
 ---
 
-## 1. Asynchronous Factory Methods
+## 1. Asynchronous Classes
 
-If your class needs asynchronous setup, define a static factory method annotated with `@FactoryMethod`:
+If your class needs asynchronous setup, mark it with `@PreResolve` so the generator emits `await gh.singletonAsync<T>(...)`:
 
 ```dart
 import 'package:injectify/injectify.dart';
 
+@PreResolve()
 @Injectable(scope: Scope.singleton)
 class LocalDatabase {
-  final String dbPath;
-  LocalDatabase._(this.dbPath);
+  final Future<void> opened;
 
-  @FactoryMethod()
-  static Future<LocalDatabase> initialize() async {
-    await Future.delayed(const Duration(milliseconds: 100)); // Simulating DB opening
-    return LocalDatabase._('/data/app.db');
+  LocalDatabase() : opened = _open();
+
+  static Future<void> _open() async {
+    // Simulating DB opening
+    await Future<void>.delayed(const Duration(milliseconds: 100));
   }
 }
 ```
 
+Generated registration:
+
+```dart
+await gh.singletonAsync<LocalDatabase>(() async => LocalDatabase());
+```
+
+The singleton is registered as **pending** — `getIt<LocalDatabase>()` throws until the future completes.
+
 ---
 
-## 2. Using `@PreResolve`
+## 2. Using `@PreResolve` on External Module Members
 
-When you want the root `configureDependencies()` function to await the completion of this singleton before proceeding:
+For `Future`-returning getters or methods in an `@ExternalModule`, the async registration is auto-detected from the return type (an explicit `@PreResolve` is optional):
 
 ```dart
 @ExternalModule()
@@ -45,24 +54,25 @@ abstract class CoreModule {
 }
 ```
 
-Update your `configureDependencies` method to be `async`:
+Because async registrations exist, `init()` is generated as `Future<GetIt>`:
 
 ```dart
 // lib/injection.dart
 Future<void> configureDependencies() async {
   await getIt.init();
+  await getIt.allReady(); // resolve all pending async singletons
 }
 ```
 
 ---
 
-## 3. Resolving Without PreResolve
+## 3. Resolving Without `allReady()`
 
-If you do not use `@PreResolve`, `GetIt` initializes the singleton asynchronously in the background. Access it using `getAsync` or `allReady()`:
+If you do not call `allReady()`, the singleton stays pending. Access it with `getAsync` or wait with `allReady()`:
 
 ```dart
 void main() async {
-  configureDependencies();
+  await configureDependencies();
 
   // Option A: Await specific dependency
   final db = await getIt.getAsync<LocalDatabase>();

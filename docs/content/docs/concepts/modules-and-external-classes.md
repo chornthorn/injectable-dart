@@ -33,10 +33,10 @@ abstract class RegisterModule {
   @Injectable(scope: Scope.singleton)
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
-  // Parameterized factory method
+  // Parameterized factory method with injected params
   @Injectable(scope: Scope.factory)
-  Uri apiUrl(@Inject('baseUrl') String host, @FactoryParam() String endpoint) {
-    return Uri.parse('$host/$endpoint');
+  Uri apiUrl(@Inject('baseUrl') String host, String path) {
+    return Uri.parse('$host/$path');
   }
 }
 ```
@@ -47,15 +47,19 @@ abstract class RegisterModule {
 
 During code generation:
 
-1. The generator creates a private helper implementation class `_$RegisterModule`.
-2. It instantiates `_$RegisterModule` inside `init()`.
-3. Every public getter or method annotated with `@Injectable` is registered into `GetIt` via `gh`:
+1. The generator creates a private helper implementation class `_$RegisterModule` (only when the module class is abstract), or instantiates the module class directly.
+2. It instantiates the module inside `init()`.
+3. Every public getter or method on the module is registered into `GetIt` via `gh`. An `@Injectable` annotation is optional — without it the member defaults to `Scope.factory`:
 
 ```dart
 // Generated in injection.config.dart
-final registerModule = _$RegisterModule(this);
+final registerModule = _$RegisterModule();
 gh.lazySingleton<_i1.Client>(() => registerModule.httpClient);
 await gh.singletonAsync<_i2.SharedPreferences>(() => registerModule.prefs);
+gh.factory<_i3.Uri>(() => registerModule.apiUrl(
+  gh<String>(instanceName: 'baseUrl'),
+  gh<String>(),
+));
 ```
 
 ---

@@ -9,5 +9,5 @@ class AppConfig {
   final String appName;
   final String version;
 
-  AppConfig() : appName = 'Injectable Demo', version = '1.0.0';
+  AppConfig() : appName = 'Injectify Demo', version = '1.0.0';
 }

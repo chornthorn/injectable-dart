@@ -3,10 +3,10 @@ title: "Concepts"
 linkTitle: "Concepts"
 weight: 20
 description: >
-  Fundamental architectural concepts, mental models, and design principles behind Injectable.
+  Fundamental architectural concepts, mental models, and design principles behind Injectify.
 ---
 
-This section covers the core concepts and architectural decisions that power Injectable.
+This section covers the core concepts and architectural decisions that power Injectify.
 
 ---
 
@@ -15,7 +15,7 @@ This section covers the core concepts and architectural decisions that power Inj
 - [**Architecture & Pipeline**](architecture/)
   Deep dive into the six-stage code generation pipeline: AST parsing, boundary gating, dependency extraction, alias registration, and emission.
 - [**Dependency Injection Principles**](dependency-injection/)
-  How Injectable separates dependency declaration from registration and service locator lookup.
+  How Injectify separates dependency declaration from registration and service locator lookup.
 - [**Scopes and Lifecycles**](scopes-and-lifecycles/)
   Factory, Singleton, and Lazy Singleton lifetimes and registration mechanics.
 - [**Micro-Packages and Boundaries**](micro-packages/)

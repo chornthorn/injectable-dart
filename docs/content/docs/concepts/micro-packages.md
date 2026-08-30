@@ -12,7 +12,7 @@ As codebases grow, monolithic dependency registrations become unwieldy. Injectif
 
 ## 1. Concept of Micro-Packages
 
-A micro-package is an isolated module of dependencies defined within a folder or package. It generates a class implementing `MicroPackageModule`:
+A micro-package is an isolated module of dependencies defined within a folder or package. It generates a class extending `MicroPackageModule`:
 
 ```dart
 abstract class MicroPackageModule {
@@ -34,7 +34,7 @@ flowchart TD
 
 ## 2. Modes of Micro-Package Composition
 
-Injectable supports multiple composition models:
+Injectify supports multiple composition models:
 
 - **Monolithic Root** — `@InjectableInit()` — Scans `lib/**` as a single monolithic container.
 - **Root Compositor** — `@InjectableInit(useMicroPackage: true)` — Scans `lib/**`, discovers all folder micro-packages, excludes their folders from local scan, and composes them flatly at root.

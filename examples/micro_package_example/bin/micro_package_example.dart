@@ -12,7 +12,7 @@ void main() async {
   // ignore: avoid_print
   print('========================================================');
   // ignore: avoid_print
-  print('🎯 Injectable Nested Micro-Package Demo');
+  print('🎯 Injectify Nested Micro-Package Demo');
   // ignore: avoid_print
   print('========================================================');
 

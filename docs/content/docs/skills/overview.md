@@ -3,7 +3,7 @@ title: "Agent Skills Overview"
 linkTitle: "Overview"
 weight: 1
 description: >
-  Understand the Agent Skills specification, folder structure, and how it equips AI models with Injectable expertise.
+  Understand the Agent Skills specification, folder structure, and how it equips AI models with Injectify expertise.
 ---
 
 The **Agent Skills** format ([agentskills.io](https://agentskills.io)) is an open standard that allows framework authors to package instructions, code references, validation rules, and templates into modular, version-controlled directories.
@@ -12,12 +12,12 @@ When you install an agent skill into your project, compatible AI assistants auto
 
 ---
 
-## 1. Structure of the Injectable Skill
+## 1. Structure of the Injectify Skill
 
-The Injectable skill lives in the `skills/injectable/` directory of the repository:
+The Injectify skill lives in the `skills/injectify/` directory of the repository:
 
 ```
-skills/injectable/
+skills/injectify/
 ├── SKILL.md                          # Main skill instructions and frontmatter
 ├── references/
 │   ├── annotations.md               # Complete reference for annotations & scopes
@@ -44,7 +44,7 @@ The skill leverages the **Progressive Disclosure** architecture to keep LLM cont
 
 ## 3. Supported AI Clients
 
-The Injectable skill is compatible with all modern AI programming tools that support the Agent Skills specification or directory-based instructions:
+The Injectify skill is compatible with all modern AI programming tools that support the Agent Skills specification or directory-based instructions:
 
 - **Claude Code** (`.claude/skills/` or `skills/`)
 - **Cursor** (`.cursor/skills/` or project context)
@@ -59,4 +59,4 @@ The Injectable skill is compatible with all modern AI programming tools that sup
 - **Class-Form Annotations Only**: Always outputs `@Injectable()`, `@InjectableInit()`, `@InjectableMicroPackage()`, and `@ExternalModule()`.
 - **Explicit Scopes**: Enforces `Scope.factory`, `Scope.lazySingleton`, or `Scope.singleton`.
 - **Single Composition Rule**: Ensures micro-packages are composed exactly once to prevent GetIt double registration errors.
-- **Async Awareness**: Identifies `Future<T>` singletons and enforces `@PreResolve()` and `await configureDependencies()`.
+- **Async Awareness**: Identifies `Future<T>` singletons and enforces `@PreResolve()` so async registrations are emitted, and `await getIt.allReady()` before resolving them synchronously.

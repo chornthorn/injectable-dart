@@ -38,7 +38,7 @@ import 'package:injectify/injectify.dart';
 void configureAuthModule() {}
 ```
 
-This generates `auth_module.config.dart` containing `AuthInjectableModule implements MicroPackageModule`.
+This generates `auth_module.config.dart` containing `AuthInjectableModule extends MicroPackageModule`.
 
 ### Scoping & Boundary Isolation Rules
 
@@ -145,7 +145,11 @@ Future<void> configureDependencies({String? environment}) async =>
 ```dart
 extension GetItInjectableX on GetIt {
   Future<GetIt> init({String? environment, EnvironmentFilter? environmentFilter}) async {
-    final gh = GetItHelper(this, environment, environmentFilter);
+    final gh = GetItHelper(
+      this,
+      environment: environment,
+      environmentFilter: environmentFilter,
+    );
     gh.initMicroPackage(CoreNetworkInjectableModule());
     // registers local micro-packages and app dependencies...
     return this;

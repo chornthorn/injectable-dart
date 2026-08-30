@@ -57,6 +57,12 @@ no = 'Sorry to hear that. Please <a href="https://github.com/chornthorn/injectif
   icon = "fab fa-github"
   desc = "Source code and issue tracking"
 
+[[params.links.developer]]
+  name = "injectify (pub.dev)"
+  url = "https://pub.dev/packages/injectify"
+  icon = "fas fa-cubes"
+  desc = "Injectify on the Dart package registry"
+
 [[params.links.community]]
   name = "get_it (pub.dev)"
   url = "https://pub.dev/packages/get_it"
@@ -67,7 +73,7 @@ no = 'Sorry to hear that. Please <a href="https://github.com/chornthorn/injectif
   name = "injectable (pub.dev)"
   url = "https://pub.dev/packages/injectable"
   icon = "fas fa-cubes"
-  desc = "Special thanks to Milad Akarie for original Injectable"
+  desc = "Special thanks to Milad Akarie — Injectify is inspired by the original injectable package"
 
 [menu]
   [[menu.main]]

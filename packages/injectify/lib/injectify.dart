@@ -1,4 +1,4 @@
-/// Annotations and utilities for Injectable DI code generation and micro-packages.
+/// Annotations and utilities for Injectify DI code generation and micro-packages.
 library;
 
 export 'package:get_it/get_it.dart';

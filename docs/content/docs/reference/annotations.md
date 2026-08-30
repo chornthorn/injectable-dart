@@ -3,10 +3,10 @@ title: "Annotations Reference"
 linkTitle: "Annotations"
 weight: 1
 description: >
-  Full API reference for all Injectable annotations.
+  Full API reference for all Injectify annotations.
 ---
 
-Injectable uses explicit, class-form annotations. Const variables are omitted to ensure consistent syntax across all annotation usages.
+Injectify uses explicit, class-form annotations. Const variables are omitted to ensure consistent syntax across all annotation usages.
 
 ---
 
@@ -14,7 +14,7 @@ Injectable uses explicit, class-form annotations. Const variables are omitted to
 
 ### `@Injectable`
 
-Marks a class or factory method as a dependency eligible for injection.
+Marks a class as a dependency eligible for injection.
 
 ```dart
 const Injectable({
@@ -38,7 +38,7 @@ Each parameter controls one aspect of the registration:
 - **`getItScope`** (`String?`, default `null`) — Optional GetIt scope name.
 - **`signalsReady`** (`bool?`, default `null`) — Whether this singleton signals readiness to GetIt.
 - **`dependsOn`** (`List<Type>?`, default `null`) — Dependencies that must be initialized before this async singleton.
-- **`dispose`** (`Function?`, default `null`) — Disposal callback invoked on container reset.
+- **`dispose`** (`Function?`, default `null`) — Optional dispose callback field on the annotation. Disposal is currently wired from methods marked with `@DisposeMethod` — see [Custom Disposal Hooks](/docs/tasks/custom-disposal-hooks/).
 
 ---
 
@@ -124,15 +124,22 @@ const FactoryParam();
 
 ### `@FactoryMethod`
 
-Marks a specific constructor or static method as the factory instantiator for the class.
+Marks a specific **constructor** as the factory instantiator for the class. The generator emits the registration using that constructor instead of the unnamed one.
 
 ```dart
-const FactoryMethod();
+@Injectable(scope: Scope.singleton)
+class DatabaseConnection {
+  final Future<Database> db;
+
+  @FactoryMethod()
+  @PreResolve()
+  DatabaseConnection.opened() : db = openDatabase('app.db');
+}
 ```
 
 ### `@PreResolve`
 
-Marks an asynchronous singleton dependency that must be awaited during container initialization.
+Marks a class (or external module member) as an asynchronous singleton. The generator emits `await gh.singletonAsync<T>(...)`, registering the instance as **pending** in the container. The future completes when the app calls `await getIt.allReady()` or `await getIt.getAsync<T>()` — synchronous `getIt<T>()` throws until then.
 
 ```dart
 const PreResolve();
@@ -160,12 +167,4 @@ Marks an instance method on a class to be executed when `GetIt` disposes of the 
 
 ```dart
 const DisposeMethod();
-```
-
-### `@PostLocalInit`
-
-Marks a method on an instance to be executed immediately after the instance is instantiated.
-
-```dart
-const PostLocalInit();
 ```

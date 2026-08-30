@@ -35,14 +35,14 @@ class OrderDetailBloc {
 
 ## 2. Generated Registration
 
-Injectable emits a `factoryWithParam` registration:
+Injectify emits a `factoryWithParam` registration:
 
 ```dart
 gh.factoryWithParam<OrderDetailBloc, String, bool>(
-  (orderId, isEditable) => OrderDetailBloc(
+  (orderId, isEditable, _) => OrderDetailBloc(
     gh<ApiClient>(),
     orderId: orderId,
-    isEditable: isEditable ?? false,
+    isEditable: isEditable,
   ),
 );
 ```

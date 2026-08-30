@@ -1,6 +1,6 @@
-# Injectable Documentation Site (Hugo + Docsy)
+# Injectify Documentation Site (Hugo + Docsy)
 
-This directory contains the official documentation website for **Injectable**, built with **Hugo Extended** and the **Google Docsy Theme**.\n\n---\n\n## Running the Documentation Locally
+This directory contains the official documentation website for **Injectify**, built with **Hugo Extended** and the **Google Docsy Theme**.\n\n---\n\n## Running the Documentation Locally
 
 ### 1. Prerequisites
 

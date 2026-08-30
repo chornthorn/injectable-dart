@@ -6,7 +6,7 @@ description: >
   Full walkthrough of building a multi-package monorepo using externalMicroPackages.
 ---
 
-This tutorial walks through creating a clean, enterprise-grade multi-package Dart/Flutter monorepo using Injectable's `externalMicroPackages`.
+This tutorial walks through creating a clean, enterprise-grade multi-package Dart/Flutter monorepo using Injectify's `externalMicroPackages`.
 
 ---
 
@@ -78,7 +78,7 @@ In `packages/feature_billing/pubspec.yaml`:
 dependencies:
   core:
     path: ../core
-  get_it: ^8.0.3
+  get_it: ^9.2.1
   injectify:
     git:
       url: https://github.com/chornthorn/injectify-dart.git
@@ -134,7 +134,7 @@ dependencies:
     path: ../../packages/core
   feature_billing:
     path: ../../packages/feature_billing
-  get_it: ^8.0.3
+  get_it: ^9.2.1
   injectify:
     git:
       url: https://github.com/chornthorn/injectify-dart.git

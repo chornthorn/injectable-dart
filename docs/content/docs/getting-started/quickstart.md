@@ -6,7 +6,7 @@ description: >
   Get up and running with a complete dependency injection setup in minutes.
 ---
 
-This tutorial walks through creating a minimal application with dependency injection using Injectable.
+This tutorial walks through creating a minimal application with dependency injection using Injectify.
 
 ---
 
@@ -64,7 +64,7 @@ class UserRepository {
 ```
 
 {{% alert title="Tip" color="success" %}}
-Notice how `UserRepository` takes `ApiClient` in its constructor. Injectable automatically detects this parameter and resolves it from `GetIt` at runtime.
+Notice how `UserRepository` takes `ApiClient` in its constructor. Injectify automatically detects this parameter and resolves it from `GetIt` at runtime.
 {{% /alert %}}
 
 ---

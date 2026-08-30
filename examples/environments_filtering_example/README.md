@@ -1,7 +1,7 @@
 # Environments & Filtering Example
 
 Demo of **environment gating** and **environment filters** in
-[Injectable](https://github.com/chornthorn/injectify-dart), built around a
+[Injectify](https://github.com/chornthorn/injectify-dart), built around a
 real-world use case: an e-commerce **checkout feature** whose payment gateway
 is chosen by environment, so _test mode can never run in production_.
 

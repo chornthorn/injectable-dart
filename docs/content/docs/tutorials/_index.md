@@ -3,10 +3,10 @@ title: "Tutorials"
 linkTitle: "Tutorials"
 weight: 40
 description: >
-  Complete, end-to-end learning walkthroughs for building applications with Injectable from basic to advanced.
+  Complete, end-to-end learning walkthroughs for building applications with Injectify from basic to advanced.
 ---
 
-Tutorials provide complete, real-world walkthroughs for building applications with Injectable, sequenced from beginner fundamentals to advanced enterprise architectures.
+Tutorials provide complete, real-world walkthroughs for building applications with Injectify, sequenced from beginner fundamentals to advanced enterprise architectures.
 
 ---
 
@@ -14,7 +14,7 @@ Tutorials provide complete, real-world walkthroughs for building applications wi
 
 ### Basic
 
-- [**Building Your First Injectable App**](first-injectable-app/)
+- [**Building Your First Injectify App**](first-injectify-app/)
   Step-by-step tutorial to create a Dart/Flutter project with dependency injection from scratch.
 
 ### Intermediate
@@ -22,7 +22,7 @@ Tutorials provide complete, real-world walkthroughs for building applications wi
 - [**Asynchronous Initialization & @PreResolve**](async-startup-and-preresolve/)
   Learn how to handle asynchronous dependency initialization (Databases, SharedPreferences, Remote Config) with `@PreResolve` and splash screens.
 - [**Flutter State Management Integration**](state-management-integration/)
-  Best practices for integrating Injectable with `flutter_bloc`, Cubits, dynamic runtime `@FactoryParam` parameters, and widget trees.
+  Best practices for integrating Injectify with `flutter_bloc`, Cubits, dynamic runtime `@FactoryParam` parameters, and widget trees.
 
 ### Advanced
 

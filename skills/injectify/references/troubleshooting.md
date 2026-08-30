@@ -8,7 +8,7 @@ Common issues, generator errors, and debugging strategies for `injectify` and `i
 
 ### Symptom
 
-`build_runner` fails with a cyclic dependency error during topological sort (e.g., `ServiceA -> ServiceB -> ServiceA`).
+Resolving the first instance from `GetIt` throws or hangs at runtime because two classes depend on each other through their constructors (e.g., `ServiceA` requires `ServiceB` which requires `ServiceA`).
 
 ### Cause
 
@@ -19,6 +19,8 @@ Two or more classes depend on each other through constructor parameters.
 - Refactor the code to break the cycle by extracting shared logic into a separate `ServiceC` or repository.
 - Use an interface or event bus/stream instead of direct bi-directional constructor coupling.
 - If necessary, pass one dependency via a method call rather than in the constructor.
+
+> Note: the generator does not perform a topological sort or cycle detection — it emits registrations in `@Order` priority order and GetIt resolves factories lazily. Cycles surface at runtime when an instance is first requested.
 
 ---
 
@@ -39,7 +41,7 @@ A micro-package is composed more than once:
 
 - Adhere strictly to the **Single Composition Rule**:
   - If a nested micro-package is auto-composed by its parent module (`useMicroPackage: true`), remove any duplicate reference in the root container.
-  - Avoid calling manual `getIt.initFeatureX()` if the module is already included in `externalMicroPackages`.
+  - Avoid manually composing a module (e.g. via its generated extension `initX()`) if it is already included in `externalMicroPackages` or discovered by the root compositor.
 
 ---
 
@@ -70,19 +72,22 @@ Calling `getIt<Database>()` throws `StateError: Database has not been initialize
 
 ### Cause
 
-`Database` is an asynchronous singleton (`Future<Database>` or `@PreResolve`), but the app tried to resolve it synchronously before awaiting `configureDependencies()` or `getIt.allReady()`.
+`Database` is an asynchronous singleton (`Future<T>` member or `@PreResolve`), but the app tried to resolve it synchronously **before** calling `await getIt.allReady()` (or `getIt.getAsync<T>()`).
 
 ### Solution
 
-- Ensure `await configureDependencies()` is awaited inside `main()`:
+- After `await configureDependencies()`, wait for all pending async singletons before the first synchronous lookup:
   ```dart
   void main() async {
     WidgetsFlutterBinding.ensureInitialized();
     await configureDependencies();
+    await getIt.allReady();
     runApp(const MyApp());
   }
   ```
-- If the dependency is resolved before all singletons are ready, use `await getIt.getAsync<Database>()` or `await getIt.allReady()`.
+- If the dependency is resolved before all singletons are ready, use `await getIt.getAsync<Database>()` instead.
+
+> Note: `configureDependencies()` / `getIt.init()` only _registers_ async singletons — it does not run their factories to completion. Always await `allReady()` (or `getAsync`) before synchronous `getIt<T>()` lookups.
 
 ---
 
@@ -100,8 +105,4 @@ Clean the build cache and regenerate:
 # Dart
 dart run build_runner clean
 dart run build_runner build --delete-conflicting-outputs
-
-# Flutter
-flutter pub run build_runner clean
-flutter pub run build_runner build --delete-conflicting-outputs
 ```

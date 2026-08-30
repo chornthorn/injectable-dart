@@ -3,10 +3,10 @@ title: "Documentation"
 linkTitle: "Overview"
 weight: 1
 description: >
-  Complete architectural overview, guides, and API reference for Injectable.
+  Complete architectural overview, guides, and API reference for Injectify.
 ---
 
-Welcome to the **Injectable** documentation. Injectify is a code-generation dependency injection toolkit for Dart and Flutter built on top of [GetIt](https://pub.dev/packages/get_it).
+Welcome to the **Injectify** documentation. Injectify is a code-generation dependency injection toolkit for Dart and Flutter built on top of [GetIt](https://pub.dev/packages/get_it).
 
 It automates service locator registration, manages asynchronous dependency resolution, isolates modular domains via **Folder-Scoped Micro-Packages**, and supports seamless multi-package monorepo architectures.
 
@@ -18,7 +18,7 @@ Our documentation is structured into focused areas:
 
 {{< cardpane >}}
 {{< card header="**Getting Started**" >}}
-Step-by-step guides to install Injectable, set up `build_runner`, and configure your first dependency graph.
+Step-by-step guides to install Injectify, set up `build_runner`, and configure your first dependency graph.
 
 [Go to Getting Started](/docs/getting-started/)
 {{< /card >}}
@@ -46,7 +46,7 @@ Complete, end-to-end learning walkthroughs for building modular Flutter apps and
 
 {{< cardpane >}}
 {{< card header="**Agent Skills**" >}}
-Equip AI coding assistants (Claude Code, Cursor, Antigravity, GitHub Copilot) with official Injectable skills.
+Equip AI coding assistants (Claude Code, Cursor, Antigravity, GitHub Copilot) with official Injectify skills.
 
 [Explore Agent Skills](/docs/skills/)
 {{< /card >}}
@@ -65,7 +65,7 @@ Comprehensive specifications for all annotations, CLI builder options, error dia
 ```mermaid
 graph TD
     A["Dart / Flutter Source Code"] -->|"Annotated with @Injectable"| B["injectify_generator (build_runner)"]
-    B -->|"Static Analyzer AST Inspection"| C["Dependency Graph & Topological Sort"]
+    B -->|"Static Analyzer AST Inspection"| C["Dependency Graph & Registration Order"]
     C -->|"Emits *.config.dart"| D["Deterministic init() Extension"]
     D -->|"Executes at App Bootstrap"| E["GetIt Locator Registry"]
     E --> F["Zero-Boilerplate Dependency Injection"]

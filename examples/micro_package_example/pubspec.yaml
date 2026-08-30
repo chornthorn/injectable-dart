@@ -1,5 +1,5 @@
 name: micro_package_example
-description: Demonstrates folder-based nested micro-packages with injectable without dedicated pubspec.yaml files.
+description: Demonstrates folder-based nested micro-packages with injectify without dedicated pubspec.yaml files.
 publish_to: none
 version: 1.0.0
 

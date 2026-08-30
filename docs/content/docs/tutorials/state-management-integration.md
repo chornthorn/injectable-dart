@@ -3,10 +3,10 @@ title: "Flutter State Management Integration"
 linkTitle: "State Management Integration"
 weight: 3
 description: >
-  Best practices for integrating Injectable with flutter_bloc, Cubits, dynamic runtime @FactoryParam parameters, and Flutter widget trees.
+  Best practices for integrating Injectify with flutter_bloc, Cubits, dynamic runtime @FactoryParam parameters, and Flutter widget trees.
 ---
 
-This tutorial demonstrates how to integrate Injectable with Flutter state management libraries such as `flutter_bloc`, manage dynamic constructor arguments with `@FactoryParam()`, and provide blocs within the widget tree cleanly.
+This tutorial demonstrates how to integrate Injectify with Flutter state management libraries such as `flutter_bloc`, manage dynamic constructor arguments with `@FactoryParam()`, and provide blocs within the widget tree cleanly.
 
 ---
 

@@ -14,33 +14,41 @@ Injectify provides first-class support for asynchronous dependencies through `@P
 
 ## 1. Asynchronous Singletons (`singletonAsync`)
 
-When a factory method or class constructor returns a `Future<T>`, Injectable automatically generates an asynchronous registration.
+When a class is marked with `@PreResolve`, or an external module getter/method returns a `Future<T>`, Injectify automatically emits an asynchronous registration (`gh.singletonAsync<T>`).
+
+For an **external module member**, the `Future` return type is detected automatically — no annotation needed:
 
 ```dart
+@ExternalModule()
+abstract class StorageModule {
+  @Injectable(scope: Scope.singleton)
+  Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
+}
+```
+
+For a **class**, mark it with `@PreResolve` so the generator emits `await gh.singletonAsync<T>(() async => T(...))`:
+
+```dart
+@PreResolve()
 @Injectable(scope: Scope.singleton)
 class DatabaseConnection {
-  final Database db;
-  DatabaseConnection._(this.db);
+  final Future<Database> db;
 
-  @FactoryMethod()
-  static Future<DatabaseConnection> create() async {
-    final db = await openDatabase('app.db');
-    return DatabaseConnection._(db);
-  }
+  DatabaseConnection() : db = openDatabase('app.db');
 }
 ```
 
 Generated registration:
 
 ```dart
-gh.singletonAsync<DatabaseConnection>(() => DatabaseConnection.create());
+await gh.singletonAsync<DatabaseConnection>(() async => DatabaseConnection());
 ```
 
 ---
 
 ## 2. Pre-resolving with `@PreResolve`
 
-When an asynchronous dependency is marked with `@PreResolve`, the generated `init()` function marks the step with `await`, guaranteeing that the instance is completely ready before `init()` completes.
+Async registrations are emitted with `await` inside the generated `init()`, which makes `init()` return `Future<GetIt>`. Note that only the **registration** is awaited — `registerSingletonAsync` does not run the factory to completion. The instance stays **pending** in the container until the app calls `await getIt.allReady()` or `await getIt.getAsync<T>()`; until then, synchronous `getIt<T>()` throws.
 
 ```dart
 @ExternalModule()
@@ -57,7 +65,7 @@ Generated initialization:
 extension GetItInjectableX on GetIt {
   Future<GetIt> init({...}) async {
     final gh = GetItHelper(this, ...);
-    final storageModule = _$StorageModule(this);
+    final storageModule = _$StorageModule();
     await gh.singletonAsync<SharedPreferences>(() => storageModule.prefs);
     return this;
   }
@@ -65,14 +73,14 @@ extension GetItInjectableX on GetIt {
 ```
 
 {{% alert title="Note" color="info" %}}
-If any dependency in your graph uses `@PreResolve`, the generated `init()` method signature changes from synchronous `GetIt init()` to asynchronous `Future<GetIt> init()`.
+If any dependency in your graph is async (`@PreResolve` or a `Future`-returning member), the generated `init()` method signature changes from synchronous `GetIt init()` to asynchronous `Future<GetIt> init()`.
 {{% /alert %}}
 
 ---
 
 ## 3. Resolving Asynchronous Instances at Runtime
 
-If a singleton is registered via `singletonAsync` (without `@PreResolve`), it can be resolved at runtime using either:
+Async singletons are resolved after `init()` via either:
 
 ### 1. `getIt.isReady<T>()` & `getIt.getAsync<T>()`
 

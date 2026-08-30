@@ -1,12 +1,12 @@
 ---
-title: "Building Your First Injectable App"
-linkTitle: "First Injectable App"
+title: "Building Your First Injectify App"
+linkTitle: "First Injectify App"
 weight: 1
 description: >
   A beginner-friendly, step-by-step tutorial to create a Dart/Flutter project with dependency injection from scratch.
 ---
 
-This tutorial walks through creating a complete Dart/Flutter application with automated Dependency Injection using **Injectable** and **GetIt**.
+This tutorial walks through creating a complete Dart/Flutter application with automated Dependency Injection using **Injectify** and **GetIt**.
 
 ---
 
@@ -16,16 +16,16 @@ Create a new Flutter or Dart project and configure your `pubspec.yaml`:
 
 ```yaml
 name: my_first_app
-description: "My first Injectable application"
+description: "My first Injectify application"
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.0.0
+  sdk: ^3.12.0
 
 dependencies:
   flutter:
     sdk: flutter
-  get_it: ^8.0.3
+  get_it: ^9.2.1
   injectify:
     git:
       url: https://github.com/chornthorn/injectify-dart.git
@@ -88,7 +88,7 @@ class QuoteRepository {
 }
 ```
 
-Notice that you do not manually construct `QuoteService` inside `QuoteRepository`. Injectable automatically resolves `QuoteService` from the container.
+Notice that you do not manually construct `QuoteService` inside `QuoteRepository`. Injectify automatically resolves `QuoteService` from the container.
 
 ---
 
@@ -177,7 +177,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('Injectable Quickstart')),
+        appBar: AppBar(title: const Text('Injectify Quickstart')),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(24.0),

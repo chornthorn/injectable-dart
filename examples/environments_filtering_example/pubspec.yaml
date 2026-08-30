@@ -1,7 +1,7 @@
 name: environments_filtering_example
 description: >-
   Demonstrates environment gating (@Injectable(env: ...) / @Environment(...))
-  and environment filters (built-in and custom) with injectable.
+  and environment filters (built-in and custom) with injectify.
 publish_to: none
 version: 1.0.0
 

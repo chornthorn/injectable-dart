@@ -14,7 +14,7 @@ This tutorial shows how to configure asynchronous singletons with `@PreResolve()
 
 ## 1. Defining Third-Party Async Singletons
 
-When working with packages like `shared_preferences`, create an `@ExternalModule` to instantiate and await the asynchronous singleton:
+When working with packages like `shared_preferences`, create an `@ExternalModule` to instantiate the asynchronous singleton. The `Future` return type is auto-detected — `@PreResolve()` is optional but documents intent:
 
 ```dart
 // lib/core/storage/storage_module.dart
@@ -33,42 +33,37 @@ abstract class StorageModule {
 
 ## 2. Defining Custom Async Services
 
-For your own domain classes that require asynchronous connection or schema migration during startup:
+For your own domain classes that require asynchronous connection or schema migration during startup, mark the class with `@PreResolve`. The constructor starts the async work eagerly; the generated `singletonAsync` registration keeps the instance **pending** until the future completes:
 
 ```dart
 // lib/core/database/database_service.dart
 import 'package:injectify/injectify.dart';
 
+@PreResolve()
 @Injectable(scope: Scope.singleton)
 class DatabaseService {
-  final String dbName;
-  bool _isOpened = false;
+  final Future<void> opened;
 
-  DatabaseService._({required this.dbName});
+  DatabaseService() : opened = _openDatabase();
 
-  @FactoryMethod()
-  @PreResolve()
-  static Future<DatabaseService> create() async {
-    final instance = DatabaseService._(dbName: 'app_database.db');
-    await instance._openDatabase();
-    return instance;
-  }
-
-  Future<void> _openDatabase() async {
+  static Future<void> _openDatabase() async {
     // Simulating database schema setup or connection
-    await Future.delayed(const Duration(milliseconds: 300));
-    _isOpened = true;
+    await Future<void>.delayed(const Duration(milliseconds: 300));
   }
-
-  bool get isReady => _isOpened;
 }
+```
+
+Generated registration:
+
+```dart
+await gh.singletonAsync<DatabaseService>(() async => DatabaseService());
 ```
 
 ---
 
 ## 3. Dependent Services Consuming Async Singletons
 
-Services that consume `SharedPreferences` or `DatabaseService` can now be registered synchronously because the generator guarantees the dependencies are fully resolved before dependent registrations run:
+Services that consume `SharedPreferences` or `DatabaseService` can be registered as lazy singletons that resolve their async dependencies from the container. Because async singletons stay pending until resolved, call `await getIt.allReady()` before any synchronous lookup (`getIt<SettingsService>()`) — the lazy factory then runs against fully resolved dependencies:
 
 ```dart
 // lib/services/settings_service.dart
@@ -108,17 +103,17 @@ Future<void> configureDependencies({String? environment}) async =>
     getIt.init(environment: environment);
 ```
 
-When you run `build_runner`, Injectable automatically emits asynchronous registration calls using `await gh.singletonAsync<T>()`, promoting `init()` to return `Future<GetIt>`.
+When you run `build_runner`, Injectify automatically emits asynchronous registration calls using `await gh.singletonAsync<T>()`, promoting `init()` to return `Future<GetIt>`.
 
 ```bash
-flutter pub run build_runner build --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
 ```
 
 ---
 
 ## 5. Emitted Initialization Flow
 
-Here is what the generated `injection.config.dart` produces:
+Here is what the generated `injection.config.dart` produces (async members are registered, not yet resolved):
 
 ```dart
 extension GetItInjectableX on _i1.GetIt {
@@ -126,10 +121,14 @@ extension GetItInjectableX on _i1.GetIt {
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
   }) async {
-    final gh = _i2.GetItHelper(this, environment, environmentFilter);
+    final gh = _i2.GetItHelper(
+      this,
+      environment: environment,
+      environmentFilter: environmentFilter,
+    );
     final storageModule = _$StorageModule();
     await gh.singletonAsync<_i3.SharedPreferences>(() => storageModule.prefs);
-    await gh.singletonAsync<_i4.DatabaseService>(() => _i4.DatabaseService.create());
+    await gh.singletonAsync<_i4.DatabaseService>(() => _i4.DatabaseService());
     gh.lazySingleton<_i5.SettingsService>(() => _i5.SettingsService(gh<_i3.SharedPreferences>()));
     return this;
   }
@@ -150,8 +149,9 @@ import 'services/settings_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Await all @PreResolve singletons before launching the app
+  // Register everything, then resolve all @PreResolve singletons
   await configureDependencies();
+  await getIt.allReady();
 
   runApp(const MyApp());
 }

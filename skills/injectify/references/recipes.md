@@ -1,4 +1,4 @@
-# Common Injectable Recipes & Patterns
+# Common Injectify Recipes & Patterns
 
 Practical real-world patterns for Dart & Flutter applications.
 

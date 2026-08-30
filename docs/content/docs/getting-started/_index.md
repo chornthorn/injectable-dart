@@ -3,10 +3,10 @@ title: "Getting Started"
 linkTitle: "Getting Started"
 weight: 10
 description: >
-  Step-by-step guides to install, configure, and run Injectable in your Dart & Flutter applications.
+  Step-by-step guides to install, configure, and run Injectify in your Dart & Flutter applications.
 ---
 
-This section walks you through setting up Injectable in your Dart or Flutter project, annotating your first classes, and running code generation.
+This section walks you through setting up Injectify in your Dart or Flutter project, annotating your first classes, and running code generation.
 
 ---
 
@@ -23,5 +23,5 @@ This section walks you through setting up Injectable in your Dart or Flutter pro
 
 ## Prerequisites
 
-- **Dart SDK**: `^3.0.0` or higher (or **Flutter SDK**: `3.10+`).
+- **Dart SDK**: `^3.12.0` or higher (Flutter SDKs bundled with Dart `3.12+` also work).
 - **Package Manager**: standard `pub` or workspace tools (such as `melos`).

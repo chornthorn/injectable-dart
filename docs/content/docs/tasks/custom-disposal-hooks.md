@@ -6,7 +6,7 @@ description: >
   Attach cleanup and disposal logic to singletons on container reset.
 ---
 
-Injectable allows you to specify custom cleanup logic when `GetIt.reset()` or `GetIt.resetScope()` is invoked.
+Injectify allows you to specify custom cleanup logic when `GetIt.reset()` or `GetIt.resetScope()` is invoked.
 
 ---
 
@@ -40,15 +40,6 @@ gh.lazySingleton<WebSocketManager>(
 
 ---
 
-## 2. Using `dispose:` Callback on `@Injectable`
+## 2. The `dispose:` Field on `@Injectable`
 
-You can also pass a top-level or static function to the `dispose:` argument of `@Injectable`:
-
-```dart
-void closeDatabase(AppDatabase db) => db.close();
-
-@Injectable(scope: Scope.singleton, dispose: closeDatabase)
-class AppDatabase {
-  void close() {}
-}
-```
+The `Injectable` annotation exposes a `dispose:` field (`Function?`), but the generator currently wires disposal only from instance methods marked with `@DisposeMethod` — method references passed to `dispose:` are not emitted into the registration. Use `@DisposeMethod` for disposal hooks.

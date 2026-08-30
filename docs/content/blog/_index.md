@@ -2,7 +2,7 @@
 title: "Blog"
 linkTitle: "Blog"
 description: >
-  News, release notes, deep dives, and tutorials for Injectable.
+  News, release notes, deep dives, and tutorials for Injectify.
 ---
 
-Welcome to the Injectable blog! Here we share release notes, architecture deep dives, and practical guides for building modular Dart & Flutter applications.
+Welcome to the Injectify blog! Here we share release notes, architecture deep dives, and practical guides for building modular Dart & Flutter applications.

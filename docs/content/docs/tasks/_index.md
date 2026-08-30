@@ -3,10 +3,10 @@ title: "Tasks"
 linkTitle: "Tasks"
 weight: 30
 description: >
-  Step-by-step how-to recipes for common development workflows with Injectable.
+  Step-by-step how-to recipes for common development workflows with Injectify.
 ---
 
-This section contains goal-oriented, step-by-step how-to recipes for common tasks using Injectable.
+This section contains goal-oriented, step-by-step how-to recipes for common tasks using Injectify.
 
 ---
 

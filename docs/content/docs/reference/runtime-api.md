@@ -6,7 +6,7 @@ description: >
   GetItHelper, MicroPackageModule, EnvironmentFilter, and Scope API documentation.
 ---
 
-This document covers the public runtime API provided by the `injectable` package.
+This document covers the public runtime API provided by the `injectify` package.
 
 ---
 
@@ -87,16 +87,17 @@ Abstract strategy for deciding whether a dependency should be registered in the 
 ```dart
 abstract class EnvironmentFilter {
   final Set<String> environments;
-  const EnvironmentFilter({this.environments = const {}});
+  const EnvironmentFilter(this.environments);
 
   bool canRegister(Set<String> dependencyEnvironments);
 }
 ```
 
 ### Predefined Implementations
+
 - `NoEnvOrContains`: Registers if dependency has no environment restrictions OR matches any active environment.
 - `NoEnvOrContainsAll`: Registers if dependency has no environment restrictions OR matches all active environments.
-- `SimpleEnvironmentFilter`: Default filter used when passing a single environment string to `init(environment: '...')`.
+- `SimpleEnvironmentFilter`: Constructor-based filter equivalent to `NoEnvOrContains` — registers if the dependency's environments intersect the filter's active set.
 
 ---
 

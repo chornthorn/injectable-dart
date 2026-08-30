@@ -3,7 +3,7 @@ title: "Dependency Injection Principles"
 linkTitle: "DI Principles"
 weight: 2
 description: >
-  Core design patterns and compile-time resolution model used by Injectable.
+  Core design patterns and compile-time resolution model used by Injectify.
 ---
 
 Dependency Injection (DI) is a software design pattern where an object's dependencies are provided to it from the outside, rather than constructed internally.
@@ -21,7 +21,7 @@ getIt.registerLazySingleton<AuthService>(() => AuthService(getIt<HttpClient>()))
 getIt.registerFactory<UserRepository>(() => UserRepository(getIt<AuthService>(), getIt<HttpClient>()));
 ```
 
-Injectable replaces this with declarative annotations:
+Injectify replaces this with declarative annotations:
 
 ```dart
 // Declarative approach - clean and decoupled
@@ -53,7 +53,7 @@ Injectify generates pure Dart registration code during the build step. This desi
 
 ## 3. The `GetItHelper` Pattern
 
-Injectable routes all registrations through `GetItHelper` (`gh`):
+Injectify routes all registrations through `GetItHelper` (`gh`):
 
 ```mermaid
 flowchart LR
@@ -64,6 +64,7 @@ flowchart LR
 ```
 
 `GetItHelper` abstracts:
+
 - Environment filtering.
 - Callable lookup syntax: `gh<T>()` or `gh<T>(instanceName: '...')`.
 - Micro-package initialization: `gh.initMicroPackage(Module())`.

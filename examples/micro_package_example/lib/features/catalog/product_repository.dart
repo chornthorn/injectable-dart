@@ -11,7 +11,7 @@ class ProductRepository {
 
   List<Product> listAll() {
     return const [
-      Product(id: 'book-1', title: 'Injectable for Dart', price: 29.99),
+      Product(id: 'book-1', title: 'Injectify for Dart', price: 29.99),
       Product(id: 'book-2', title: 'Micro-Packages in Action', price: 39.99),
       Product(id: 'book-3', title: 'Domain Driven Architecture', price: 49.99),
     ];

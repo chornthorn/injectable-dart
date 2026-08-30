@@ -3,16 +3,16 @@ title: "Scopes and Lifecycles"
 linkTitle: "Scopes & Lifecycles"
 weight: 3
 description: >
-  Instance lifetimes in Injectable: Factory, Singleton, and Lazy Singleton.
+  Instance lifetimes in Injectify: Factory, Singleton, and Lazy Singleton.
 ---
 
-In Injectable, the lifecycle of a dependency is controlled by the `Scope` enumeration.
+In Injectify, the lifecycle of a dependency is controlled by the `Scope` enumeration.
 
 ---
 
 ## 1. Supported Lifecycles
 
-Injectable supports **three** lifecycles, each mapped to a corresponding GetIt registration method:
+Injectify supports **three** lifecycles, each mapped to a corresponding GetIt registration method:
 
 - **Factory** — `Scope.factory` (default) — A new instance is created on _every lookup_ (`getIt<T>()`). This maps to GetIt's `registerFactory`.
 - **Lazy Singleton** — `Scope.lazySingleton` — A single shared instance is created _on first lookup_ and cached for subsequent lookups. This maps to GetIt's `registerLazySingleton`.

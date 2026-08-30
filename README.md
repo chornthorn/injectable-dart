@@ -22,7 +22,7 @@ Full documentation, interactive architecture diagrams, tutorials, and API refere
 - **External Module Composition**: `externalMicroPackages: [ExternalMicroPackage(ModuleType)]` composes modules from other packages (other pubspecs) in declaration order — no manual `getIt.initX()` wiring.
 - **Scopes**: Unified `@Injectable(scope: Scope.singleton | Scope.lazySingleton | Scope.factory)`.
 - **Async & Tagged Registrations**: `@PreResolve` / `Future` factories emit `singletonAsync`; `@Inject('tag')` emits named GetIt lookups.
-- **Environment Gating**: `@Environment('dev')` / `@dev` registers only for matching environments via `EnvironmentFilter`.
+- **Environment Gating**: `@Environment('dev')` / `env: [Environment.dev]` registers only for matching environments via `EnvironmentFilter`.
 
 ---
 
@@ -123,9 +123,6 @@ void main() async {
 ```bash
 # Dart
 dart run build_runner build --delete-conflicting-outputs
-
-# Flutter
-flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ---

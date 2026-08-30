@@ -3,7 +3,7 @@ title: "Testing & Mocking Strategies"
 linkTitle: "Testing & Mocking"
 weight: 5
 description: >
-  Comprehensive guide to unit testing, widget testing, environment switching, and mocking dependencies in Injectable.
+  Comprehensive guide to unit testing, widget testing, environment switching, and mocking dependencies in Injectify.
 ---
 
 Testing applications built with Injectify is straightforward because dependencies are decoupled through constructor injection and environment filtering.

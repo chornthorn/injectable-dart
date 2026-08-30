@@ -63,7 +63,7 @@ This generates `lib/features/auth/auth_module.config.dart` containing `AuthInjec
 ```dart
 class AuthInjectableModule extends _i1.MicroPackageModule {
   @override
-  _i2.FutureOr<void> init(_i1.GetItHelper gh) {
+  void init(_i1.GetItHelper gh) {
     gh.lazySingleton<_i3.AuthService>(() => _i3.AuthService());
     gh.factory<_i4.AuthBloc>(() => _i4.AuthBloc(gh<_i3.AuthService>()));
   }

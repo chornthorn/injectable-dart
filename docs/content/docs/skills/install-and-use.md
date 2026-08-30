@@ -72,7 +72,7 @@ The agent will:
 
 1. Create `lib/injection.dart` with `@InjectableInit(useMicroPackage: true)`.
 2. Update `main.dart` with `await configureDependencies()`.
-3. Run `flutter pub run build_runner build --delete-conflicting-outputs`.
+3. Run `dart run build_runner build --delete-conflicting-outputs`.
 
 ### Prompt 2: Creating a Feature Micro-Package
 
@@ -107,7 +107,4 @@ Always ensure your build runner produces clean output after changes:
 ```bash
 # Dart
 dart run build_runner build --delete-conflicting-outputs
-
-# Flutter
-flutter pub run build_runner build --delete-conflicting-outputs
 ```

@@ -1,25 +1,25 @@
-# Injectable Annotations & Lifecycle Reference
+# Injectify Annotations & Lifecycle Reference
 
-Complete API specification and usage guide for all annotations supported by `injectable`.
+Complete API specification and usage guide for all annotations supported by `injectify`.
 
 ---
 
 ## 1. `@Injectable()`
 
-Marks a class or factory method as a dependency eligible for service locator registration.
+Marks a class as a dependency eligible for service locator registration.
 
 ### Parameters
 
-| Field | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `scope` | `Scope` | `Scope.factory` | Lifetime: `Scope.factory`, `Scope.lazySingleton`, or `Scope.singleton`. |
-| `as` | `Type?` | `null` | Abstract type / interface to bind the implementation to. |
-| `env` | `List<String>?` | `null` | Active environments (e.g. `['dev', 'test']`). |
-| `order` | `int?` | `null` | Priority registration index (lower runs earlier). |
-| `getItScope` | `String?` | `null` | Named GetIt child scope name. |
-| `signalsReady` | `bool?` | `null` | Whether GetIt waits for this singleton to signal ready. |
-| `dependsOn` | `List<Type>?` | `null` | Types that must be registered/ready before this instance. |
-| `dispose` | `Function?` | `null` | Tear-down method reference called on container scope reset. |
+| Field          | Type            | Default         | Description                                                                                   |
+| :------------- | :-------------- | :-------------- | :-------------------------------------------------------------------------------------------- |
+| `scope`        | `Scope`         | `Scope.factory` | Lifetime: `Scope.factory`, `Scope.lazySingleton`, or `Scope.singleton`.                       |
+| `as`           | `Type?`         | `null`          | Abstract type / interface to bind the implementation to.                                      |
+| `env`          | `List<String>?` | `null`          | Active environments (e.g. `['dev', 'test']`).                                                 |
+| `order`        | `int?`          | `null`          | Priority registration index (lower runs earlier).                                             |
+| `getItScope`   | `String?`       | `null`          | Named GetIt child scope name.                                                                 |
+| `signalsReady` | `bool?`         | `null`          | Whether GetIt waits for this singleton to signal ready.                                       |
+| `dependsOn`    | `List<Type>?`   | `null`          | Types that must be registered/ready before this instance.                                     |
+| `dispose`      | `Function?`     | `null`          | Optional dispose callback field. Disposal is wired from methods marked with `@DisposeMethod`. |
 
 ### Lifecycle Scopes
 
@@ -172,22 +172,26 @@ final bloc = getIt<UserProfileBloc>(param1: 'user_123');
 
 ## 7. `@PreResolve()`
 
-Marks an asynchronous factory method or singleton that returns a `Future<T>`. Injectable will await the Future during container initialization (`getIt.init()`) before continuing.
+Marks a class (or external module member) as an asynchronous singleton. The generator emits `await gh.singletonAsync<T>(...)`, registering the instance as **pending**. The future completes when the app calls `await getIt.allReady()` or `await getIt.getAsync<T>()` — before that, synchronous `getIt<T>()` throws.
 
 ```dart
+@PreResolve()
 @Injectable(scope: Scope.singleton)
 class DatabaseService {
-  @FactoryMethod()
-  @PreResolve()
-  static Future<DatabaseService> create() async {
-    final db = DatabaseService._();
-    await db._init();
-    return db;
-  }
+  final Future<void> opened;
 
-  DatabaseService._();
-  Future<void> _init() async {}
+  DatabaseService() : opened = _open();
+
+  static Future<void> _open() async {
+    await Future<void>.delayed(const Duration(milliseconds: 300));
+  }
 }
+```
+
+Generated registration:
+
+```dart
+await gh.singletonAsync<DatabaseService>(() async => DatabaseService());
 ```
 
 ---
@@ -207,25 +211,20 @@ class ProductionApiClient implements ApiClient {}
 ```
 
 Initialize with:
+
 ```dart
 await configureDependencies(environment: Environment.prod);
 ```
 
 ---
 
-## 9. `@DisposeMethod()` & `@PostLocalInit()`
+## 9. `@DisposeMethod()`
 
-- `@DisposeMethod()`: Lifecycle hook automatically invoked when `getIt.reset()` or scope disposal occurs.
-- `@PostLocalInit()`: Lifecycle hook invoked immediately after the constructor executes.
+Lifecycle hook automatically invoked when `getIt.reset()` or scope disposal occurs.
 
 ```dart
 @Injectable(scope: Scope.lazySingleton)
 class WebSocketManager {
-  @PostLocalInit()
-  void startListening() {
-    // runs immediately upon creation
-  }
-
   @DisposeMethod()
   void dispose() {
     // cleans up streams / sockets
@@ -237,7 +236,7 @@ class WebSocketManager {
 
 ## 10. `@Order(int)`
 
-Sets explicit registration precedence for classes that need to be initialized before others when natural constructor dependency topological sort is insufficient.
+Sets explicit registration precedence for classes that must be registered before others.
 
 ```dart
 @Order(-10)

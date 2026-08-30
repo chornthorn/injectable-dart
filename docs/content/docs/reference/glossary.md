@@ -3,16 +3,16 @@ title: "Glossary"
 linkTitle: "Glossary"
 weight: 4
 description: >
-  Terminology and core definitions across Injectable and code generation.
+  Terminology and core definitions across Injectify and code generation.
 ---
 
-Definitions of terms used throughout Injectable documentation and codebase.
+Definitions of terms used throughout Injectify documentation and codebase.
 
 ---
 
 ### AST (Abstract Syntax Tree)
 
-A tree representation of the abstract syntactic structure of Dart source code. Injectable uses AST nodes as a fallback when constant analysis is unavailable.
+A tree representation of the abstract syntactic structure of Dart source code. Injectify uses AST nodes as a fallback when constant analysis is unavailable.
 
 ### Boundary Isolation
 
@@ -32,7 +32,7 @@ A lifecycle scope (`Scope.factory`) where a new instance is created every time t
 
 ### GetIt
 
-The underlying Dart service locator package used by Injectable to hold and resolve runtime dependencies.
+The underlying Dart service locator package used by Injectify to hold and resolve runtime dependencies.
 
 ### Lazy Singleton
 
@@ -44,7 +44,7 @@ An isolated module of dependencies defined in a specific directory or package, g
 
 ### PreResolve
 
-An annotation (`@PreResolve`) marking an asynchronous singleton that must be awaited during initial container startup before returning the initialized `GetIt` instance.
+An annotation (`@PreResolve`) marking a class or external module member as an asynchronous singleton. The generator registers it as **pending** via `await gh.singletonAsync<T>(...)`; the future completes when the app calls `await getIt.allReady()` or `await getIt.getAsync<T>()`.
 
 ### Singleton
 

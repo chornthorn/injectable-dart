@@ -6,14 +6,14 @@ description: >
   Complete API reference, annotations specifications, builder configuration, and glossary.
 ---
 
-This section provides complete technical reference specifications for all annotations, configuration options, and runtime APIs in Injectable.
+This section provides complete technical reference specifications for all annotations, configuration options, and runtime APIs in Injectify.
 
 ---
 
 ## In this section
 
 - [**Annotations Reference**](annotations/)
-  Full API reference and parameter details for `@Injectable`, `@InjectableInit`, `@InjectableMicroPackage`, `@ExternalMicroPackage`, `@ExternalModule`, `@Inject`, `@FactoryParam`, `@FactoryMethod`, `@PreResolve`, `@Environment`, `@Order`, `@DisposeMethod`, and `@PostLocalInit`.
+  Full API reference and parameter details for `@Injectable`, `@InjectableInit`, `@InjectableMicroPackage`, `@ExternalMicroPackage`, `@ExternalModule`, `@Inject`, `@FactoryParam`, `@FactoryMethod`, `@PreResolve`, `@Environment`, `@Order`, and `@DisposeMethod`.
 - [**Build Configuration**](build-configuration/)
   `build.yaml` builder options, CLI arguments, and code generator flags.
 - [**Runtime API**](runtime-api/)
