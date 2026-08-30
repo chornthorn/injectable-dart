@@ -6,7 +6,13 @@ abstract class AnalyticsService {
 }
 
 /// Development analytics that writes to the console.
-@Injectable(as: AnalyticsService, env: [Environment.dev])
+///
+/// A singleton so every tracked event is observable from one instance.
+@Injectable(
+  as: AnalyticsService,
+  scope: Scope.lazySingleton,
+  env: [Environment.dev],
+)
 class ConsoleAnalyticsService implements AnalyticsService {
   @override
   void track(String event) {
@@ -16,7 +22,11 @@ class ConsoleAnalyticsService implements AnalyticsService {
 }
 
 /// Production analytics that forwards events to a remote collector.
-@Injectable(as: AnalyticsService, env: [Environment.prod])
+@Injectable(
+  as: AnalyticsService,
+  scope: Scope.lazySingleton,
+  env: [Environment.prod],
+)
 class RemoteAnalyticsService implements AnalyticsService {
   final List<String> _events = [];
 
