@@ -1,9 +1,9 @@
 ---
 title: "Building a Modular Flutter App"
 linkTitle: "Modular Flutter App"
-weight: 1
+weight: 4
 description: >
-  End-to-end tutorial for architecting a feature-modular Flutter application.
+  End-to-end tutorial for architecting a feature-modular Flutter application with folder-scoped micro-packages.
 ---
 
 This tutorial demonstrates how to architect a modular Flutter application using folder-scoped micro-packages and environment-gated configuration.

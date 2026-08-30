@@ -1,7 +1,7 @@
 ---
 title: "Structuring a Multi-Package Monorepo"
 linkTitle: "Multi-Package Monorepo"
-weight: 2
+weight: 6
 description: >
   Full walkthrough of building a multi-package monorepo using externalMicroPackages.
 ---
@@ -78,11 +78,18 @@ In `packages/feature_billing/pubspec.yaml`:
 dependencies:
   core:
     path: ../core
+  get_it: ^8.0.3
   injectable:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: injectable
-  get_it: ^9.2.1
+      path: packages/injectable
+
+dev_dependencies:
+  build_runner: ^2.4.15
+  injectable_codegen:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: packages/injectable_codegen
 ```
 
 In `packages/feature_billing/lib/services/billing_service.dart`:
@@ -127,11 +134,18 @@ dependencies:
     path: ../../packages/core
   feature_billing:
     path: ../../packages/feature_billing
+  get_it: ^8.0.3
   injectable:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: injectable
-  get_it: ^9.2.1
+      path: packages/injectable
+
+dev_dependencies:
+  build_runner: ^2.4.15
+  injectable_codegen:
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: packages/injectable_codegen
 ```
 
 In `apps/mobile_app/lib/injection.dart`:
