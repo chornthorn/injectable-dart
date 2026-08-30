@@ -22,12 +22,12 @@ dependency_overrides:
   injectify:
     # Reference (git):
     #   git:
-    #     url: https://github.com/chornthorn/injectable-dart.git
+    #     url: https://github.com/chornthorn/injectify-dart.git
     #     path: packages/injectify
     path: ../../packages/injectify
   injectify_generator:
     # Reference (git):
     #   git:
-    #     url: https://github.com/chornthorn/injectable-dart.git
+    #     url: https://github.com/chornthorn/injectify-dart.git
     #     path: packages/injectify_generator
     path: ../../packages/injectify_generator

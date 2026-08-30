@@ -11,7 +11,7 @@ A modern, code-generated dependency injection toolkit for Dart & Flutter, built 
     <a class="btn btn-lg btn-primary me-3 mb-4" href="docs/">
         Get Started <i class="fas fa-arrow-alt-circle-right ms-2"></i>
     </a>
-    <a class="btn btn-lg btn-secondary me-3 mb-4" href="https://github.com/chornthorn/injectable-dart" target="_blank" rel="noopener">
+    <a class="btn btn-lg btn-secondary me-3 mb-4" href="https://github.com/chornthorn/injectify-dart" target="_blank" rel="noopener">
         View on GitHub <i class="fab fa-github ms-2"></i>
     </a>
 </div>

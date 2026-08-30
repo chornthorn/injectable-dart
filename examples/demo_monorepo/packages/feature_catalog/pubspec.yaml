@@ -17,7 +17,7 @@ dependencies:
   injectify:
     # Reference (git):
     #   git:
-    #     url: https://github.com/chornthorn/injectable-dart.git
+    #     url: https://github.com/chornthorn/injectify-dart.git
     #     path: packages/injectify
     path: ../../../../packages/injectify
   shared: ^1.0.0
@@ -27,7 +27,7 @@ dev_dependencies:
   injectify_generator:
     # Reference (git):
     #   git:
-    #     url: https://github.com/chornthorn/injectable-dart.git
+    #     url: https://github.com/chornthorn/injectify-dart.git
     #     path: packages/injectify_generator
     path: ../../../../packages/injectify_generator
   lints: ^6.0.0

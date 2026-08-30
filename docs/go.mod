@@ -1,4 +1,4 @@
-module github.com/chornthorn/injectable-dart/docs
+module github.com/chornthorn/injectify-dart/docs
 
 go 1.26.5
 

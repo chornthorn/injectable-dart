@@ -28,14 +28,14 @@ dependencies:
   get_it: ^8.0.3
   injectify:
     git:
-      url: https://github.com/chornthorn/injectable-dart.git
+      url: https://github.com/chornthorn/injectify-dart.git
       path: packages/injectify
 
 dev_dependencies:
   build_runner: ^2.4.15
   injectify_generator:
     git:
-      url: https://github.com/chornthorn/injectable-dart.git
+      url: https://github.com/chornthorn/injectify-dart.git
       path: packages/injectify_generator
 ```
 

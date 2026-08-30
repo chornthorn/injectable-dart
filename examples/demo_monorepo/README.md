@@ -63,7 +63,7 @@ dart run apps/root_app/bin/main.dart
 
 `injectify` / `injectify_generator` are consumed via **local path dependencies**
 (`../../packages/injectify`, `../../packages/injectify_generator`). The git
-URLs (`https://github.com/chornthorn/injectable-dart.git`) are kept as commented
+URLs (`https://github.com/chornthorn/injectify-dart.git`) are kept as commented
 references in every pubspec — handy if this example is moved to another repo,
 where only the git source is available.
 

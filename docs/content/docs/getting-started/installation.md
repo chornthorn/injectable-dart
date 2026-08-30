@@ -28,7 +28,7 @@ dependencies:
   get_it: ^9.2.1
   injectify:
     git:
-      url: https://github.com/chornthorn/injectable-dart.git
+      url: https://github.com/chornthorn/injectify-dart.git
       path: packages/injectify
       # Optionally pin to a specific branch or commit hash:
       # ref: main
@@ -37,7 +37,7 @@ dev_dependencies:
   build_runner: ^2.4.0
   injectify_generator:
     git:
-      url: https://github.com/chornthorn/injectable-dart.git
+      url: https://github.com/chornthorn/injectify-dart.git
       path: packages/injectify_generator
       # ref: main
   lints: ^5.0.0
