@@ -1,0 +1,20 @@
+{{/*
+  Markdown link render hook.
+
+  Rewrites root-relative links (starting with a single "/") to include the
+  site's base path, so they resolve correctly both locally (hugo server ->
+  http://localhost:1313/injectify-dart/) and on GitHub Pages, where the site
+  lives under the /injectify-dart/ subpath.
+
+  Note: relURL/absURL do not apply the base path inside render hooks (Hugo
+  0.165), so the base path is read from Site.BaseURL explicitly.
+
+  All other destinations (external URLs, anchors, relative paths) pass
+  through untouched.
+*/ -}}
+{{- $destination := .Destination -}}
+{{- if and (strings.HasPrefix $destination "/") (not (strings.HasPrefix $destination "//")) -}}
+  {{- $basePath := ((urls.Parse (.Page.Site.BaseURL | strings.TrimRight "/")).Path | strings.TrimRight "/") -}}
+  {{- $destination = printf "%s%s" $basePath $destination -}}
+{{- end -}}
+<a href="{{ $destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>

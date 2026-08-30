@@ -23,7 +23,7 @@ npm run serve
 hugo server --disableFastRender
 ```
 
-Navigate to `http://localhost:1313/` in your browser. Live reloading is enabled by default.
+Navigate to `http://localhost:1313/injectify-dart/` in your browser. Live reloading is enabled by default.
 
 ### 3. Build Static HTML
 

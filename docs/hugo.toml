@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://chornthorn.github.io/injectify-dart/"
 title = "Injectify"
 enableGitInfo = true
 
@@ -15,6 +15,9 @@ locale = "en"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+    [markup.goldmark.renderhooks]
+      [markup.goldmark.renderhooks.link]
+        useembedded = 'fallback'
   [markup.highlight]
     codeFences = true
     guessSyntax = false
