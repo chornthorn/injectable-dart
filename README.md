@@ -1,4 +1,4 @@
-# Injectable for Dart & Flutter
+# Injectify for Dart & Flutter
 
 A powerful code-generation dependency injection toolkit for Dart & Flutter built on top of [GetIt](https://pub.dev/packages/get_it).
 
@@ -28,14 +28,14 @@ Full documentation, interactive architecture diagrams, tutorials, and API refere
 
 ## Agent Skills Support
 
-This repository ships with a standard [Agent Skill](https://agentskills.io) conforming to the Agent Skills specification located in [`skills/injectable/`](skills/injectable/).
+This repository ships with a standard [Agent Skill](https://agentskills.io) conforming to the Agent Skills specification located in [`skills/injectify/`](skills/injectify/).
 
-Developers using AI assistants (Claude Code, Cursor, Antigravity, GitHub Copilot, Codex, etc.) can equip their agents with full Injectable expertise by copying or downloading the skill into their project:
+Developers using AI assistants (Claude Code, Cursor, Antigravity, GitHub Copilot, Codex, etc.) can equip their agents with full Injectify expertise by copying or downloading the skill into their project:
 
 ```bash
 # In your Dart/Flutter project directory:
-mkdir -p .agents/skills/injectable
-cp -r /path/to/injectable-dart/skills/injectable/* .agents/skills/injectable/
+mkdir -p .agents/skills/injectify
+cp -r /path/to/injectable-dart/skills/injectify/* .agents/skills/injectify/
 ```
 
 The skill includes complete guidance for:
@@ -66,15 +66,15 @@ Add the runtime annotations to `dependencies` and the code generator to `dev_dep
 
 ```yaml
 dependencies:
-  get_it: ^8.0.3
-  injectable:
+  get_it: ^9.2.1
+  injectify:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
       path: packages/injectify
 
 dev_dependencies:
-  build_runner: ^2.4.15
-  injectable_codegen:
+  build_runner: ^2.4.0
+  injectify_generator:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
       path: packages/injectify_generator
@@ -122,10 +122,10 @@ void main() async {
 
 ```bash
 # Dart
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 
 # Flutter
-flutter pub run build_runner build --delete-conflicting-outputs
+flutter pub run build_runner build
 ```
 
 ---

@@ -1,6 +1,6 @@
 name: demo_monorepo
 description: >-
-  Workspace root demonstrating the injectable package supporting:
+  Workspace root demonstrating the injectify package supporting:
   (A) a monorepo where each package has its own pubspec.yaml, and
   (A') folder-scoped micro-packages with no pubspec.yaml, nested inside a package.
   The runnable entry point is apps/root_app.
@@ -16,9 +16,9 @@ workspace:
   - packages/feature_catalog
 
 dependency_overrides:
-  # `injectable_codegen` declares `injectable` as an unversioned hosted
+  # `injectify_generator` declares `injectify` as an unversioned hosted
   # dependency (workspace-member style). When consumed outside the
-  # injectable-dart workspace, pin it to the local path (or the git source).
+  # workspace, pin it to the local path (or the git source).
   injectify:
     # Reference (git):
     #   git:

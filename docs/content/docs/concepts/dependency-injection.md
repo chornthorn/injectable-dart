@@ -43,7 +43,7 @@ class UserRepository {
 
 ## 2. Compile-Time Resolution
 
-Injectable generates pure Dart registration code during the build step. This design offers several advantages:
+Injectify generates pure Dart registration code during the build step. This design offers several advantages:
 
 1. **Zero Reflection**: Works seamlessly with Ahead-Of-Time (AOT) compilation on Flutter Web, iOS, Android, and Dart Native without `dart:mirrors`.
 2. **Deterministic Startup**: Dependency instantiation logic is explicitly written in `.config.dart`, making debugging and stepping through breakpoints straightforward.

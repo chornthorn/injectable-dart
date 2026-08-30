@@ -38,19 +38,19 @@ Depending on the AI tool you use, place the folder in the corresponding configur
 
 ## 2. Configuring Dependencies
 
-Make sure your `pubspec.yaml` references `injectable` and `injectable_codegen`:
+Make sure your `pubspec.yaml` references `injectable` and `injectify_generator`:
 
 ```yaml
 dependencies:
   get_it: ^8.0.3
-  injectable:
+  injectify:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
       path: packages/injectify
 
 dev_dependencies:
   build_runner: ^2.4.15
-  injectable_codegen:
+  injectify_generator:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
       path: packages/injectify_generator

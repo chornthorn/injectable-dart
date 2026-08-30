@@ -6,7 +6,7 @@ description: >
   Folder-scoped micro-packages, boundary isolation, sub-modules, and cross-package composition.
 ---
 
-As codebases grow, monolithic dependency registrations become unwieldy. Injectable provides **Folder-Scoped Micro-Packages** to partition registrations into modular, isolated units.
+As codebases grow, monolithic dependency registrations become unwieldy. Injectify provides **Folder-Scoped Micro-Packages** to partition registrations into modular, isolated units.
 
 ---
 

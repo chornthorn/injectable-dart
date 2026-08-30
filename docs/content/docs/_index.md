@@ -6,7 +6,7 @@ description: >
   Complete architectural overview, guides, and API reference for Injectable.
 ---
 
-Welcome to the **Injectable** documentation. Injectable is a code-generation dependency injection toolkit for Dart and Flutter built on top of [GetIt](https://pub.dev/packages/get_it).
+Welcome to the **Injectable** documentation. Injectify is a code-generation dependency injection toolkit for Dart and Flutter built on top of [GetIt](https://pub.dev/packages/get_it).
 
 It automates service locator registration, manages asynchronous dependency resolution, isolates modular domains via **Folder-Scoped Micro-Packages**, and supports seamless multi-package monorepo architectures.
 
@@ -64,7 +64,7 @@ Comprehensive specifications for all annotations, CLI builder options, error dia
 
 ```mermaid
 graph TD
-    A["Dart / Flutter Source Code"] -->|"Annotated with @Injectable"| B["injectable_codegen (build_runner)"]
+    A["Dart / Flutter Source Code"] -->|"Annotated with @Injectable"| B["injectify_generator (build_runner)"]
     B -->|"Static Analyzer AST Inspection"| C["Dependency Graph & Topological Sort"]
     C -->|"Emits *.config.dart"| D["Deterministic init() Extension"]
     D -->|"Executes at App Bootstrap"| E["GetIt Locator Registry"]

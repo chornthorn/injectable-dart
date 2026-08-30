@@ -8,7 +8,7 @@ description: >
 
 Not all dependencies are classes defined within your project that you can directly annotate. Many dependencies come from third-party packages (e.g. `SharedPreferences`, `Dio`, `FirebaseAuth`, `HttpClient`).
 
-Injectable provides `@ExternalModule` to register these external instances cleanly.
+Injectify provides `@ExternalModule` to register these external instances cleanly.
 
 ---
 

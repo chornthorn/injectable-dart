@@ -194,7 +194,7 @@ extension GetItInjectableX on _i1.GetIt {
 
 ## 5. Enterprise-Grade Capabilities
 
-Injectable provides purpose-built tools designed to address the specific architectural challenges of large-scale Dart and Flutter applications.
+Injectify provides purpose-built tools designed to address the specific architectural challenges of large-scale Dart and Flutter applications.
 
 ### Multi-environment gating
 

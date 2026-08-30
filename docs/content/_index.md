@@ -3,7 +3,7 @@ title: "Injectable"
 linkTitle: "Injectable"
 ---
 
-{{< blocks/cover title="Injectable for Dart & Flutter" image_anchor="top" height="min" color="primary" >}}
+{{< blocks/cover title="Injectify for Dart & Flutter" image_anchor="top" height="min" color="primary" >}}
 <p class="lead mt-4">
 A modern, code-generated dependency injection toolkit for Dart & Flutter, built on <code>GetIt</code> with <b>folder-scoped micro-packages</b> and explicit class-form annotations.
 </p>
@@ -53,7 +53,7 @@ Native support for asynchronous singletons (`singletonAsync`) and synchronous bo
 <div class="col-12 text-center py-4">
   <h2 class="h3 font-weight-bold mb-3">Community & Acknowledgements</h2>
   <p class="opacity-75 max-w-700 mx-auto mb-4">
-    Injectable is created and maintained by <strong>Thorn Chorn</strong>. Special thanks to the Dart and Flutter open-source community:
+    Injectify is created and maintained by <strong>Thorn Chorn</strong>. Special thanks to the Dart and Flutter open-source community:
   </p>
   <div class="d-flex justify-content-center flex-wrap gap-3">
     <a class="btn btn-outline-primary px-4 py-2" href="https://pub.dev/packages/get_it" target="_blank" rel="noopener">

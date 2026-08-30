@@ -27,7 +27,7 @@ All posts live under the [Blog](/blog/) section of this site next to the full [d
 
 ## 3. Get involved
 
-Injectable is open source, and the docs and blog are part of the repository:
+Injectify is open source, and the docs and blog are part of the repository:
 
 - **Report issues** and request topics on [GitHub](https://github.com/chornthorn/injectable-dart/issues).
 - **Contribute posts** by opening a pull request against the `docs/content/blog` directory.

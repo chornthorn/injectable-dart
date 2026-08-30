@@ -3,29 +3,22 @@ title: "Installation"
 linkTitle: "Installation"
 weight: 1
 description: >
-  Add injectable and injectable_codegen to your Dart or Flutter project dependencies via Git URL.
+  Add injectify and injectify_generator to your Dart or Flutter project dependencies.
 ---
 
-This guide explains how to add `injectable` and `injectable_codegen` to your Dart or Flutter application.
-
-{{% alert title="Important: Git Dependency Notice" color="warning" %}}
-**Pre-Release / Git Dependency Notice**:
-This toolkit is not yet published to [pub.dev](https://pub.dev). Because the `injectable` package name is already taken on pub.dev (actively maintained by Milad Akarie), this project builds on similar ergonomic principles while introducing advanced features such as **folder-scoped micro-packages**, modular monorepo isolation, and explicit Dart 3 class-form annotations. We plan to publish under a dedicated package name in the future.
-
-In the meantime, you can use the toolkit directly from GitHub using **Git URL dependencies** with the corresponding subdirectory paths (`path: injectable` and `path: injectable_codegen`).
-{{% /alert %}}
+This guide explains how to add `injectify` and `injectify_generator` to your Dart or Flutter application.
 
 ---
 
-## 1. Add Dependencies via Git
+## 1. Add Dependencies
 
-Add `get_it` and the runtime `injectable` package to your `dependencies`, and add `build_runner` and `injectable_codegen` to your `dev_dependencies` in your `pubspec.yaml`.
+Add `get_it` and `injectify` to your `dependencies`, and add `build_runner` and `injectify_generator` to your `dev_dependencies` in your `pubspec.yaml`.
 
 ### Example `pubspec.yaml`
 
 ```yaml
 name: my_app
-description: "A project using Injectable"
+description: "A project using Injectify"
 version: 1.0.0
 
 environment:
@@ -33,19 +26,19 @@ environment:
 
 dependencies:
   get_it: ^9.2.1
-  injectable:
+  injectify:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: injectable
+      path: packages/injectify
       # Optionally pin to a specific branch or commit hash:
       # ref: main
 
 dev_dependencies:
   build_runner: ^2.4.0
-  injectable_codegen:
+  injectify_generator:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: injectable_codegen
+      path: packages/injectify_generator
       # ref: main
   lints: ^5.0.0
   test: ^1.25.0
@@ -53,7 +46,7 @@ dev_dependencies:
 
 ### Fetch Dependencies
 
-Run `pub get` to resolve and download the git dependencies:
+Run `pub get` to resolve and download dependencies:
 
 ```bash
 # In a Dart project:
@@ -71,7 +64,7 @@ Ensure your Dart SDK constraint is at least `^3.0.0` (or `^3.12.0`).
 
 ## 2. Analysis Options Configuration
 
-Injectable generates Dart code into `.config.dart` files. If you run strict analyzer checks, you may want to exclude generated files from analysis or ignore specific lints in generated code.
+Injectify generates Dart code into `.config.dart` files. If you run strict analyzer checks, you may want to exclude generated files from analysis or ignore specific lints in generated code.
 
 In your `analysis_options.yaml`:
 

@@ -8,7 +8,7 @@ description: >
 
 Many modern services and SDKs require asynchronous initialization before they can be used (e.g. database opening, reading cached disk files, or setting up secure storage).
 
-Injectable provides first-class support for asynchronous dependencies through `@PreResolve` and `singletonAsync`.
+Injectify provides first-class support for asynchronous dependencies through `@PreResolve` and `singletonAsync`.
 
 ---
 

@@ -1,15 +1,15 @@
 ---
-name: injectable
-description: Complete dependency injection toolkit for Dart & Flutter using Injectable and GetIt with code generation, folder-scoped micro-packages, third-party modules, and asynchronous startup. Use when setting up or modifying dependency injection, annotating classes with @Injectable, configuring @InjectableInit or @InjectableMicroPackage, wiring third-party providers with @ExternalModule, managing lifetimes (factory, lazySingleton, singleton), or generating DI code with build_runner in Dart/Flutter projects.
+name: injectify
+description: Complete dependency injection toolkit for Dart & Flutter using Injectify and GetIt with code generation, folder-scoped micro-packages, third-party modules, and asynchronous startup. Use when setting up or modifying dependency injection, annotating classes with @Injectable, configuring @InjectableInit or @InjectableMicroPackage, wiring third-party providers with @ExternalModule, managing lifetimes (factory, lazySingleton, singleton), or generating DI code with build_runner in Dart/Flutter projects.
 license: Apache-2.0
 metadata:
   author: injectable-dart
   version: "1.0.0"
 ---
 
-# Injectable Dependency Injection Skill
+# Injectify Dependency Injection Skill
 
-This skill provides step-by-step instructions, architectural patterns, and code generation rules for building robust, scalable Dependency Injection in Dart and Flutter projects using **Injectable** and **GetIt**.
+This skill provides step-by-step instructions, architectural patterns, and code generation rules for building robust, scalable Dependency Injection in Dart and Flutter projects using **Injectify** and **GetIt**.
 
 ---
 
@@ -47,15 +47,15 @@ Activate this skill whenever you need to:
 
 ```yaml
 dependencies:
-  get_it: ^8.0.3
-  injectable:
+  get_it: ^9.2.1
+  injectify:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
       path: packages/injectify
 
 dev_dependencies:
-  build_runner: ^2.4.15
-  injectable_codegen:
+  build_runner: ^2.4.0
+  injectify_generator:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
       path: packages/injectify_generator
@@ -121,10 +121,10 @@ Execute the build runner command to produce `.config.dart`:
 
 ```bash
 # Dart projects
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 
 # Flutter projects
-flutter pub run build_runner build --delete-conflicting-outputs
+flutter pub run build_runner build
 ```
 
 ### 5. Initialize Container at App Entry (`main.dart`)

@@ -6,7 +6,7 @@ description: >
   Comprehensive guide to unit testing, widget testing, environment switching, and mocking dependencies in Injectable.
 ---
 
-Testing applications built with Injectable is straightforward because dependencies are decoupled through constructor injection and environment filtering.
+Testing applications built with Injectify is straightforward because dependencies are decoupled through constructor injection and environment filtering.
 
 This tutorial covers unit testing, mocking interfaces, environment switching (`@Environment`), and resetting the GetIt locator between tests.
 

@@ -8,7 +8,7 @@ description: >
 
 When building large-scale Dart or Flutter projects, splitting functionality across multiple packages in a monorepo improves build times, isolates boundaries, and promotes code reuse.
 
-Injectable provides first-class support for monorepo architectures through **External Micro-Packages** and folder-scoped micro-packages.
+Injectify provides first-class support for monorepo architectures through **External Micro-Packages** and folder-scoped micro-packages.
 
 ---
 
@@ -74,18 +74,18 @@ dependencies:
     path: ../../packages/shared
   feature_auth:
     path: ../../packages/feature_auth
-  injectable:
+  injectify:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: injectable
+      path: packages/injectify
   get_it: ^9.2.1
 
 dev_dependencies:
   build_runner: ^2.4.0
-  injectable_codegen:
+  injectify_generator:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: injectable_codegen
+      path: packages/injectify_generator
 ```
 
 In your application's `injection.dart`, declare the external micro-packages:

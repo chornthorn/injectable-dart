@@ -6,7 +6,7 @@ description: >
   Standard Agent Skills for AI assistants (Claude Code, Cursor, Antigravity, GitHub Copilot) to automate dependency injection with Injectable.
 ---
 
-Injectable provides an official, standard **Agent Skill** conforming to the [Agent Skills specification](https://agentskills.io).
+Injectify provides an official, standard **Agent Skill** conforming to the [Agent Skills specification](https://agentskills.io).
 
 By integrating the Injectable skill into your development workflow, AI coding assistants (such as Claude Code, Cursor, Antigravity, GitHub Copilot, and Codex) gain deep, context-aware knowledge of Injectable's modern API, folder-scoped micro-packages, and `build_runner` workflows.
 

@@ -1,7 +1,7 @@
 # demo_monorepo
 
-A self-contained monorepo demo proving that the **`injectable`** /
-`injectable_codegen` packages (pulled from GitHub) support two DI layouts:
+A self-contained monorepo demo proving that the **`injectify`** /
+`injectify_generator` packages (pulled from GitHub) support two DI layouts:
 
 | Layout                               | Where                                                                                                                                                           |
 | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23,7 +23,7 @@ All packages share one `GetIt` instance, so services can cross boundaries:
 
 ```
 demo_monorepo/                  # workspace root only (no runtime code)
-├── pubspec.yaml                # workspace + dependency_overrides for injectable
+├── pubspec.yaml                # workspace + dependency_overrides for injectify
 ├── apps/
 │   └── root_app/               # runnable app: own pubspec, own generated config
 │       ├── pubspec.yaml
@@ -50,7 +50,7 @@ dart pub get
 
 # regenerate configs after annotation changes (in shared/, feature_catalog/,
 # apps/root_app/):
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 
 # run the app
 dart run apps/root_app/bin/main.dart
@@ -61,15 +61,15 @@ dart run apps/root_app/bin/main.dart
 
 ## Dependencies
 
-`injectable` / `injectable_codegen` are consumed via **local path dependencies**
+`injectify` / `injectify_generator` are consumed via **local path dependencies**
 (`../../packages/injectify`, `../../packages/injectify_generator`). The git
 URLs (`https://github.com/chornthorn/injectable-dart.git`) are kept as commented
 references in every pubspec — handy if this example is moved to another repo,
 where only the git source is available.
 
-The root `dependency_overrides` pins `injectable` (and defensively
-`injectable_codegen`) to the local path, because `injectable_codegen`'s
-manifest declares `injectable` as an unversioned hosted dependency
+The root `dependency_overrides` pins `injectify` (and defensively
+`injectify_generator`) to the local path, because `injectify_generator`'s
+manifest declares `injectify` as an unversioned hosted dependency
 (workspace-member style) which pub cannot merge with a direct path dependency.
 
 ## How the root app composes everything
@@ -208,6 +208,7 @@ auto-composes it with `useMicroPackage: true`:
   moduleName: 'Catalog',
   initializerName: 'initCatalog',
   useMicroPackage: true, // auto-compose nested sub micro-packages in init()
+InternalMicroPackage  useMicroPackage: true,
 )
 void configureCatalogModule() {}
 ```
@@ -240,7 +241,7 @@ shared container at runtime.
 
 - Newly annotated sources need `dart run build_runner build` in the affected
   package (`shared/`, `feature_catalog/`, `apps/root_app/`).
-- The demo is intentionally **not** a member of the root `injectable_workspace` — it
+- The demo is intentionally **not** a member of the root workspace — it
   has its own nested workspace so it behaves like a standalone repo, consuming
   the packages via local path dependencies (git URLs kept as commented
   references for relocation).

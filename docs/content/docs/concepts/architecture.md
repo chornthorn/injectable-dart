@@ -6,10 +6,10 @@ description: >
   The build-time generation pipeline and runtime adapter architecture of Injectable.
 ---
 
-Injectable is composed of two primary layers:
+Injectify is composed of two primary layers:
 
 1. **Runtime Framework (`package:injectable`)**: Lightweight annotations, interfaces, and the `GetItHelper` adapter.
-2. **Build-Time Generator (`package:injectable_codegen`)**: An analyzer-driven `build_runner` builder that parses Dart code and generates type-safe configuration files.
+2. **Build-Time Generator (`package:injectify_generator`)**: An analyzer-driven `build_runner` builder that parses Dart code and generates type-safe configuration files.
 
 ---
 
@@ -85,7 +85,7 @@ The emitters write the finalized `.config.dart` file:
 
 ## 3. Emitted Output Types
 
-Depending on the annotation used on the target file, Injectable produces one of two output structures:
+Depending on the annotation used on the target file, Injectify produces one of two output structures:
 
 - **`@InjectableInit()`** — produces an `extension GetItInjectableX on GetIt` with an `init()` method. Used for top-level application bootstrap.
 - **`@InjectableMicroPackage()`** — produces a subclass of `MicroPackageModule` (e.g. `AuthInjectableModule`). Used for reusable feature modules.
