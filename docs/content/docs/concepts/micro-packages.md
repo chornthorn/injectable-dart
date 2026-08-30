@@ -36,13 +36,11 @@ flowchart TD
 
 Injectable supports multiple composition models:
 
-| Mode | Annotation | Behavior |
-| :--- | :--- | :--- |
-| **Monolithic Root** | `@InjectableInit()` | Scans `lib/**` as a single monolithic container. |
-| **Root Compositor** | `@InjectableInit(useMicroPackage: true)` | Scans `lib/**`, discovers all folder micro-packages, excludes their folders from local scan, and composes them **flatly** at root. |
-| **Folder Micro-Package** | `@InjectableMicroPackage(moduleName: 'X')` | Scans only its own directory. Sibling and parent folders are invisible. |
-| **Module Compositor** | `@InjectableMicroPackage(useMicroPackage: true)` | Scans own folder, discovers nested sub-micro-packages, and composes nested modules inside its own `init()`. |
-| **External Composition** | `externalMicroPackages: [ExternalMicroPackage(ModuleType)]` | Explicitly composes modules from other `pubspec.yaml` packages in declaration order. |
+- **Monolithic Root** — `@InjectableInit()` — Scans `lib/**` as a single monolithic container.
+- **Root Compositor** — `@InjectableInit(useMicroPackage: true)` — Scans `lib/**`, discovers all folder micro-packages, excludes their folders from local scan, and composes them flatly at root.
+- **Folder Micro-Package** — `@InjectableMicroPackage(moduleName: 'X')` — Scans only its own directory. Sibling and parent folders are invisible.
+- **Module Compositor** — `@InjectableMicroPackage(useMicroPackage: true)` — Scans its own folder, discovers nested sub-micro-packages, and composes nested modules inside its own `init()`.
+- **External Composition** — `externalMicroPackages: [ExternalMicroPackage(ModuleType)]` — Explicitly composes modules from other `pubspec.yaml` packages in declaration order.
 
 ---
 
@@ -56,6 +54,7 @@ When `@InjectableInit(useMicroPackage: true)` or a parent micro-package scans a 
 4. It emits an explicit `gh.initMicroPackage(AuthInjectableModule())` call in the generated `init()` method.
 
 This boundary isolation ensures:
+
 - Feature internal classes cannot accidentally pollute or conflict with other features.
 - No class is registered twice in `GetIt`.
 

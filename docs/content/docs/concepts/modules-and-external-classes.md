@@ -62,7 +62,7 @@ await gh.singletonAsync<_i2.SharedPreferences>(() => registerModule.prefs);
 
 ## 3. Method vs Getter Rules
 
-| Element Type                                                            | When to Use                                                                                |
-| :---------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |
-| **Getters** (`Type get myDep => ...`)                                   | For zero-argument dependencies or dependencies that resolve their parameters from `GetIt`. |
-| **Methods** (`Type createDep(DepA a, @FactoryParam() String p) => ...`) | When passing parameters at resolution time, or requiring custom initialization logic.      |
+Choose between getters and methods based on how the dependency is resolved:
+
+- **Getters** (`Type get myDep => ...`) — for zero-argument dependencies or dependencies that resolve their parameters from `GetIt`.
+- **Methods** (`Type createDep(DepA a, @FactoryParam() String p) => ...`) — when passing parameters at resolution time, or requiring custom initialization logic.

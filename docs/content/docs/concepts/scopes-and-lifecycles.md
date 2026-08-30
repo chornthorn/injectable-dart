@@ -12,11 +12,11 @@ In Injectable, the lifecycle of a dependency is controlled by the `Scope` enumer
 
 ## 1. Supported Lifecycles
 
-| Scope               | Enum Value                | Behavior                                                           | GetIt Equivalent        |
-| :------------------ | :------------------------ | :----------------------------------------------------------------- | :---------------------- |
-| **Factory**         | `Scope.factory` (default) | A new instance is created on **every lookup** (`getIt<T>()`).      | `registerFactory`       |
-| **Lazy Singleton**  | `Scope.lazySingleton`     | A single shared instance created **on first lookup** and cached.   | `registerLazySingleton` |
-| **Eager Singleton** | `Scope.singleton`         | A single shared instance created **immediately** at `init()` time. | `registerSingleton`     |
+Injectable supports **three** lifecycles, each mapped to a corresponding GetIt registration method:
+
+- **Factory** — `Scope.factory` (default) — A new instance is created on _every lookup_ (`getIt<T>()`). This maps to GetIt's `registerFactory`.
+- **Lazy Singleton** — `Scope.lazySingleton` — A single shared instance is created _on first lookup_ and cached for subsequent lookups. This maps to GetIt's `registerLazySingleton`.
+- **Eager Singleton** — `Scope.singleton` — A single shared instance is created _immediately_ at `init()` time. This maps to GetIt's `registerSingleton`.
 
 ---
 

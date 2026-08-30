@@ -35,13 +35,13 @@ Future<void> configureDependencies(String env) async => getIt.init(environment: 
 
 ## 2. Options Overview
 
-| Parameter | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `initializerName` | `String` | `'init'` | Name of the generated method. |
-| `preferRelativeImports` | `bool` | `true` | When `true`, relative imports are used for local project files. |
-| `asExtension` | `bool` | `true` | When `true`, generates an extension on `GetIt` (`getIt.init()`). |
-| `useMicroPackage` | `bool` | `false` | When `true`, auto-discovers and flattens all `@InjectableMicroPackage` directories in this package. |
-| `externalMicroPackages` | `List<ExternalMicroPackage>` | `const []` | List of micro-packages imported from other pubspecs. |
+Each parameter configures one aspect of the generated initializer:
+
+- **`initializerName`** (`String`, default `'init'`) — Name of the generated method.
+- **`preferRelativeImports`** (`bool`, default `true`) — When `true`, relative imports are used for local project files.
+- **`asExtension`** (`bool`, default `true`) — When `true`, generates an extension on `GetIt` (`getIt.init()`).
+- **`useMicroPackage`** (`bool`, default `false`) — When `true`, auto-discovers and flattens all `@InjectableMicroPackage` directories in this package.
+- **`externalMicroPackages`** (`List<ExternalMicroPackage>`, default `const []`) — Micro-packages imported from other pubspecs.
 
 ---
 

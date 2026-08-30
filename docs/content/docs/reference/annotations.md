@@ -29,16 +29,16 @@ const Injectable({
 });
 ```
 
-| Parameter      | Type            | Default         | Description                                                                  |
-| :------------- | :-------------- | :-------------- | :--------------------------------------------------------------------------- |
-| `scope`        | `Scope`         | `Scope.factory` | Lifecycle scope (`Scope.factory`, `Scope.singleton`, `Scope.lazySingleton`). |
-| `as`           | `Type?`         | `null`          | Bind this implementation to an interface or abstract base class.             |
-| `env`          | `List<String>?` | `null`          | Restrict registration to specified environments (e.g. `[Environment.dev]`).  |
-| `order`        | `int?`          | `0`             | Explicit sorting priority during registration generation.                    |
-| `getItScope`   | `String?`       | `null`          | Optional GetIt scope name.                                                   |
-| `signalsReady` | `bool?`         | `null`          | Whether this singleton signals readiness to GetIt.                           |
-| `dependsOn`    | `List<Type>?`   | `null`          | Dependencies that must be initialized before this async singleton.           |
-| `dispose`      | `Function?`     | `null`          | Disposal callback invoked on container reset.                                |
+Each parameter controls one aspect of the registration:
+
+- **`scope`** (`Scope`, default `Scope.factory`) — Lifecycle scope: `Scope.factory`, `Scope.singleton`, or `Scope.lazySingleton`.
+- **`as`** (`Type?`, default `null`) — Binds this implementation to an interface or abstract base class.
+- **`env`** (`List<String>?`, default `null`) — Restricts registration to specified environments (e.g. `[Environment.dev]`).
+- **`order`** (`int?`, default `0`) — Explicit sorting priority during registration generation.
+- **`getItScope`** (`String?`, default `null`) — Optional GetIt scope name.
+- **`signalsReady`** (`bool?`, default `null`) — Whether this singleton signals readiness to GetIt.
+- **`dependsOn`** (`List<Type>?`, default `null`) — Dependencies that must be initialized before this async singleton.
+- **`dispose`** (`Function?`, default `null`) — Disposal callback invoked on container reset.
 
 ---
 
