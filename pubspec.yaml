@@ -9,6 +9,7 @@ workspace:
   - packages/injectable
   - packages/injectable_codegen
   - examples/micro_package_example
+  - examples/environments_filtering_example
 
 melos:
   scripts:
