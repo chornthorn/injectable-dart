@@ -74,18 +74,12 @@ dependencies:
     path: ../../packages/shared
   feature_auth:
     path: ../../packages/feature_auth
-  injectify:
-    git:
-      url: https://github.com/chornthorn/injectify-dart.git
-      path: packages/injectify
+  injectify: ^0.1.0
   get_it: ^9.2.1
 
 dev_dependencies:
   build_runner: ^2.4.0
-  injectify_generator:
-    git:
-      url: https://github.com/chornthorn/injectify-dart.git
-      path: packages/injectify_generator
+  injectify_generator: ^0.1.0
 ```
 
 In your application's `injection.dart`, declare the external micro-packages:

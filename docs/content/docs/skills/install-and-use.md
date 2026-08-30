@@ -43,17 +43,11 @@ Make sure your `pubspec.yaml` references `injectify` and `injectify_generator`:
 ```yaml
 dependencies:
   get_it: ^9.2.1
-  injectify:
-    git:
-      url: https://github.com/chornthorn/injectify-dart.git
-      path: packages/injectify
+  injectify: ^0.1.0
 
 dev_dependencies:
   build_runner: ^2.4.0
-  injectify_generator:
-    git:
-      url: https://github.com/chornthorn/injectify-dart.git
-      path: packages/injectify_generator
+  injectify_generator: ^0.1.0
 ```
 
 ---

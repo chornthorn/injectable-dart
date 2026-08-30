@@ -20,14 +20,10 @@ dependency_overrides:
   # dependency (workspace-member style). When consumed outside the
   # workspace, pin it to the local path (or the git source).
   injectify:
-    # Reference (git):
-    #   git:
-    #     url: https://github.com/chornthorn/injectify-dart.git
-    #     path: packages/injectify
+    # Reference (pub.dev):
+    #   injectify: ^0.1.0
     path: ../../packages/injectify
   injectify_generator:
-    # Reference (git):
-    #   git:
-    #     url: https://github.com/chornthorn/injectify-dart.git
-    #     path: packages/injectify_generator
+    # Reference (pub.dev):
+    #   injectify_generator: ^0.1.0
     path: ../../packages/injectify_generator

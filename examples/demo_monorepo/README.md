@@ -62,10 +62,11 @@ dart run apps/root_app/bin/main.dart
 ## Dependencies
 
 `injectify` / `injectify_generator` are consumed via **local path dependencies**
-(`../../packages/injectify`, `../../packages/injectify_generator`). The git
-URLs (`https://github.com/chornthorn/injectify-dart.git`) are kept as commented
-references in every pubspec — handy if this example is moved to another repo,
-where only the git source is available.
+(`../../packages/injectify`, `../../packages/injectify_generator`) so the demo
+always tests the workspace sources. For a standalone use of the demo (e.g.
+moved to its own repo), switch to the pub.dev releases instead —
+`injectify: ^0.1.0` and `injectify_generator: ^0.1.0` — the commented
+references in every pubspec show where to change.
 
 The root `dependency_overrides` pins `injectify` (and defensively
 `injectify_generator`) to the local path, because `injectify_generator`'s

@@ -15,20 +15,16 @@ dependencies:
   feature_catalog: ^1.0.0
   get_it: ^9.2.1
   injectify:
-    # Reference (git):
-    #   git:
-    #     url: https://github.com/chornthorn/injectify-dart.git
-    #     path: packages/injectify
+    # Reference (pub.dev):
+    #   injectify: ^0.1.0
     path: ../../../../packages/injectify
   shared: ^1.0.0
 
 dev_dependencies:
   build_runner: ^2.4.0
   injectify_generator:
-    # Reference (git):
-    #   git:
-    #     url: https://github.com/chornthorn/injectify-dart.git
-    #     path: packages/injectify_generator
+    # Reference (pub.dev):
+    #   injectify_generator: ^0.1.0
     path: ../../../../packages/injectify_generator
   lints: ^6.0.0
   test: ^1.25.6

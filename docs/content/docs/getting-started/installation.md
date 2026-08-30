@@ -26,20 +26,11 @@ environment:
 
 dependencies:
   get_it: ^9.2.1
-  injectify:
-    git:
-      url: https://github.com/chornthorn/injectify-dart.git
-      path: packages/injectify
-      # Optionally pin to a specific branch or commit hash:
-      # ref: main
+  injectify: ^0.1.0
 
 dev_dependencies:
   build_runner: ^2.4.0
-  injectify_generator:
-    git:
-      url: https://github.com/chornthorn/injectify-dart.git
-      path: packages/injectify_generator
-      # ref: main
+  injectify_generator: ^0.1.0
   lints: ^6.0.0
   test: ^1.25.0
 ```
