@@ -29,6 +29,7 @@ github_repo = "https://github.com/chornthorn/injectable-dart"
 github_project_repo = "https://github.com/chornthorn/injectable-dart"
 offlineSearch = true
 time_format_default = "January 2, 2006 at 3:04 PM MST"
+time_format_blog = "January 2, 2006"
 
 # UI configuration for documentation sidebar and navigation
 [params.ui]
@@ -73,6 +74,10 @@ no = 'Sorry to hear that. Please <a href="https://github.com/chornthorn/injectab
     name = "Documentation"
     weight = 10
     url = "/docs/"
+  [[menu.main]]
+    name = "Blog"
+    weight = 20
+    url = "/blog/"
   [[menu.main]]
     name = "GitHub"
     weight = 50

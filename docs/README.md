@@ -49,6 +49,9 @@ docs/
 │       └── _styles_project.scss    # Custom layout, responsive sidebar, and theme rules
 └── content/
     ├── _index.md             # Landing page with hero banner & feature cards
+    ├── blog/                 # Blog: news, release notes, deep dives
+    │   ├── _index.md         # Blog landing page (year-grouped post list, RSS)
+    │   └── 2026/             # Posts grouped by year in the URL (e.g. /blog/2026/<post>/)
     └── docs/
         ├── _index.md         # Main documentation map
         ├── getting-started/  # Installation, Quickstart, Monorepos
