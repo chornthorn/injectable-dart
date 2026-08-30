@@ -16,7 +16,11 @@ locale = "en"
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
-    style = "monokai"
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "github-dark"
+    tabWidth = 2
 
 [params]
 author = "Thorn Chorn"

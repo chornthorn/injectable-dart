@@ -580,22 +580,6 @@ h1, h2, h3, h4, h5, h6,
     color: var(--bs-heading-color);
   }
 
-  code:not(pre code) {
-    font-family: var(--bs-font-monospace);
-    font-size: 0.875em;
-    padding: 0.15em 0.35em;
-    border-radius: 4px;
-    background-color: var(--td-pre-bg);
-  }
-
-  pre {
-    font-family: var(--bs-font-monospace);
-    font-size: 0.875rem;
-    border-radius: 6px;
-    padding: 1rem;
-    overflow-x: auto;
-  }
-
   table {
     font-size: 0.9375rem;
     margin: 1.5rem 0;
@@ -687,7 +671,7 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-// 14. Documentation Feedback & Last Modified Footer
+// 14. Documentation Feedback & Last Modified Footer (Kubernetes docs style)
 .feedback--title {
   font-size: 1.5rem !important;
   font-weight: 600 !important;
@@ -752,6 +736,306 @@ h1, h2, h3, h4, h5, h6,
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+// 15. Enhanced Code Blocks & Syntax Highlighting
+.td-content {
+  // Inline Code formatting
+  code:not(pre code) {
+    font-family: var(--bs-font-monospace) !important;
+    font-size: 0.85em !important;
+    font-weight: 500 !important;
+    padding: 0.18em 0.42em !important;
+    border-radius: 5px !important;
+    background-color: rgba(175, 184, 193, 0.2) !important;
+    color: #0969da !important;
+    border: 1px solid rgba(31, 35, 40, 0.12) !important;
+    white-space: break-spaces;
+  }
+
+  // Highlight Code Container
+  .highlight {
+    position: relative;
+    margin: 1.5rem 0 1.75rem 0;
+    border-radius: 8px;
+    background-color: #0d1117 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    pre {
+      margin: 0;
+      padding: 1.15rem 1.25rem;
+      background-color: transparent !important;
+      border: none !important;
+      border-radius: 8px;
+      font-family: var(--bs-font-monospace) !important;
+      font-size: 0.875rem !important;
+      line-height: 1.62 !important;
+      overflow-x: auto;
+
+      code {
+        font-family: var(--bs-font-monospace) !important;
+        font-size: 0.875rem !important;
+        color: #e6edf3 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
+      }
+
+      // Sleek Scrollbar for wide code blocks
+      &::-webkit-scrollbar {
+        height: 6px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.18);
+        border-radius: 3px;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.35);
+        }
+      }
+
+      // Sleek Floating Copy Button
+      button.td-click-to-copy {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 6px !important;
+        color: rgba(255, 255, 255, 0.65) !important;
+        padding: 0 !important;
+        font-size: 0.8125rem;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: all 0.15s ease;
+
+        &:hover,
+        &:focus {
+          opacity: 1;
+          background-color: rgba(255, 255, 255, 0.18) !important;
+          color: #ffffff !important;
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          transform: translateY(-1px);
+        }
+
+        &:active {
+          transform: translateY(1px);
+        }
+      }
+    }
+
+    // Subtle language badge display
+    code[data-lang]::after {
+      content: attr(data-lang);
+      position: absolute;
+      top: 10px;
+      right: 48px;
+      font-family: var(--bs-font-sans-serif);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.38);
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  // Mermaid diagrams reset
+  pre.mermaid {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  // Chroma Syntax Tweaks (Fix Dart annotations & clean tokens)
+  .chroma {
+    .err {
+      background-color: transparent !important;
+      color: inherit !important;
+    }
+
+    .c, .c1, .ch, .cm, .cp, .cpf, .cs {
+      color: #8b949e !important;
+      font-style: italic;
+    }
+
+    .k, .kd, .kn, .kp, .kr, .kt, .kv {
+      color: #ff7b72 !important;
+    }
+
+    .s, .s1, .s2, .sa, .sb, .sc, .dl, .sd, .se, .sh, .si, .sx, .sr, .ss {
+      color: #a5d6ff !important;
+    }
+
+    .na, .nc, .nd, .ne, .nf, .fm {
+      color: #d2a8ff !important;
+    }
+
+    .nv, .vc, .vg, .vi, .vm, .no, .ni {
+      color: #79c0ff !important;
+    }
+
+    .m, .mb, .mf, .mh, .mi, .il, .mo {
+      color: #79c0ff !important;
+    }
+
+    .o, .ow {
+      color: #ff7b72 !important;
+    }
+  }
+}
+
+// Dark Mode Overrides for Inline Code
+[data-bs-theme="dark"] {
+  .td-content {
+    code:not(pre code) {
+      background-color: rgba(110, 118, 129, 0.25) !important;
+      color: #79c0ff !important;
+      border: 1px solid rgba(240, 246, 252, 0.12) !important;
+    }
+  }
+}
+
+// 16. Standard & Reusable Callouts / Alerts 
+.td-content .alert,
+.alert {
+  border-width: 0 0 0 5px !important;
+  border-style: solid !important;
+  border-radius: 0 6px 6px 0 !important;
+  padding: 1rem 1.25rem !important;
+  margin: 1.5rem 0 1.75rem 0 !important;
+  color: var(--bs-body-color) !important;
+  font-weight: 400 !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.6 !important;
+
+  .alert-heading,
+  .h4.alert-heading,
+  h4.alert-heading {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em;
+    margin-top: 0 !important;
+    margin-bottom: 0.45rem !important;
+    line-height: 1.3 !important;
+  }
+
+  p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  p + p {
+    margin-top: 0.6rem !important;
+  }
+
+  // 1. Note / Info (Kubernetes Sky Blue: #326ce5 bar + #e8f4fd background)
+  &.alert-info,
+  &.alert-primary,
+  &.alert-note {
+    border-left-color: #326ce5 !important;
+    background-color: #e8f4fd !important;
+
+    .alert-heading {
+      color: #0c2d6b !important;
+    }
+  }
+
+  // 2. Tip / Success (Kubernetes Emerald Green: #1a7f37 bar + #eaf5ec background)
+  &.alert-success,
+  &.alert-tip {
+    border-left-color: #1a7f37 !important;
+    background-color: #eaf5ec !important;
+
+    .alert-heading {
+      color: #116329 !important;
+    }
+  }
+
+  // 3. Warning / Caution (Kubernetes Amber / Warm Gold: #d97706 bar + #fef7e7 background)
+  &.alert-warning,
+  &.alert-caution {
+    border-left-color: #d97706 !important;
+    background-color: #fef7e7 !important;
+
+    .alert-heading {
+      color: #7d4e00 !important;
+    }
+  }
+
+  // 4. Danger / Important (Kubernetes Coral Red: #cf222e bar + #ffebe9 background)
+  &.alert-danger,
+  &.alert-important {
+    border-left-color: #cf222e !important;
+    background-color: #ffebe9 !important;
+
+    .alert-heading {
+      color: #a40e26 !important;
+    }
+  }
+}
+
+// Dark Mode Overrides for Callouts
+[data-bs-theme="dark"] {
+  .td-content .alert,
+  .alert {
+    // 1. Note / Info
+    &.alert-info,
+    &.alert-primary,
+    &.alert-note {
+      border-left-color: #58a6ff !important;
+      background-color: rgba(56, 139, 253, 0.15) !important;
+
+      .alert-heading {
+        color: #79c0ff !important;
+      }
+    }
+
+    // 2. Tip / Success
+    &.alert-success,
+    &.alert-tip {
+      border-left-color: #3fb950 !important;
+      background-color: rgba(46, 160, 67, 0.15) !important;
+
+      .alert-heading {
+        color: #56d364 !important;
+      }
+    }
+
+    // 3. Warning / Caution
+    &.alert-warning,
+    &.alert-caution {
+      border-left-color: #d29922 !important;
+      background-color: rgba(187, 128, 9, 0.15) !important;
+
+      .alert-heading {
+        color: #e3b341 !important;
+      }
+    }
+
+    // 4. Danger / Important
+    &.alert-danger,
+    &.alert-important {
+      border-left-color: #f85149 !important;
+      background-color: rgba(248, 81, 73, 0.15) !important;
+
+      .alert-heading {
+        color: #ff7b72 !important;
+      }
     }
   }
 }
