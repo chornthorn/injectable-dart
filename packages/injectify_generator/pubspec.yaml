@@ -1,6 +1,8 @@
 name: injectify_generator
 description: Code generator for injectify supporting boundary-aware folder micro-packages, nested feature modules, and compositors.
-version: 1.0.0
+version: 0.1.0
+homepage: https://chornthorn.github.io/injectify-dart/
+repository: https://github.com/chornthorn/injectify-dart
 
 environment:
   sdk: ^3.12.0
@@ -12,7 +14,7 @@ dependencies:
   build: ">=2.4.0 <5.0.0"
   code_builder: ^4.10.0
   glob: ^2.1.0
-  injectify:
+  injectify: ^0.1.0
   path: ^1.9.0
   source_gen: ^4.1.1
 

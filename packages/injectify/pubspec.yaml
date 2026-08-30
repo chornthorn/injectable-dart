@@ -1,6 +1,8 @@
 name: injectify
 description: A customizable dependency injection library for Dart & Flutter supporting folder-based micro-packages, nested feature modules, and compositors.
-version: 1.0.0
+version: 0.1.0
+homepage: https://chornthorn.github.io/injectify-dart/
+repository: https://github.com/chornthorn/injectify-dart
 
 environment:
   sdk: ^3.12.0
