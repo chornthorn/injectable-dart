@@ -30,6 +30,17 @@ melos:
     format:
       run: dart format --output=none --set-exit-if-changed .
       description: Check code formatting.
+    publish:
+      exec: dart pub publish --force
+      concurrency: 1
+      orderDependents: true
+      packageFilters:
+        scope:
+          - injectify
+          - injectify_generator
+      description: >-
+        Publish all publishable packages to pub.dev in dependency order
+        (injectify first, then injectify_generator).
 
 dev_dependencies:
   lints: ^6.0.0
