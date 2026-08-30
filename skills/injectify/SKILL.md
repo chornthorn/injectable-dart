@@ -120,11 +120,8 @@ class AuthServiceImpl implements AuthService {}
 Execute the build runner command to produce `.config.dart`:
 
 ```bash
-# Dart projects
+# Dart and Flutter projects (Flutter bundles the Dart SDK)
 dart run build_runner build --delete-conflicting-outputs
-
-# Flutter projects
-flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ### 5. Initialize Container at App Entry (`main.dart`)

@@ -40,7 +40,7 @@ A lifecycle scope (`Scope.lazySingleton`) where a single shared instance is inst
 
 ### Micro-Package
 
-An isolated module of dependencies defined in a specific directory or package, generating an implementation of `MicroPackageModule`.
+An isolated module of dependencies defined in a specific directory or package, generating a class extending `MicroPackageModule`.
 
 ### PreResolve
 

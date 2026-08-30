@@ -40,7 +40,7 @@ dev_dependencies:
       url: https://github.com/chornthorn/injectify-dart.git
       path: packages/injectify_generator
       # ref: main
-  lints: ^5.0.0
+  lints: ^6.0.0
   test: ^1.25.0
 ```
 
@@ -57,7 +57,7 @@ flutter pub get
 ```
 
 {{% alert title="Dart SDK Version" color="info" %}}
-Ensure your Dart SDK constraint is at least `^3.0.0` (or `^3.12.0`).
+Ensure your Dart SDK constraint is at least `^3.12.0` — both packages require it.
 {{% /alert %}}
 
 ---

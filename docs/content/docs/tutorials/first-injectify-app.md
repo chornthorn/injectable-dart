@@ -119,10 +119,7 @@ Future<void> configureDependencies() async => getIt.init();
 Run the code generator to generate `lib/injection.config.dart`:
 
 ```bash
-# For Flutter
-flutter pub run build_runner build --delete-conflicting-outputs
-
-# For Dart
+# For both Flutter and Dart projects (Flutter bundles the Dart SDK)
 dart run build_runner build --delete-conflicting-outputs
 ```
 

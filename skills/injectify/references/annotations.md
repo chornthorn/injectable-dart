@@ -16,9 +16,9 @@ Marks a class as a dependency eligible for service locator registration.
 | `as`           | `Type?`         | `null`          | Abstract type / interface to bind the implementation to.                                      |
 | `env`          | `List<String>?` | `null`          | Active environments (e.g. `['dev', 'test']`).                                                 |
 | `order`        | `int?`          | `null`          | Priority registration index (lower runs earlier).                                             |
-| `getItScope`   | `String?`       | `null`          | Named GetIt child scope name.                                                                 |
+| `getItScope`   | `String?`       | `null`          | Accepted by the annotation API but not yet emitted by the generator (reserved).               |
 | `signalsReady` | `bool?`         | `null`          | Whether GetIt waits for this singleton to signal ready.                                       |
-| `dependsOn`    | `List<Type>?`   | `null`          | Types that must be registered/ready before this instance.                                     |
+| `dependsOn`    | `List<Type>?`   | `null`          | Accepted by the annotation API but not yet emitted by the generator (reserved).               |
 | `dispose`      | `Function?`     | `null`          | Optional dispose callback field. Disposal is wired from methods marked with `@DisposeMethod`. |
 
 ### Lifecycle Scopes

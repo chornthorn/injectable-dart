@@ -35,9 +35,9 @@ Each parameter controls one aspect of the registration:
 - **`as`** (`Type?`, default `null`) — Binds this implementation to an interface or abstract base class.
 - **`env`** (`List<String>?`, default `null`) — Restricts registration to specified environments (e.g. `[Environment.dev]`).
 - **`order`** (`int?`, default `0`) — Explicit sorting priority during registration generation.
-- **`getItScope`** (`String?`, default `null`) — Optional GetIt scope name.
+- **`getItScope`** (`String?`, default `null`) — Accepted by the annotation API but not yet emitted by the generator; reserved for future GetIt scope support.
 - **`signalsReady`** (`bool?`, default `null`) — Whether this singleton signals readiness to GetIt.
-- **`dependsOn`** (`List<Type>?`, default `null`) — Dependencies that must be initialized before this async singleton.
+- **`dependsOn`** (`List<Type>?`, default `null`) — Accepted by the annotation API but not yet emitted by the generator; reserved for future dependency-ordering support.
 - **`dispose`** (`Function?`, default `null`) — Optional dispose callback field on the annotation. Disposal is currently wired from methods marked with `@DisposeMethod` — see [Custom Disposal Hooks](/docs/tasks/custom-disposal-hooks/).
 
 ---
