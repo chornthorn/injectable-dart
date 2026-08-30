@@ -1088,9 +1088,9 @@ h1, h2, h3, h4, h5, h6,
 // 16. Standard & Reusable Callouts / Alerts (Kubernetes Docs Style, Exact Width Synced with ## Divider)
 .td-content .alert,
 .alert {
-  border-width: 0 0 0 5px !important;
+  border-width: 0 0 0 3px !important;
   border-style: solid !important;
-  border-radius: 0 6px 6px 0 !important;
+  border-radius: 6px !important;
   padding: 1rem 1.25rem !important;
   margin: 1.5rem 0 1.75rem 0 !important;
   color: var(--bs-body-color) !important;
