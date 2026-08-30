@@ -3,6 +3,76 @@
 // SVG Network Constellation Background (Inlined as Data URI to ensure 100% path portability across GitHub Pages, subpaths, and custom domains)
 $hero-network-svg: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='320' viewBox='0 0 1440 320' fill='none'%3E%3Cg stroke='rgba(255, 255, 255, 0.08)' stroke-width='1.5'%3E%3Cline x1='120' y1='80' x2='280' y2='190'/%3E%3Cline x1='280' y1='190' x2='450' y2='100'/%3E%3Cline x1='450' y1='100' x2='620' y2='210'/%3E%3Cline x1='620' y1='210' x2='820' y2='120'/%3E%3Cline x1='820' y1='120' x2='980' y2='230'/%3E%3Cline x1='980' y1='230' x2='1160' y2='110'/%3E%3Cline x1='1160' y1='110' x2='1320' y2='200'/%3E%3Cline x1='120' y1='80' x2='200' y2='260'/%3E%3Cline x1='200' y1='260' x2='280' y2='190'/%3E%3Cline x1='450' y1='100' x2='520' y2='40'/%3E%3Cline x1='520' y1='40' x2='820' y2='120'/%3E%3Cline x1='620' y1='210' x2='720' y2='270'/%3E%3Cline x1='720' y1='270' x2='980' y2='230'/%3E%3Cline x1='820' y1='120' x2='1160' y2='110'/%3E%3Cline x1='980' y1='230' x2='1050' y2='280'/%3E%3Cline x1='1050' y1='280' x2='1320' y2='200'/%3E%3C/g%3E%3Cg fill='none'%3E%3Ccircle cx='120' cy='80' r='18' fill='rgba(255, 255, 255, 0.03)'/%3E%3Ccircle cx='120' cy='80' r='5' fill='rgba(255, 255, 255, 0.25)' stroke='rgba(255, 255, 255, 0.5)' stroke-width='2'/%3E%3Ccircle cx='280' cy='190' r='22' fill='rgba(255, 255, 255, 0.03)'/%3E%3Ccircle cx='280' cy='190' r='6' fill='rgba(255, 255, 255, 0.3)' stroke='rgba(255, 255, 255, 0.6)' stroke-width='2'/%3E%3Ccircle cx='450' cy='100' r='26' fill='rgba(255, 255, 255, 0.04)'/%3E%3Ccircle cx='450' cy='100' r='7' fill='rgba(255, 255, 255, 0.35)' stroke='rgba(255, 255, 255, 0.7)' stroke-width='2'/%3E%3Ccircle cx='620' cy='210' r='20' fill='rgba(255, 255, 255, 0.03)'/%3E%3Ccircle cx='620' cy='210' r='5' fill='rgba(255, 255, 255, 0.25)' stroke='rgba(255, 255, 255, 0.5)' stroke-width='2'/%3E%3Ccircle cx='820' cy='120' r='28' fill='rgba(255, 255, 255, 0.04)'/%3E%3Ccircle cx='820' cy='120' r='8' fill='rgba(255, 255, 255, 0.4)' stroke='rgba(255, 255, 255, 0.8)' stroke-width='2'/%3E%3Ccircle cx='980' cy='230' r='24' fill='rgba(255, 255, 255, 0.03)'/%3E%3Ccircle cx='980' cy='230' r='6' fill='rgba(255, 255, 255, 0.3)' stroke='rgba(255, 255, 255, 0.6)' stroke-width='2'/%3E%3Ccircle cx='1160' cy='110' r='22' fill='rgba(255, 255, 255, 0.03)'/%3E%3Ccircle cx='1160' cy='110' r='6' fill='rgba(255, 255, 255, 0.3)' stroke='rgba(255, 255, 255, 0.6)' stroke-width='2'/%3E%3Ccircle cx='1320' cy='200' r='18' fill='rgba(255, 255, 255, 0.03)'/%3E%3Ccircle cx='1320' cy='200' r='5' fill='rgba(255, 255, 255, 0.25)' stroke='rgba(255, 255, 255, 0.5)' stroke-width='2'/%3E%3Ccircle cx='200' cy='260' r='4' fill='rgba(255, 255, 255, 0.2)'/%3E%3Ccircle cx='520' cy='40' r='4' fill='rgba(255, 255, 255, 0.2)'/%3E%3Ccircle cx='720' cy='270' r='4' fill='rgba(255, 255, 255, 0.2)'/%3E%3Ccircle cx='1050' cy='280' r='4' fill='rgba(255, 255, 255, 0.2)'/%3E%3C/g%3E%3C/svg%3E";
 
+// 0. Global Theme-Aware Scrollbar System
+
+// 0.1 Right-Side Page Vertical Scrollbar (Header Grey Background in both Light and Dark modes)
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #57606a #1f2328; // Thumb: soft grey, Track: header dark charcoal grey
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #1f2328 !important; // Charcoal grey matching the header in both modes
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #57606a !important; // Grey thumb
+    border-radius: 4px;
+    border: 2px solid #1f2328;
+
+    &:hover {
+      background-color: #8b949e !important;
+    }
+  }
+}
+
+// 0.2 Content & Horizontal Scrollbars (Theme-Aware: Soft Grey / Light, Never Black)
+:root {
+  --content-scrollbar-track: #f1f3f5;
+  --content-scrollbar-thumb: #b0b8c1; // Soft muted grey (never pure black)
+  --content-scrollbar-thumb-hover: #8c959f;
+}
+
+[data-bs-theme="dark"] {
+  --content-scrollbar-track: #181a20;
+  --content-scrollbar-thumb: #444c56; // Soft dark-mode grey
+  --content-scrollbar-thumb-hover: #636e7b;
+}
+
+// Inner Scrollable Containers (Tables, Code blocks, Sidebar navigation)
+body *,
+.td-content table,
+.td-content pre,
+.td-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--content-scrollbar-thumb) var(--content-scrollbar-track);
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--content-scrollbar-track);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--content-scrollbar-thumb);
+    border-radius: 3px;
+    border: 1px solid var(--content-scrollbar-track);
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--content-scrollbar-thumb-hover);
+    }
+  }
+}
+
 // 1. Top Global Navbar (Always Dark Charcoal Grey Theme)
 .td-navbar {
   color: #ffffff !important;
@@ -221,7 +291,7 @@ $hero-network-svg: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
     color: #ffffff !important;
     font-size: 1.875rem !important; // 30px desktop heading
     font-weight: 600 !important;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.01em;
     line-height: 1.25;
     margin: 0 auto;
     max-width: 980px;
@@ -519,15 +589,43 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-// 11. Main Content Typography
+// 11. Main Content Typography & Unified Content Width (Synced with ## Divider)
 .td-content {
   font-family: var(--bs-font-sans-serif);
   line-height: 1.65;
   font-size: 1rem; // 16px base
   color: var(--bs-body-color);
 
+  // Consistent width constraint synced across headings, ## divider line, codeblocks, callouts, hr, and tables
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6,
+  > p,
+  > ul,
+  > ol,
+  > hr,
+  hr,
+  > .highlight,
+  .highlight,
+  > pre,
+  > .alert,
+  .alert,
+  > table,
+  table,
+  .td-table {
+    box-sizing: border-box;
+    width: 100%;
+
+    @include media-breakpoint-up(lg) {
+      max-width: 80% !important;
+    }
+  }
+
   p, li {
-    max-width: 85ch;
+    max-width: 90ch;
   }
 
   h1 {
@@ -544,19 +642,20 @@ h1, h2, h3, h4, h5, h6,
     }
   }
 
+  // ## Section Heading with bottom divider line
   h2 {
     font-size: 1.625rem; // 26px
     font-weight: 600;
     letter-spacing: -0.01em;
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.35rem;
+    margin-top: 2.25rem;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--bs-border-color);
     color: var(--bs-heading-color);
 
     @include media-breakpoint-down(md) {
       font-size: 1.35rem;
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
     }
   }
 
@@ -580,11 +679,78 @@ h1, h2, h3, h4, h5, h6,
     color: var(--bs-heading-color);
   }
 
-  table {
-    font-size: 0.9375rem;
-    margin: 1.5rem 0;
-    width: 100%;
-    max-width: 100%;
+  // Markdown Horizontal Rule Divider
+  hr {
+    margin: 2rem 0 !important;
+    border: none !important;
+    border-top: 1px solid var(--bs-border-color) !important;
+    opacity: 1 !important;
+  }
+
+  // Table Styling with Horizontal Scroll & Prevent Cluttered Line Wrapping (Synced with ## Width)
+  table,
+  > table,
+  .td-table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border: 1px solid var(--bs-border-color) !important;
+    border-radius: 8px !important;
+    margin: 1.75rem 0 !important;
+    font-size: 0.9rem !important;
+    box-sizing: border-box !important;
+
+    @include media-breakpoint-up(lg) {
+      max-width: 80% !important;
+    }
+
+    thead {
+      background-color: var(--bs-tertiary-bg) !important;
+    }
+
+    th {
+      font-weight: 600 !important;
+      color: var(--bs-heading-color) !important;
+      white-space: nowrap !important;
+      padding: 0.75rem 1rem !important;
+      border-bottom: 2px solid var(--bs-border-color) !important;
+      border-right: 1px solid var(--bs-border-color) !important;
+
+      &:last-child {
+        border-right: none !important;
+      }
+    }
+
+    td {
+      padding: 0.75rem 1rem !important;
+      vertical-align: middle !important;
+      border-top: 1px solid var(--bs-border-color) !important;
+      border-right: 1px solid var(--bs-border-color) !important;
+      white-space: nowrap !important; // Prevent awkward text wrapping, enable clean horizontal scrolling
+
+      &:last-child {
+        border-right: none !important;
+      }
+
+      code {
+        white-space: nowrap !important;
+      }
+    }
+
+    tbody tr:nth-of-type(odd) {
+      background-color: transparent !important;
+    }
+
+    tbody tr:nth-of-type(even) {
+      background-color: rgba(127, 127, 127, 0.04) !important;
+    }
+
+    tbody tr:hover {
+      background-color: rgba(50, 108, 229, 0.05) !important;
+    }
   }
 }
 
@@ -740,14 +906,14 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-// 15. Enhanced Code Blocks & Syntax Highlighting
+// 15. Enhanced Code Blocks & Google Project IDX Monospace Theme (Auto-wrapping to Newlines)
 .td-content {
   // Inline Code formatting
   code:not(pre code) {
     font-family: var(--bs-font-monospace) !important;
-    font-size: 0.85em !important;
+    font-size: 0.86em !important;
     font-weight: 500 !important;
-    padding: 0.18em 0.42em !important;
+    padding: 0.18em 0.45em !important;
     border-radius: 5px !important;
     background-color: rgba(175, 184, 193, 0.2) !important;
     color: #0969da !important;
@@ -755,14 +921,14 @@ h1, h2, h3, h4, h5, h6,
     white-space: break-spaces;
   }
 
-  // Highlight Code Container
+  // Highlight Code Container (Exact Width Synced with ## Divider)
   .highlight {
     position: relative;
     margin: 1.5rem 0 1.75rem 0;
     border-radius: 8px;
-    background-color: #0d1117 !important;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background-color: #181a20 !important;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.14);
     overflow: hidden;
 
     pre {
@@ -773,32 +939,22 @@ h1, h2, h3, h4, h5, h6,
       border-radius: 8px;
       font-family: var(--bs-font-monospace) !important;
       font-size: 0.875rem !important;
-      line-height: 1.62 !important;
-      overflow-x: auto;
+      line-height: 1.65 !important;
+      letter-spacing: 0.01em;
+      white-space: pre-wrap !important; // Auto-wrap to newlines when code exceeds line width
+      word-break: break-word !important;
+      overflow-wrap: break-word !important;
 
       code {
         font-family: var(--bs-font-monospace) !important;
         font-size: 0.875rem !important;
-        color: #e6edf3 !important;
+        color: #d4d4d4 !important;
         background: transparent !important;
         padding: 0 !important;
         border: none !important;
-      }
-
-      // Sleek Scrollbar for wide code blocks
-      &::-webkit-scrollbar {
-        height: 6px;
-      }
-      &::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.18);
-        border-radius: 3px;
-
-        &:hover {
-          background: rgba(255, 255, 255, 0.35);
-        }
+        white-space: pre-wrap !important; // Auto-wrap to newlines
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
       }
 
       // Sleek Floating Copy Button
@@ -811,14 +967,14 @@ h1, h2, h3, h4, h5, h6,
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: rgba(255, 255, 255, 0.08) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        background-color: rgba(255, 255, 255, 0.07) !important;
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
         border-radius: 6px !important;
         color: rgba(255, 255, 255, 0.65) !important;
         padding: 0 !important;
         font-size: 0.8125rem;
         cursor: pointer;
-        opacity: 0.7;
+        opacity: 0.75;
         transition: all 0.15s ease;
 
         &:hover,
@@ -836,7 +992,7 @@ h1, h2, h3, h4, h5, h6,
       }
     }
 
-    // Subtle language badge display
+    // Google IDX Language Badge
     code[data-lang]::after {
       content: attr(data-lang);
       position: absolute;
@@ -846,7 +1002,7 @@ h1, h2, h3, h4, h5, h6,
       font-size: 0.6875rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       color: rgba(255, 255, 255, 0.38);
       pointer-events: none;
       user-select: none;
@@ -862,40 +1018,58 @@ h1, h2, h3, h4, h5, h6,
     justify-content: center;
   }
 
-  // Chroma Syntax Tweaks (Fix Dart annotations & clean tokens)
+  // Google Project IDX Syntax Highlighting Token Palette
   .chroma {
     .err {
       background-color: transparent !important;
       color: inherit !important;
     }
 
+    // Comments
     .c, .c1, .ch, .cm, .cp, .cpf, .cs {
-      color: #8b949e !important;
+      color: #6a9955 !important;
       font-style: italic;
     }
 
+    // Keywords & Declarations
     .k, .kd, .kn, .kp, .kr, .kt, .kv {
-      color: #ff7b72 !important;
+      color: #569cd6 !important;
     }
 
+    // Strings
     .s, .s1, .s2, .sa, .sb, .sc, .dl, .sd, .se, .sh, .si, .sx, .sr, .ss {
-      color: #a5d6ff !important;
+      color: #ce9178 !important;
     }
 
-    .na, .nc, .nd, .ne, .nf, .fm {
-      color: #d2a8ff !important;
+    // Classes, Types, Namespaces
+    .nc, .nn, .nt {
+      color: #4ec9b0 !important;
     }
 
-    .nv, .vc, .vg, .vi, .vm, .no, .ni {
-      color: #79c0ff !important;
+    // Functions & Methods
+    .na, .nf, .fm {
+      color: #dcdcaa !important;
     }
 
-    .m, .mb, .mf, .mh, .mi, .il, .mo {
-      color: #79c0ff !important;
+    // Annotations & Decorators (Dart @Injectable, @singleton)
+    .nd {
+      color: #4ec9b0 !important;
+      font-weight: 600;
     }
 
+    // Variables, Properties, Identifiers
+    .nv, .vc, .vg, .vi, .vm, .no, .ni, .nx, .py {
+      color: #9cdcfe !important;
+    }
+
+    // Numbers & Booleans
+    .m, .mb, .mf, .mh, .mi, .il, .mo, .kc {
+      color: #b5cea8 !important;
+    }
+
+    // Operators
     .o, .ow {
-      color: #ff7b72 !important;
+      color: #d4d4d4 !important;
     }
   }
 }
@@ -911,7 +1085,7 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-// 16. Standard & Reusable Callouts / Alerts 
+// 16. Standard & Reusable Callouts / Alerts (Kubernetes Docs Style, Exact Width Synced with ## Divider)
 .td-content .alert,
 .alert {
   border-width: 0 0 0 5px !important;
