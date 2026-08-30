@@ -19,15 +19,15 @@ dependency_overrides:
   # `injectable_codegen` declares `injectable` as an unversioned hosted
   # dependency (workspace-member style). When consumed outside the
   # injectable-dart workspace, pin it to the local path (or the git source).
-  injectable:
+  injectify:
     # Reference (git):
     #   git:
     #     url: https://github.com/chornthorn/injectable-dart.git
-    #     path: packages/injectable
-    path: ../../packages/injectable
-  injectable_codegen:
+    #     path: packages/injectify
+    path: ../../packages/injectify
+  injectify_generator:
     # Reference (git):
     #   git:
     #     url: https://github.com/chornthorn/injectable-dart.git
-    #     path: packages/injectable_codegen
-    path: ../../packages/injectable_codegen
+    #     path: packages/injectify_generator
+    path: ../../packages/injectify_generator

@@ -27,7 +27,7 @@ Implement the production repository:
 
 ```dart
 // lib/data/auth_repository_impl.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import '../domain/auth_repository.dart';
 
 @Environment(Environment.prod)
@@ -48,7 +48,7 @@ Implement an automated test mock repository:
 
 ```dart
 // lib/data/mock_auth_repository.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import '../domain/auth_repository.dart';
 
 @Environment(Environment.test)
@@ -98,7 +98,7 @@ When you want to test the full DI container configuration with test implementati
 // test/container_test.dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:my_app/domain/auth_repository.dart';
 import 'package:my_app/data/mock_auth_repository.dart';
 import 'package:my_app/injection.dart';

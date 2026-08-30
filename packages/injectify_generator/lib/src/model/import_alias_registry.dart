@@ -6,7 +6,7 @@ import 'package:analyzer/dart/element/type.dart';
 /// and formatting [DartType]s with aliased prefixes.
 class ImportAliasRegistry {
   ImportAliasRegistry() {
-    _aliases[Uri.parse('package:injectable/injectable.dart')] = '_i1';
+    _aliases[Uri.parse('package:injectify/injectify.dart')] = '_i1';
     _aliases[Uri.parse('package:get_it/get_it.dart')] = '_i2';
   }
 
@@ -52,7 +52,7 @@ class ImportAliasRegistry {
     if (element != null) {
       final uri = getLibraryUri(element);
       if (uri != null && uri.scheme != 'dart') {
-        if (!uri.toString().startsWith('package:injectable/')) {
+        if (!uri.toString().startsWith('package:injectify/')) {
           imports.add(uri);
         }
       }

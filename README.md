@@ -70,20 +70,20 @@ dependencies:
   injectable:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable
+      path: packages/injectify
 
 dev_dependencies:
   build_runner: ^2.4.15
   injectable_codegen:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable_codegen
+      path: packages/injectify_generator
 ```
 
 ### 2. Define Injectable Services
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.lazySingleton)
 class ApiService {
@@ -102,7 +102,7 @@ class UserRepository {
 
 ```dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'main.config.dart';
 
 final getIt = GetIt.instance;

@@ -15,7 +15,7 @@ This guide covers registering and waiting for asynchronous dependencies.
 If your class needs asynchronous setup, define a static factory method annotated with `@FactoryMethod`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.singleton)
 class LocalDatabase {

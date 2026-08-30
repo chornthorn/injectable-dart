@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 /// Nested sub-feature micro-package inside the `feature_catalog` package.
 ///

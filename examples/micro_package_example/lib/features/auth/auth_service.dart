@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'auth_api_client.dart';
 import 'auth_repository.dart';

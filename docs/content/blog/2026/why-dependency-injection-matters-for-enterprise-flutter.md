@@ -162,7 +162,7 @@ In your root application setup, declare an `@InjectableInit` annotation:
 
 ```dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'injection.config.dart';
 
@@ -259,7 +259,7 @@ Injectable supports **Micro-Packages**, allowing each feature package to maintai
 
 ```dart
 // Inside packages/feature_billing/lib/billing_module.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableMicroPackage(moduleName: 'Billing')
 void configureBillingPackage() {}
@@ -272,7 +272,7 @@ The root application then composes all feature micro-packages declaratively usin
 ```dart
 // Inside apps/main_app/lib/di/injection.dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 // Import generated module configs from external packages
 import 'package:feature_auth/auth_module.config.dart';

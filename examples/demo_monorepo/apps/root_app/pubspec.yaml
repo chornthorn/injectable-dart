@@ -14,21 +14,21 @@ resolution: workspace
 dependencies:
   feature_catalog: ^1.0.0
   get_it: ^9.2.1
-  injectable:
+  injectify:
     # Reference (git):
     #   git:
     #     url: https://github.com/chornthorn/injectable-dart.git
-    #     path: packages/injectable
-    path: ../../../../packages/injectable
+    #     path: packages/injectify
+    path: ../../../../packages/injectify
   shared: ^1.0.0
 
 dev_dependencies:
   build_runner: ^2.4.0
-  injectable_codegen:
+  injectify_generator:
     # Reference (git):
     #   git:
     #     url: https://github.com/chornthorn/injectable-dart.git
-    #     path: packages/injectable_codegen
-    path: ../../../../packages/injectable_codegen
+    #     path: packages/injectify_generator
+    path: ../../../../packages/injectify_generator
   lints: ^6.0.0
   test: ^1.25.6

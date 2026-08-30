@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 /// Folder-scoped micro-package boundary INSIDE the root app itself.
 ///

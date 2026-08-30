@@ -59,7 +59,7 @@ Native support for asynchronous singletons (`singletonAsync`) and synchronous bo
     <a class="btn btn-outline-primary px-4 py-2" href="https://pub.dev/packages/get_it" target="_blank" rel="noopener">
       <i class="fas fa-cube me-2"></i> <strong>get_it</strong> by Thomas Burkhart
     </a>
-    <a class="btn btn-outline-primary px-4 py-2" href="https://pub.dev/packages/injectable" target="_blank" rel="noopener">
+    <a class="btn btn-outline-primary px-4 py-2" href="https://pub.dev/packages/injectify" target="_blank" rel="noopener">
       <i class="fas fa-cubes me-2"></i> <strong>injectable</strong> by Milad Akarie
     </a>
   </div>

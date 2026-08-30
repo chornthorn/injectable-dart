@@ -18,7 +18,7 @@ When working with packages like `shared_preferences`, create an `@ExternalModule
 
 ```dart
 // lib/core/storage/storage_module.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @ExternalModule()
@@ -37,7 +37,7 @@ For your own domain classes that require asynchronous connection or schema migra
 
 ```dart
 // lib/core/database/database_service.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.singleton)
 class DatabaseService {
@@ -72,7 +72,7 @@ Services that consume `SharedPreferences` or `DatabaseService` can now be regist
 
 ```dart
 // lib/services/settings_service.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @Injectable(scope: Scope.lazySingleton)
@@ -97,7 +97,7 @@ In `lib/injection.dart`:
 
 ```dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'injection.config.dart';
 

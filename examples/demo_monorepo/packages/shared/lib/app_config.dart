@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 /// Eager singleton created when `initShared()` runs.
 @Injectable(scope: Scope.singleton)

@@ -1,13 +1,13 @@
-name: injectable_workspace
+name: injectify_workspace
 publish_to: none
-description: Monorepo workspace for injectable packages and examples.
+description: Monorepo workspace for injectify packages and examples.
 
 environment:
   sdk: ^3.12.0
 
 workspace:
-  - packages/injectable
-  - packages/injectable_codegen
+  - packages/injectify
+  - packages/injectify_generator
   - examples/micro_package_example
   - examples/environments_filtering_example
 

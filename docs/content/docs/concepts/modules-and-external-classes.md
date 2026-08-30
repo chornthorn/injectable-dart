@@ -18,7 +18,7 @@ To register third-party classes or custom factory functions, define an `abstract
 
 ```dart
 // lib/core/register_module.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 

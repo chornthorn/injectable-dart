@@ -11,7 +11,7 @@ import '../model/module_info.dart';
 import '../parser/annotation_parser.dart';
 import '../parser/dependency_parser.dart';
 
-/// Boundary-aware directory scanner for Injectable micro-packages and modules.
+/// Boundary-aware directory scanner for Injectify micro-packages and modules.
 class LibraryScanner {
   const LibraryScanner({this.parser = const DependencyParser()});
 
@@ -19,6 +19,7 @@ class LibraryScanner {
 
   static bool _isGenerated(AssetId asset) =>
       asset.path.endsWith('.config.dart') ||
+      asset.path.endsWith('.injectify.dart') ||
       asset.path.endsWith('.injectable.dart');
 
   /// Checks whether root `@InjectableInit` exists in `lib/**.dart` with `useMicroPackage: true`.
@@ -29,25 +30,20 @@ class LibraryScanner {
       if (_isGenerated(asset)) continue;
       try {
         if (!await buildStep.resolver.isLibrary(asset)) continue;
-        final lib = await buildStep.resolver.libraryFor(asset);
-        final reader = LibraryReader(lib);
-        final initAnnotated =
+        final library = await buildStep.resolver.libraryFor(asset);
+        final reader = LibraryReader(library);
+        final annotated =
             reader.annotatedWith(AnnotationParser.initChecker);
-        for (final item in initAnnotated) {
-          final annTypeName =
-              item.annotation.objectValue.type?.element?.name ?? '';
-          if (annTypeName == 'InjectableInit') {
-            final useMicro =
-                item.annotation.peek('useMicroPackage')?.boolValue ?? false;
-            return useMicro;
-          }
+        for (final ann in annotated) {
+          final isMicroPackage =
+              ann.annotation.peek('useMicroPackage')?.boolValue;
+          if (isMicroPackage == true) return true;
         }
 
-        // Fallback AST inspection for @InjectableInit
-        final session = lib.session;
-        final parsed = session.getParsedLibraryByElement(lib);
-        if (parsed is ParsedLibraryResult) {
-          for (final unit in parsed.units) {
+        final session = library.session;
+        final parsedLib = session.getParsedLibraryByElement(library);
+        if (parsedLib is ParsedLibraryResult) {
+          for (final unit in parsedLib.units) {
             for (final decl in unit.unit.declarations) {
               for (final meta in decl.metadata) {
                 if (meta.name.name == 'InjectableInit') {
@@ -232,23 +228,23 @@ class LibraryScanner {
 
               if (dep.classUri != null &&
                   dep.classUri!.scheme != 'dart' &&
-                  !dep.classUri!.toString().startsWith('package:injectable/')) {
+                  !dep.classUri!.toString().startsWith('package:injectify/')) {
                 typeUris.add(dep.classUri!);
               }
               if (dep.boundTypeUri != null &&
                   dep.boundTypeUri!.scheme != 'dart' &&
-                  !dep.boundTypeUri!.toString().startsWith('package:injectable/')) {
+                  !dep.boundTypeUri!.toString().startsWith('package:injectify/')) {
                 typeUris.add(dep.boundTypeUri!);
               }
               if (dep.moduleUri != null &&
                   dep.moduleUri!.scheme != 'dart' &&
-                  !dep.moduleUri!.toString().startsWith('package:injectable/')) {
+                  !dep.moduleUri!.toString().startsWith('package:injectify/')) {
                 typeUris.add(dep.moduleUri!);
               }
               for (final p in dep.params) {
                 if (p.typeUri != null &&
                     p.typeUri!.scheme != 'dart' &&
-                    !p.typeUri!.toString().startsWith('package:injectable/')) {
+                    !p.typeUri!.toString().startsWith('package:injectify/')) {
                   typeUris.add(p.typeUri!);
                 }
               }

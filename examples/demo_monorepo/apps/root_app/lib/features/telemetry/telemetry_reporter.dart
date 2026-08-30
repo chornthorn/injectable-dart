@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 /// Depends on the tagged `'mydemotoken'` String via constructor injection.
 ///

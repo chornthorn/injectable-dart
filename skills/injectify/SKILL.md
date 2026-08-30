@@ -51,14 +51,14 @@ dependencies:
   injectable:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable
+      path: packages/injectify
 
 dev_dependencies:
   build_runner: ^2.4.15
   injectable_codegen:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable_codegen
+      path: packages/injectify_generator
 ```
 
 ### 2. Set Up Root Container (`lib/injection.dart`)
@@ -67,7 +67,7 @@ Create `lib/injection.dart` with `@InjectableInit()`:
 
 ```dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'injection.config.dart';
 
@@ -86,7 +86,7 @@ Future<void> configureDependencies({String? environment}) async =>
 ### 3. Define Injectable Services
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 // 1. Factory (new instance on each lookup - default)
 @Injectable(scope: Scope.factory)

@@ -25,7 +25,7 @@ Injectable supports **three** lifecycles, each mapped to a corresponding GetIt r
 ### Factory (Default)
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 // Omitting the scope parameter defaults to Scope.factory
 @Injectable()

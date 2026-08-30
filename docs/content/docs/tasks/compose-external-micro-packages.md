@@ -15,7 +15,7 @@ This guide explains how to wire micro-packages located in separate pub packages 
 In `packages/feature_cart/lib/cart_module.dart`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableInit.microPackage(moduleName: 'Cart')
 void configureCartModule() {}
@@ -37,7 +37,7 @@ In your app's `injection.dart`:
 
 ```dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 // Import generated module config from external package
 import 'package:feature_cart/cart_module.config.dart';

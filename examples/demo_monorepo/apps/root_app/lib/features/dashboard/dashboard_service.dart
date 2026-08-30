@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:shared/app_config.dart';
 
 /// Lazy singleton inside root_app's own `dashboard` folder micro-package.

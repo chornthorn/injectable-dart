@@ -16,7 +16,7 @@ If your class has a method responsible for closing streams, database handles, or
 
 ```dart
 import 'dart:async';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.lazySingleton)
 class WebSocketManager {

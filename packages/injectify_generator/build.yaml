@@ -1,0 +1,7 @@
+builders:
+  injectify_generator:
+    import: "package:injectify_generator/builder.dart"
+    builder_factories: ["injectifyBuilder"]
+    build_extensions: {".dart": [".config.dart"]}
+    auto_apply: dependents
+    build_to: source

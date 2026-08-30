@@ -80,7 +80,7 @@ void main() {
 If your app requires complex matching (such as multiple concurrent environments or custom gating rules), implement `EnvironmentFilter`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 class CustomEnvironmentFilter extends EnvironmentFilter {
   final Set<String> activeEnvironments;

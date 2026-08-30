@@ -43,7 +43,7 @@ In `lib/core/network/network_module.dart`:
 
 ```dart
 import 'package:http/http.dart' as http;
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @ExternalModule()
 abstract class NetworkModule {
@@ -56,7 +56,7 @@ In `lib/core/network/api_client.dart`:
 
 ```dart
 import 'package:http/http.dart' as http;
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.lazySingleton)
 class ApiClient {
@@ -72,7 +72,7 @@ class ApiClient {
 In `lib/features/auth/auth_module.dart`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableMicroPackage(moduleName: 'Auth')
 void configureAuthModule() {}
@@ -81,7 +81,7 @@ void configureAuthModule() {}
 In `lib/features/auth/services/auth_service.dart`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import '../../../core/network/api_client.dart';
 
 @Injectable(scope: Scope.lazySingleton)
@@ -101,7 +101,7 @@ In `lib/core/di/injection.dart`:
 
 ```dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'injection.config.dart';
 

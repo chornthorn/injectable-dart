@@ -29,14 +29,14 @@ dependencies:
   injectable:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable
+      path: packages/injectify
 
 dev_dependencies:
   build_runner: ^2.4.15
   injectable_codegen:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable_codegen
+      path: packages/injectify_generator
 ```
 
 Run package resolution:
@@ -53,7 +53,7 @@ Create `lib/services/quote_service.dart`:
 
 ```dart
 import 'dart:math';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.lazySingleton)
 class QuoteService {
@@ -73,7 +73,7 @@ class QuoteService {
 Next, create `lib/repositories/quote_repository.dart` which depends on `QuoteService`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import '../services/quote_service.dart';
 
 @Injectable(scope: Scope.factory)
@@ -98,7 +98,7 @@ Create `lib/injection.dart`:
 
 ```dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'injection.config.dart';
 
@@ -133,7 +133,7 @@ Look inside `lib/injection.config.dart`:
 ```dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:get_it/get_it.dart' as _i1;
-import 'package:injectable/injectable.dart' as _i2;
+import 'package:injectify/injectify.dart' as _i2;
 import 'repositories/quote_repository.dart' as _i4;
 import 'services/quote_service.dart' as _i3;
 

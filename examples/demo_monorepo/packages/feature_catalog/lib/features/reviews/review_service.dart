@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:shared/greeting_service.dart';
 
 import '../../catalog_service.dart';

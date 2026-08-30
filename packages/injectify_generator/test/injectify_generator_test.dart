@@ -1,5 +1,5 @@
-import 'package:injectable_codegen/src/model/dependency_info.dart';
-import 'package:injectable_codegen/src/model/import_alias_registry.dart';
+import 'package:injectify_generator/src/model/dependency_info.dart';
+import 'package:injectify_generator/src/model/import_alias_registry.dart';
 import 'package:test/test.dart';
 
 void main() {

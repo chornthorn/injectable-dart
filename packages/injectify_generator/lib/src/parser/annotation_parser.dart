@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/element/type.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:source_gen/source_gen.dart';
 
 import '../model/import_alias_registry.dart';

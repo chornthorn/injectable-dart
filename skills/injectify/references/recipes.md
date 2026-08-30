@@ -10,7 +10,7 @@ When registering classes from third-party packages that cannot be annotated dire
 
 ```dart
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @ExternalModule()
@@ -40,7 +40,7 @@ In Flutter apps using `flutter_bloc`, BLoCs and Cubits should typically be regis
 
 ```dart
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 abstract class AuthState {}
 class AuthInitial extends AuthState {}

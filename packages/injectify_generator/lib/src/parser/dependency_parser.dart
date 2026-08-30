@@ -1,6 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:source_gen/source_gen.dart';
 
 import '../model/dependency_info.dart';

@@ -23,14 +23,14 @@ dependencies:
   injectable:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable
+      path: packages/injectify
 
 dev_dependencies:
   build_runner: ^2.4.15
   injectable_codegen:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable_codegen
+      path: packages/injectify_generator
 ```
 
 ---
@@ -40,7 +40,7 @@ dev_dependencies:
 Create `lib/repositories/product_repository.dart`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 class Product {
   final String id;
@@ -81,7 +81,7 @@ State management classes like BLoCs and Cubits should generally use `Scope.facto
 ```dart
 // lib/features/catalog/catalog_cubit.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import '../../repositories/product_repository.dart';
 
 abstract class CatalogState {}
@@ -113,7 +113,7 @@ When a screen requires a runtime parameter (such as a selected item ID or route 
 ```dart
 // lib/features/product_detail/product_detail_cubit.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import '../../repositories/product_repository.dart';
 
 abstract class ProductDetailState {}

@@ -46,14 +46,14 @@ dependencies:
   injectable:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable
+      path: packages/injectify
 
 dev_dependencies:
   build_runner: ^2.4.15
   injectable_codegen:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable_codegen
+      path: packages/injectify_generator
 ```
 
 ---

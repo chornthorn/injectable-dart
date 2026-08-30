@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 /// Folder-scoped micro-package boundary for the async `bootstrap` feature.
 ///

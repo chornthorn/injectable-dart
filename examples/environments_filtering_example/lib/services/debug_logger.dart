@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 /// Verbose logger that requires BOTH the `dev` and `debug` environments.
 ///

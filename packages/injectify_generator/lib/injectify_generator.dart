@@ -1,7 +1,7 @@
-/// Code generator for injectable annotations with micro-package boundary scanning.
+/// Code generator for injectify annotations with micro-package boundary scanning.
 library;
 
-export 'package:injectable/injectable.dart';
+export 'package:injectify/injectify.dart';
 
 export 'src/generator/injectable_generator.dart';
 export 'src/model/dependency_info.dart';

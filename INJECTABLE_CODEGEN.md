@@ -134,7 +134,7 @@ flowchart LR
 ```dart
 // lib/injection.dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:shared/shared_module.config.dart';
 
 import 'injection.config.dart';
@@ -158,7 +158,7 @@ Future<void> configureDependencies({String? environment}) async =>
 
 ```dart
 // lib/features/auth/auth_module.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableMicroPackage(
   moduleName: 'Auth',
@@ -204,7 +204,7 @@ Real output from `examples/demo_monorepo/apps/root_app/lib/injection.config.dart
 
 ```dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
-import 'package:injectable/injectable.dart' as _i1;
+import 'package:injectify/injectify.dart' as _i1;
 import 'package:get_it/get_it.dart' as _i2;
 import 'package:shared/shared_module.config.dart' as _i3;
 import 'package:feature_catalog/catalog_module.config.dart' as _i4;
@@ -226,7 +226,7 @@ code never constructs the dependency graph by hand — it resolves from `GetIt`.
 
 ---
 
-## 9. Runtime machinery (`packages/injectable`)
+## 9. Runtime machinery (`packages/injectify`)
 
 ```mermaid
 flowchart LR

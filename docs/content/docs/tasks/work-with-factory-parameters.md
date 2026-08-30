@@ -15,7 +15,7 @@ Factory parameters allow you to pass dynamic arguments at runtime when requestin
 Use `@FactoryParam()` on up to **two** constructor parameters:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable()
 class OrderDetailBloc {

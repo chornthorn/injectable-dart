@@ -1,5 +1,5 @@
 import 'package:feature_catalog/catalog.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:shared/shared.dart';
 
 import 'injection.config.dart';

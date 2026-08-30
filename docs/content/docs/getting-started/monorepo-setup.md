@@ -48,7 +48,7 @@ In a shared or feature package, mark the entry file with `@InjectableInit.microP
 
 ```dart
 // packages/shared/lib/shared_module.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableInit.microPackage(moduleName: 'Shared')
 void configureSharedModule() {}
@@ -93,7 +93,7 @@ In your application's `injection.dart`, declare the external micro-packages:
 ```dart
 // apps/main_app/lib/injection.dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:shared/shared_module.config.dart';
 import 'package:feature_auth/auth_module.config.dart';
 

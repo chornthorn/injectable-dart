@@ -1,6 +1,6 @@
 import 'package:environments_filtering_example/services/analytics_service.dart';
 import 'package:environments_filtering_example/services/app_config.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'payment_gateway.dart';
 

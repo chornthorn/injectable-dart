@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import '../cart_service.dart';
 import 'models/order_summary.dart';

@@ -77,7 +77,7 @@ The docs must reflect the current, clean API — never legacy forms. Per the pro
 - Use `@ExternalModule()` for external provider modules and `@Inject('tag')` for qualifiers.
 - Use `@InjectableInit`, `@InjectableMicroPackage`, and `ExternalMicroPackage(ModuleType)` for initialization and micro-package composition.
 - **Never** write docs using removed APIs: no old `@module`, no `@Named`, no `@thirdParty`, no deprecated aliases.
-- Before writing an example, verify the exact annotation or function signature against the sources in `packages/` (e.g. `packages/injectable/lib/`) rather than guessing.
+- Before writing an example, verify the exact annotation or function signature against the sources in `packages/` (e.g. `packages/injectify/lib/`) rather than guessing.
 
 ## Validation
 

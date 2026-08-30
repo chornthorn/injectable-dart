@@ -43,7 +43,7 @@ my_app_workspace/
 In `packages/core/lib/services/logger_service.dart`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.lazySingleton)
 class LoggerService {
@@ -54,7 +54,7 @@ class LoggerService {
 In `packages/core/lib/core_module.dart`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableInit.microPackage(moduleName: 'Core')
 void configureCoreModule() {}
@@ -82,21 +82,21 @@ dependencies:
   injectable:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable
+      path: packages/injectify
 
 dev_dependencies:
   build_runner: ^2.4.15
   injectable_codegen:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable_codegen
+      path: packages/injectify_generator
 ```
 
 In `packages/feature_billing/lib/services/billing_service.dart`:
 
 ```dart
 import 'package:core/services/logger_service.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.lazySingleton)
 class BillingService {
@@ -110,7 +110,7 @@ class BillingService {
 In `packages/feature_billing/lib/billing_module.dart`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableInit.microPackage(moduleName: 'Billing')
 void configureBillingModule() {}
@@ -138,14 +138,14 @@ dependencies:
   injectable:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable
+      path: packages/injectify
 
 dev_dependencies:
   build_runner: ^2.4.15
   injectable_codegen:
     git:
       url: https://github.com/chornthorn/injectable-dart.git
-      path: packages/injectable_codegen
+      path: packages/injectify_generator
 ```
 
 In `apps/mobile_app/lib/injection.dart`:
@@ -154,7 +154,7 @@ In `apps/mobile_app/lib/injection.dart`:
 import 'package:core/core_module.config.dart';
 import 'package:feature_billing/billing_module.config.dart';
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'injection.config.dart';
 

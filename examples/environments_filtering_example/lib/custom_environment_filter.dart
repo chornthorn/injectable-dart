@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 /// A denylist-style filter: registers a dependency unless any of its target
 /// environments is blocked.

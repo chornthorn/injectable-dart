@@ -1,5 +1,5 @@
-name: injectable_codegen
-description: Code generator for injectable supporting boundary-aware folder micro-packages, nested feature modules, and compositors.
+name: injectify_generator
+description: Code generator for injectify supporting boundary-aware folder micro-packages, nested feature modules, and compositors.
 version: 1.0.0
 
 environment:
@@ -12,7 +12,7 @@ dependencies:
   build: ">=2.4.0 <5.0.0"
   code_builder: ^4.10.0
   glob: ^2.1.0
-  injectable:
+  injectify:
   path: ^1.9.0
   source_gen: ^4.1.1
 

@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'catalog_api_client.dart';
 import 'models/product.dart';

@@ -6,7 +6,7 @@ import 'package:environments_filtering_example/services/analytics_service.dart';
 import 'package:environments_filtering_example/services/api_service.dart';
 import 'package:environments_filtering_example/services/debug_logger.dart';
 import 'package:environments_filtering_example/services/feature_flags.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 Future<void> main() async {
   // ignore: avoid_print

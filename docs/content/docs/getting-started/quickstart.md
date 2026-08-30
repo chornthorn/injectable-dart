@@ -17,7 +17,7 @@ Create an entry file for DI configuration (typically `lib/injection.dart` or `li
 ```dart
 // lib/injection.dart
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 // The generated configuration extension will live in this file
 import 'injection.config.dart';
@@ -40,7 +40,7 @@ Create services and repositories in your project, annotating them with `@Injecta
 
 ```dart
 // lib/services/api_client.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.lazySingleton)
 class ApiClient {
@@ -50,7 +50,7 @@ class ApiClient {
 
 ```dart
 // lib/repositories/user_repository.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import '../services/api_client.dart';
 
 @Injectable()

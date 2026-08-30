@@ -32,7 +32,7 @@ lib/
 In `lib/features/auth/auth_module.dart`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableMicroPackage(moduleName: 'Auth')
 void configureAuthModule() {}
@@ -65,7 +65,7 @@ lib/features/catalog/
 
 ```dart
 // lib/features/catalog/catalog_module.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableMicroPackage(
   moduleName: 'Catalog',
@@ -107,7 +107,7 @@ my_monorepo/
 In `packages/core_network/lib/core_network_module.dart`:
 
 ```dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableInit.microPackage(moduleName: 'CoreNetwork')
 void configureCoreNetwork() {}
@@ -122,7 +122,7 @@ In `apps/main_app/lib/injection.dart`:
 ```dart
 import 'package:core_network/core_network_module.config.dart';
 import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 import 'injection.config.dart';
 

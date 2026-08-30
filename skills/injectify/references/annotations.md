@@ -107,7 +107,7 @@ Marks an abstract class as a provider for third-party or externally constructed 
 
 ```dart
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @ExternalModule()

@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 /// Contract for event analytics tracking.
 abstract class AnalyticsService {

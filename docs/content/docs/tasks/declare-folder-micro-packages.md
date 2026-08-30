@@ -16,7 +16,7 @@ Inside your feature folder (e.g. `lib/features/auth/`), create a file named `aut
 
 ```dart
 // lib/features/auth/auth_module.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @InjectableMicroPackage(moduleName: 'Auth')
 void configureAuthModule() {}
@@ -30,7 +30,7 @@ Create classes inside `lib/features/auth/`:
 
 ```dart
 // lib/features/auth/services/auth_service.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @Injectable(scope: Scope.lazySingleton)
 class AuthService {
@@ -40,7 +40,7 @@ class AuthService {
 
 ```dart
 // lib/features/auth/bloc/auth_bloc.dart
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 import '../services/auth_service.dart';
 
 @Injectable()

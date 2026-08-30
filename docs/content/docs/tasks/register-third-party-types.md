@@ -17,7 +17,7 @@ Create an abstract class annotated with `@ExternalModule()`:
 ```dart
 // lib/core/third_party_module.dart
 import 'package:http/http.dart' as http;
-import 'package:injectable/injectable.dart';
+import 'package:injectify/injectify.dart';
 
 @ExternalModule()
 abstract class ThirdPartyModule {
