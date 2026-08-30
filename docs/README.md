@@ -1,10 +1,6 @@
 # Injectable Documentation Site (Hugo + Docsy)
 
-This directory contains the official documentation website for **Injectable**, built with **Hugo Extended** and the **Google Docsy Theme**.
-
----
-
-## 🚀 Running the Documentation Locally
+This directory contains the official documentation website for **Injectable**, built with **Hugo Extended** and the **Google Docsy Theme**.\n\n---\n\n## Running the Documentation Locally
 
 ### 1. Prerequisites
 
@@ -40,9 +36,7 @@ hugo --minify
 
 The compiled static site will be output to `docs/public/`.
 
----
-
-## 📁 Site Architecture & Directory Structure
+---\n\n## Site Architecture & Directory Structure
 
 ```
 docs/

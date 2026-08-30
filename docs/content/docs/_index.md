@@ -19,28 +19,28 @@ Our documentation is structured into four focused areas:
 {{< cardpane >}}
 {{< card header="**Getting Started**" >}}
 Step-by-step guides to install Injectable, set up `build_runner`, and configure your first dependency graph.
-<br><br>
-👉 [Go to Getting Started](../docs/getting-started/)
+
+[Go to Getting Started](/docs/getting-started/)
 {{< /card >}}
 
 {{< card header="**Concepts**" >}}
 Deep dive into lifetimes, folder-scoped micro-packages, asynchronous resolution, and environment gating.
-<br><br>
-👉 [Explore Concepts](../docs/concepts/)
+
+[Explore Concepts](/docs/concepts/)
 {{< /card >}}
 {{< /cardpane >}}
 
 {{< cardpane >}}
 {{< card header="**How-To Tasks**" >}}
 Practical, task-oriented guides for handling custom disposal, named bindings, abstract interfaces, and third-party modules.
-<br><br>
-👉 [View Tasks](../docs/tasks/)
+
+[View Tasks](/docs/tasks/)
 {{< /card >}}
 
 {{< card header="**API Reference**" >}}
 Comprehensive specifications for all annotations, CLI builder options, error diagnostics, and terms.
-<br><br>
-👉 [Browse Reference](../docs/reference/)
+
+[Browse Reference](/docs/reference/)
 {{< /card >}}
 {{< /cardpane >}}
 

@@ -10,7 +10,7 @@ It automates service locator registration, manages asynchronous dependency resol
 
 Full documentation, interactive architecture diagrams, tutorials, and API reference are available at:
 
-👉 **[https://chornthorn.github.io/injectable-dart/](https://chornthorn.github.io/injectable-dart/)**
+**[https://chornthorn.github.io/injectable-dart/](https://chornthorn.github.io/injectable-dart/)**
 
 ---
 
@@ -28,144 +28,99 @@ Full documentation, interactive architecture diagrams, tutorials, and API refere
 
 ## Documentation Overview
 
-- **[Getting Started](docs/content/docs/getting-started/_index.md)**: [Installation](docs/content/docs/getting-started/installation.md) · [Quickstart](docs/content/docs/getting-started/quickstart.md) · [Monorepo Setup](docs/content/docs/getting-started/monorepo-setup.md)
-- **[Concepts](docs/content/docs/concepts/_index.md)**: [Architecture](docs/content/docs/concepts/architecture.md) · [Scopes & Lifecycles](docs/content/docs/concepts/scopes-and-lifecycles.md) · [Micro-Packages](docs/content/docs/concepts/micro-packages.md) · [Environments](docs/content/docs/concepts/environments-and-filtering.md) · [Async & PreResolve](docs/content/docs/concepts/async-and-preresolve.md)
-- **[Tasks](docs/content/docs/tasks/_index.md)**: [Root Container](docs/content/docs/tasks/configure-root-container.md) · [Folder Micro-Packages](docs/content/docs/tasks/declare-folder-micro-packages.md) · [External Micro-Packages](docs/content/docs/tasks/compose-external-micro-packages.md) · [Factory Parameters](docs/content/docs/tasks/work-with-factory-parameters.md) · [Third-Party Types](docs/content/docs/tasks/register-third-party-types.md)
-- **[Tutorials](docs/content/docs/tutorials/_index.md)**: [Modular Flutter App](docs/content/docs/tutorials/modular-flutter-app.md) · [Multi-Package Monorepo](docs/content/docs/tutorials/multi-package-monorepo.md)
-- **[Reference](docs/content/docs/reference/_index.md)**: [Annotations](docs/content/docs/reference/annotations.md) · [Build Configuration](docs/content/docs/reference/build-configuration.md) · [Runtime API](docs/content/docs/reference/runtime-api.md) · [Glossary](docs/content/docs/reference/glossary.md)
+The documentation is organized into four core pillars:
+
+1. **[Getting Started](https://chornthorn.github.io/injectable-dart/docs/getting-started/)**: Installation, initial configuration, `build_runner` workflows, and quickstart tutorials.
+2. **[Core Concepts](https://chornthorn.github.io/injectable-dart/docs/concepts/)**: Deep dives into dependency injection mechanics, lifetimes, micro-package isolation, asynchronous startup (`@PreResolve`), and environment gating.
+3. **[How-To Tasks](https://chornthorn.github.io/injectable-dart/docs/tasks/)**: Step-by-step recipes for custom disposal hooks, parameterized factories, third-party module registration, and cross-package linking.
+4. **[API Reference](https://chornthorn.github.io/injectable-dart/docs/reference/)**: Exhaustive specifications for all annotations, CLI builder options, diagnostic error codes, and glossary definitions.
 
 ---
 
-## Quick Start
+## Quickstart
 
-### 1. Installation
+### 1. Add Dependencies
 
-Add `injectable` and its generator to your `pubspec.yaml`:
+Add the runtime annotations to `dependencies` and the code generator to `dev_dependencies`:
 
 ```yaml
 dependencies:
+  get_it: ^8.0.3
   injectable:
-    git:
-      url: https://github.com/chornthorn/injectable-dart.git
-      path: injectable
-  get_it: ^9.2.1
+    path: ../../packages/injectable # or pub version
 
 dev_dependencies:
-  build_runner: ^2.4.0
+  build_runner: ^2.4.15
   injectable_codegen:
-    git:
-      url: https://github.com/chornthorn/injectable-dart.git
-      path: injectable_codegen
+    path: ../../packages/injectable_codegen # or pub version
 ```
 
-### 2. Annotate Your Classes
+### 2. Define Injectable Services
 
 ```dart
 import 'package:injectable/injectable.dart';
-
-@Injectable(scope: Scope.singleton)
-class ApiClient {
-  ApiClient(@Inject('baseUrl') this.baseUrl);
-  final String baseUrl;
-}
 
 @Injectable(scope: Scope.lazySingleton)
-class OrderService {
-  OrderService(this.api);
-  final ApiClient api;
+class ApiService {
+  final String baseUrl;
+  ApiService({this.baseUrl = 'https://api.example.com'});
 }
 
-@ExternalModule()
-abstract class ConfigModule {
-  @Injectable(scope: Scope.singleton)
-  String get baseUrl => 'https://api.example.com';
+@Injectable(scope: Scope.factory)
+class UserRepository {
+  final ApiService api;
+  UserRepository(this.api);
 }
 ```
 
-### 3. Declare the Entry Point
+### 3. Initialize GetIt Registry
 
 ```dart
-// lib/injection.dart
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-
-import 'injection.config.dart';
+import 'main.config.dart';
 
 final getIt = GetIt.instance;
 
-@InjectableInit(initializerName: 'init')
+@InjectableInit()
 Future<void> configureDependencies() async => getIt.init();
-```
 
-### 4. Run Code Generation
-
-```bash
-dart run build_runner build
-```
-
-This emits `lib/injection.config.dart` with a typed `GetIt` extension.
-`await configureDependencies()` in `main()` and resolve:
-
-```dart
 void main() async {
   await configureDependencies();
-  final orderService = getIt<OrderService>();
+
+  final repo = getIt<UserRepository>();
+  print('UserRepository initialized with API: ${repo.api.baseUrl}');
 }
 ```
 
----
+### 4. Run Builder
 
-## Feature Micro-Packages
-
-Bound a folder into its own module — its dependencies cannot leak into sibling folders, and nested sub-modules are self-contained:
-
-```dart
-// lib/features/orders/orders_module.dart
-import 'package:injectable/injectable.dart';
-
-@InjectableMicroPackage(
-  moduleName: 'Orders',
-  initializerName: 'initOrders',
-  useMicroPackage: true, // auto-compose nested sub micro-packages
-)
-void configureOrdersModule() {}
-```
-
-A root compositor then wires everything in one call:
-
-```dart
-// lib/injection.dart
-import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
-
-import 'injection.config.dart';
-
-final getIt = GetIt.instance;
-
-@InjectableInit(
-  initializerName: 'init',
-  useMicroPackage: true, // auto-discovers orders_module and any other micro-packages
-)
-Future<void> configureDependencies() async => getIt.init();
+```bash
+dart run build_runner build --delete-conflicting-outputs
 ```
 
 ---
 
-## Author
+## Monorepo & Modular Architecture
 
-Created and maintained by **[Thorn Chorn](https://github.com/chornthorn)**.
+For large scale codebases, decompose your feature modules using **Folder Micro-Packages**:
 
----
+```
+lib/
+├── features/
+│   ├── auth/
+│   │   ├── auth_service.dart          # Annotated with @Injectable()
+│   │   └── auth_module.dart           # Annotated with @InjectableMicroPackage(moduleName: 'Auth')
+│   └── catalog/
+│       ├── catalog_service.dart       # Annotated with @Injectable()
+│       └── catalog_module.dart        # Annotated with @InjectableMicroPackage(moduleName: 'Catalog')
+└── main.dart                          # Annotated with @InjectableInit(useMicroPackage: true)
+```
 
-## Community & Acknowledgements
-
-Special thanks to the Dart and Flutter open-source community:
-
-- **[get_it](https://pub.dev/packages/get_it)** by [Thomas Burkhart](https://github.com/ThomasBurkhart) — the foundational Service Locator for Dart and Flutter.
-- **[injectable](https://pub.dev/packages/injectable)** by [Milad Akarie](https://github.com/Milad-Akarie) — the original inspiration for code-generated dependency injection in Flutter.
+Run `build_runner` once at the root: each feature generates its own isolated module initialization extension, and the root `init()` orchestrates the entire container tree cleanly.
 
 ---
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
