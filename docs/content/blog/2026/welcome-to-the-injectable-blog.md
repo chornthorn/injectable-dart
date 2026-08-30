@@ -1,6 +1,7 @@
 ---
 title: "Welcome to the Injectable Blog"
 linkTitle: "Welcome"
+weight: 1
 description: >
   Injectable now has an official blog! Find release notes, architecture
   deep dives, and practical guides on this site going forward.
@@ -10,7 +11,7 @@ date: 2026-08-30
 
 ## 1. Hello, world
 
-Injectable has always been about one thing: making dependency injection in Dart and Flutter so straightforward that you never have to think about *where* a dependency comes from. Over time, features like folder-scoped micro-packages, external module composition, and environment gating grew the toolkit in ways that deserve more than a changelog line.
+Injectable has always been about one thing: making dependency injection in Dart and Flutter so straightforward that you never have to think about _where_ a dependency comes from. Over time, features like folder-scoped micro-packages, external module composition, and environment gating grew the toolkit in ways that deserve more than a changelog line.
 
 This blog is where we'll tell those stories.
 

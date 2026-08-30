@@ -1,0 +1,44 @@
+{{ $currentPage := . -}}
+{{ $blogSection := site.GetPage "section" "blog" -}}
+<div id="td-sidebar-menu" class="td-sidebar__inner d-none">
+  {{ if site.Params.offlineSearch -}}
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+      <div class="td-search__icon"></div>
+      <input type="search" name="q" class="td-search__input form-control" placeholder="{{ T "ui_search" | default "Search this site…" }}" aria-label="{{ T "ui_search" | default "Search this site…" }}" autocomplete="off" {{ with site.Home.OutputFormats.Get "offline-search-index" }}data-offline-search-index-json-src="{{ .RelPermalink }}"{{ end }} data-offline-search-base-href="/" data-offline-search-max-results="10">
+    </div>
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation"></button>
+  </form>
+  {{ end -}}
+  <nav class="td-sidebar-nav collapse foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child">
+        <ul class="ul-1">
+          {{ range $blogSection.Sections.ByWeight -}}
+            {{ $isSectionActive := or (eq $currentPage.RelPermalink .RelPermalink) ($currentPage.IsDescendant .) -}}
+            <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="{{ printf "m-%s-li" .File.UniqueID }}">
+              <input type="checkbox" id="{{ printf "m-%s-check" .File.UniqueID }}" {{ if $isSectionActive }}checked{{ end }}>
+              <label for="{{ printf "m-%s-check" .File.UniqueID }}">
+                <a href="{{ .RelPermalink }}" class="align-left ps-0 td-sidebar-link td-sidebar-link__section{{ if eq $currentPage.RelPermalink .RelPermalink }} active{{ end }}" id="{{ printf "m-%s" .File.UniqueID }}">
+                  <span>{{ .LinkTitle }}</span>
+                </a>
+              </label>
+              <ul class="ul-2 foldable">
+                {{ range .Pages.ByWeight -}}
+                  <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="{{ printf "m-%s-li" .File.UniqueID }}">
+                    <input type="checkbox" id="{{ printf "m-%s-check" .File.UniqueID }}">
+                    <label for="{{ printf "m-%s-check" .File.UniqueID }}">
+                      <a href="{{ .RelPermalink }}" title="{{ .Title }}" class="align-left ps-0 td-sidebar-link td-sidebar-link__page{{ if eq $currentPage.RelPermalink .RelPermalink }} active{{ end }}" id="{{ printf "m-%s" .File.UniqueID }}">
+                        <span>{{ .LinkTitle }}</span>
+                      </a>
+                    </label>
+                  </li>
+                {{ end -}}
+              </ul>
+            </li>
+          {{ end -}}
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
