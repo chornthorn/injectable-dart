@@ -17,7 +17,7 @@ locale = "en"
       unsafe = true
   [markup.highlight]
     codeFences = true
-    guessSyntax = true
+    guessSyntax = false
     lineNos = false
     style = "github-dark"
     tabWidth = 2

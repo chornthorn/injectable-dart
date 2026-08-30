@@ -26,6 +26,27 @@ Full documentation, interactive architecture diagrams, tutorials, and API refere
 
 ---
 
+## Agent Skills Support
+
+This repository ships with a standard [Agent Skill](https://agentskills.io) conforming to the Agent Skills specification located in [`skills/injectable/`](skills/injectable/).
+
+Developers using AI assistants (Claude Code, Cursor, Antigravity, GitHub Copilot, Codex, etc.) can equip their agents with full Injectable expertise by copying or downloading the skill into their project:
+
+```bash
+# In your Dart/Flutter project directory:
+mkdir -p .agents/skills/injectable
+cp -r /path/to/injectable-dart/skills/injectable/* .agents/skills/injectable/
+```
+
+The skill includes complete guidance for:
+
+- Automatic DI setup and code generation (`build_runner`)
+- Modern annotations (`@Injectable`, `@InjectableInit`, `@InjectableMicroPackage`, `@ExternalModule`, `@Inject`, `@FactoryParam`, `@PreResolve`)
+- Folder micro-packages and multi-package monorepos
+- Ready-to-use templates for `injection.dart`, micro-packages, and `build.yaml`
+
+---
+
 ## Documentation Overview
 
 The documentation is organized into four core pillars:
@@ -47,12 +68,16 @@ Add the runtime annotations to `dependencies` and the code generator to `dev_dep
 dependencies:
   get_it: ^8.0.3
   injectable:
-    path: ../../packages/injectable # or pub version
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: packages/injectable
 
 dev_dependencies:
   build_runner: ^2.4.15
   injectable_codegen:
-    path: ../../packages/injectable_codegen # or pub version
+    git:
+      url: https://github.com/chornthorn/injectable-dart.git
+      path: packages/injectable_codegen
 ```
 
 ### 2. Define Injectable Services
@@ -96,7 +121,11 @@ void main() async {
 ### 4. Run Builder
 
 ```bash
+# Dart
 dart run build_runner build --delete-conflicting-outputs
+
+# Flutter
+flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ---

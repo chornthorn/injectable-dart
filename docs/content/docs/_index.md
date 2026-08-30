@@ -14,7 +14,7 @@ It automates service locator registration, manages asynchronous dependency resol
 
 ## Documentation Structure
 
-Our documentation is structured into four focused areas:
+Our documentation is structured into focused areas:
 
 {{< cardpane >}}
 {{< card header="**Getting Started**" >}}
@@ -35,6 +35,20 @@ Deep dive into lifetimes, folder-scoped micro-packages, asynchronous resolution,
 Practical, task-oriented guides for handling custom disposal, named bindings, abstract interfaces, and third-party modules.
 
 [View Tasks](/docs/tasks/)
+{{< /card >}}
+
+{{< card header="**Tutorials**" >}}
+Complete, end-to-end learning walkthroughs for building modular Flutter apps and multi-package monorepos.
+
+[Browse Tutorials](/docs/tutorials/)
+{{< /card >}}
+{{< /cardpane >}}
+
+{{< cardpane >}}
+{{< card header="**Agent Skills**" >}}
+Equip AI coding assistants (Claude Code, Cursor, Antigravity, GitHub Copilot) with official Injectable skills.
+
+[Explore Agent Skills](/docs/skills/)
 {{< /card >}}
 
 {{< card header="**API Reference**" >}}
